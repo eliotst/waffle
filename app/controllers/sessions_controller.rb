@@ -1,4 +1,11 @@
 class SessionsController < ApplicationController
+
+	def index
+	end
+
+	def show
+	end
+
 	def new
 	end
 
@@ -13,9 +20,14 @@ class SessionsController < ApplicationController
 		end
 	end
 
+	def edit
+  	end
+
+  	def update
+  	end
+
 	def destroy
 		session[:user_id] = nil
 		redirect_to root_url, :notice => "Logged out!"
 	end
-
 end

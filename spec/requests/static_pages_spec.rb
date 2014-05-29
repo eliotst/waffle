@@ -18,4 +18,10 @@ describe "StaticPages" do
       expect(page).to have_xpath("//img[@src = '/assets/waffle.png']")
     end
   end
+  describe "About page" do
+    it "should have the title 'About Us'"
+      visit 'static_pages/about'
+      expect(page).to have_title('About Us')
+    end
+  end
 end
