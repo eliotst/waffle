@@ -1,7 +1,16 @@
 Waffle::Application.routes.draw do
+  get "sessions/new"
+  get "home" => "sessions#home", :as => "home"
+  get "log_in" => "sessions#new", :as => "log_in"
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "sign_up" => "users#new", :as => "sign_up"
   get "static_pages/home"
   get "static_pages/about"
   root to: 'static_pages#home'
+  
+  resources :users
+  resources :sessions
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
