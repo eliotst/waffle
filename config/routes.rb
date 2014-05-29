@@ -5,7 +5,7 @@ Waffle::Application.routes.draw do
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "sign_up" => "users#new", :as => "sign_up"
   get "static_pages/home"
-  get "static_pages/about"
+  get "about" => "static_pages/about", :as => "about"
   root to: 'static_pages#home'
   
   resources :users

@@ -2,5 +2,17 @@
 	<title>Home</title>
 </head>
 
-<% provide(:title, "Home") %>
-<p><%= image_tag("waffle.png") %></p>
+<div class="center hero-unit">
+	<h1>Welcome to the WAFFLE Project</h1>
+
+	<h2>
+		This is the home page for the WAFFLE Project.
+	</h2>
+
+	<%= link_to "Sign up now!", '#', class: "btn btn-large btn-primary" %>
+</div>
+
+<%= link_to image_tag("waffle.png", alt: "Waffle"), about_path %>
+
+<!<% provide(:title, "Home") %>
+<!<%= image_tag("waffle.png") %>
