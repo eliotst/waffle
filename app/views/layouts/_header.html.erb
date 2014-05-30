@@ -1,9 +1,12 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
 		<div class="navbar-inner">
 			<div id="container">
-				<%= link_to "Waffle", '#', id: "logo" %>
+				<%= link_to "Waffle", root_path, id: "logo" %>
 				<nav>
 					<ul class="user_nav pull-right">
+						<%= link_to "Home", root_path %> '    '
+						<%= link_to "Help", help_path %> '    '
+
 						<% if current_user %>
 							Logged in as <%= current_user.email %>.
 							<%= link_to "Log out", log_out_path %>

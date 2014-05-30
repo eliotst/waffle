@@ -10,18 +10,25 @@ describe "StaticPages" do
   end
   describe "Home page" do
     it "should have the title 'Waffle Home'" do
-      visit '/static_pages/home'
+      visit root_path
       expect(page).to have_title('Waffle Home')
     end
     it "should have a waffle" do
-      visit '/static_pages/home'
+      visit root_path
       expect(page).to have_xpath("//img[@src = '/assets/waffle.png']")
     end
   end
   describe "About page" do
-    it "should have the title 'About Us'"
-      visit 'static_pages/about'
+    it "should have the title 'About Us'" do
+      visit about_path
       expect(page).to have_title('About Us')
     end
   end
+  describe "Contact page" do
+    it "should have the title 'Contact'" do
+      visit contact_path
+      expect(page).to have_title('Contact')
+    end
+  end
+
 end

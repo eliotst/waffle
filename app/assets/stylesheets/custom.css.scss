@@ -47,7 +47,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #999;
+  color: #999; /* color: light gray */
 }
 
 p {
@@ -63,7 +63,7 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #b80028;
+  color: #b80028; /* color: 'monza' red */
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
@@ -72,7 +72,7 @@ p {
 }
 
 #logo:hover {
-  color: #ffc200;
+  color: #ffc200; /* color: 'amber' yellow */
   text-decoration: none;
 }
 
@@ -81,16 +81,16 @@ p {
 footer {
   margin-top: 45px;
   padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: #999;
+  border-top: 1px solid #eaeaea; /* color: light gray */
+  color: #999; /* color: light gray */
 }
 
 footer a {
-  color: #555;
+  color: #555; /* color: dark gray */
 }
 
 footer a:hover {
-  color: #222;
+  color: #222; /* color: charcoal gray */
 }
 
 footer small {
