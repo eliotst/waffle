@@ -1,13 +1,16 @@
 class User < ActiveRecord::Base
 	attr_accessor :password, :email
-	before_save :encrypt_password
+	before_save { :encrypt_password }
+	before_save { self.email = email.downcase }
 
-	validates_confirmation_of :password
+	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+	validates :email, presence: true, length: { in: 6..50}, 
+		format: { with: VALID_EMAIL_REGEX }, 
+		uniqueness: { case_sensitive: false }
 	validates_presence_of :password, :on => :create
+	validates_confirmation_of :password
 	validates :password, length: { minimum: 5 }
-	validates :email, length: { in: 6..30 }
-	validates_presence_of :email
-	validates_uniqueness_of :email
+
 
 	def self.authenticate(email, password)
 		user = find_by_email(email)

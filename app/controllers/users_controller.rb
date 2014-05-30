@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 	end
 
   def edit
+    @user = User.update_attributes(user_params)
   end
 
   def update
