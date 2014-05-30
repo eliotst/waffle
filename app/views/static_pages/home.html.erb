@@ -1,2 +1,21 @@
-<% provide(:title, "Home") %>
-<p><%= image_tag("waffle.png") %></p>
+<head>
+	<title>Home</title>
+</head>
+
+<div class="center hero-unit">
+	<h1>Welcome to the WAFFLE Project</h1>
+
+	<h2>
+		This is the home page for the WAFFLE Project.
+	</h2>
+
+	<%= link_to "Sign up now!", sign_up_path, class: "btn btn-large btn-primary" %>
+</div>
+
+<%= link_to image_tag("waffle.png", size: "70x55", alt: "Waffle"), about_path %>
+
+<div class="fandmLogo pull-right">
+	<%= link_to image_tag("fmlogo.jpg", size: "70x55", alt: "FandM"), 'http:/fandm.edu' %>
+</div>
+<!<% provide(:title, "Home") %>
+<!<%= image_tag("waffle.png") %>

@@ -1,0 +1,26 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+		<div class="navbar-inner">
+			<div id="container">
+				<%= link_to "Waffle", root_path, id: "logo" %>
+				<nav>
+					<ul class="user_nav pull-right">
+						<%= link_to "Home", root_path %> '    '
+						<%= link_to "Help", help_path %> '    '
+
+						<% if current_user %>
+							Logged in as <%= current_user.email %>.
+							<%= link_to "Log out", log_out_path %>
+						<% else %>
+							<%= link_to "Sign up", sign_up_path %> or
+							<%= link_to "Log in", log_in_path %>
+						<% end %>
+					</ul>
+					<p class="flash_messages">
+						<% flash.each do |name, msg| %>
+							<%= content_tag :div, msg, :id => "flash_#{name}" %>
+						<% end %>
+					</p>
+				</nav>
+			</div>
+		</div>
+	</header>
