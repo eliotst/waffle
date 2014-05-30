@@ -1,0 +1,31 @@
+<head>
+	<title>User Home Page</title>
+</head>
+
+<h1>User Home Page</h1>
+
+	<%= image_tag("waffle.png", size: "70x55", alt: "waffle") %>
+	<div class="fandmLogo pull-right">
+	<%= image_tag("fmlogo.jpg", size: "70x55", alt: "FandM") %>
+	</div>
+
+<div class="row">
+	<aside class="span4">
+		<section>
+				<%= image_tag("smile.jpg", size: "70x55", alt: "waffle") %>
+		</section>
+	</aside>
+</div>
+
+<p>Hello, this is the user home page.</p>
+
+<div id="userHome_nav">
+	<% if current_user %>
+		Logged in as <%= current_user.email %>. <br />
+		<%= link_to "Edit Account", userEdit_path %>
+		<%= link_to "Delete Account", current_user, :confirm => 
+			"Are you sure?", :method => :delete %>
+	<% end %>
+
+
+		
