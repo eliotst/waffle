@@ -4,8 +4,12 @@
 				<%= link_to "Waffle", root_path, id: "logo" %>
 				<nav>
 					<ul class="user_nav pull-right">
-						<%= link_to "Home", root_path %> '    '
 						<%= link_to "Help", help_path %> '    '
+						<% if current_user %>
+							<%= link_to "Home", current_user %> '    '
+						<% else %>
+							<%= link_to "Home", root_path %> '    '
+						<% end %>
 
 						<% if current_user %>
 							Logged in as <%= current_user.email %>.
