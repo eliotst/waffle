@@ -14,7 +14,7 @@
 					<% if logged_in? %>
 						<div id="fat-menu" class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								Account <b class="caret"></b>
+								<%= current_user.email %> <b class="caret"></b>
 							</a>
 							<ul class="dropdown-menu">
 								<li><%= link_to "Settings", edit_user_path(current_user) %></li>
@@ -23,7 +23,6 @@
 								<li><%= link_to "Log out", log_out_path, method: "delete" %></li>
 							</ul>
 						</div>
-								Logged in as <%= current_user.email %>.	
 					<% else %>
 						<%= link_to "Sign up", sign_up_path %> or
 						<%= link_to "Log in", log_in_path %>

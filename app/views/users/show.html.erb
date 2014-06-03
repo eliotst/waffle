@@ -9,19 +9,15 @@
 	<%= image_tag("fmlogo.jpg", size: "70x55", alt: "FandM") %>
 	</div>
 
-<div class="row">
-	<aside class="span4">
+<div class="center">
 		<section>
-				<%= image_tag("smile.jpg", size: "70x55", alt: "waffle") %>
+				You are currently involved in: <br />
+				The Affective Forecasting of Future Life Events Study.
 		</section>
-	</aside>
 </div>
-
-<p>Hello, this is the user home page.</p>
 
 <div id="userHome_nav">
 	<% if current_user %>
-		Logged in as <%= current_user.email %>. <br />
 		<%= link_to "Edit Account", edit_user_path(current_user) %><br />
 		<%= link_to "Delete Account", current_user, :confirm => 
 			"Are you sure?", :method => :delete %>
