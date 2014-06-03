@@ -7,8 +7,8 @@ Waffle::Application.routes.draw do
   match '/sign_up', to: 'users#new',            via: 'get'
   match '/sign_in', to: 'sessions#new',         via: 'get'
   match '/log_in', to: 'sessions#new',          via: 'get'  
-  match '/sign_out', to: 'sessions#destroy',    via: 'destroy'
-  match '/log_out', to: 'sessions#destroy',     via: 'destroy'
+  match '/sign_out', to: 'sessions#destroy',    via: 'delete'
+  match '/log_out', to: 'sessions#destroy',     via: 'delete'
 
   get "static_pages/home"
   match '/help',    to: 'static_pages#help',    via: 'get'

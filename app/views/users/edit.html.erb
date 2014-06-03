@@ -2,23 +2,26 @@
 	<title>Edit</title>
 </head>
 
-<h1>User Edit Page</h1>
+<h1>Update your profile</h1>
 
-<%= form_for current_user do |f| %>
-	<% if current_user.errors.any? %>
-		<div class="error_messages">
-			<h2>Form is invalid</h2>
-			<ul>
-				<% for message in current_user.errors.full_messages %>
-					<li><%= message %></li>
-				<% end %>
-			</ul>
-		</div>
-	<% end %>
-	<p class="address_line_one">
-    	<%= f.label :address_line_one %><br />
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(@user) do |f| %>
+			<%= render 'shared/error_messages' %>
+
+			<%= f.label :email %>
+			<%= f.text_field :email %>
+
+			<%= f.label :password %>
+			<%= f.password_field :password %>
+
+			<%= f.label :password_confirmation, "Confirm Password" %>
+			<%= f.password_field :password_confirmation %>
+
+			<%= f.label :address_line_one, "Address Line One" %>
     	<%= f.text_field :address_line_one %>
-  	</p>
 
-	<p class="button"><%= f.submit "Update"%></p>
-<% end %>
+			<%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>

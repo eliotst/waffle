@@ -9,9 +9,22 @@ describe User do
 	it { should respond_to (:email) }
 	it { should respond_to (:password) }
 	it { should respond_to (:password_confirmation) }
+  it { should respond_to (:remember_token) }
+  it { should respond_to (:authenticate) }
 	it { should respond_to (:address_line_one) }
+  it { should respond_to (:admin) }
 
 	it { should be_valid }
+  it { should_not be_admin }
+
+  describe "with admin attribute set to 'true'" do
+    before do
+      @user.save!
+      @user.toggle!(:admin)
+    end
+
+    it { should be_admin }
+  end
 
 	describe "when email is not present" do
 		before { @user.email = " " }
@@ -76,4 +89,9 @@ describe User do
 	    	specify { expect(user_for_invalid_password).to be_false }
 	  	end
 	end
+
+  describe "auth token" do
+    before { @user.save }
+    its(:auth_token) {should_not be_blank }
+  end
 end
