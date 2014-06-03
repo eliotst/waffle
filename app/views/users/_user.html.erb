@@ -2,7 +2,7 @@
   <% if current_user.admin? && !current_user?(user) %>
     <%= link_to user.email, user %> |
     <%= user.address_line_one %> |
-    <%= link_to 'Edit', edit_user_path(user) %> ||
+    <%= link_to 'Edit', edit_user_path(user) %> |
     <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?'} %>
   <% end %>
 </li>
