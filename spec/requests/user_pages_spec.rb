@@ -7,15 +7,15 @@ describe "UserPages" do
 	describe "sign_up page" do
 		before { visit sign_up_path }
 
-		it { should have_content('Sign up') }
-		it { should have_title('Sign up') }
+		it { should have_content('Sign Up') }
+		it { should have_title('Sign Up') }
   	end
 
   	describe "sign_up" do
 
 	    before { visit sign_up_path }
 
-	    let(:submit) { "Sign up" }
+	    let(:submit) { "Create my account" }
 
 	    describe "with invalid information" do
 	      it "should not create a user" do
@@ -25,8 +25,8 @@ describe "UserPages" do
 
 	    describe "with valid information" do
 	      before do
-	        fill_in "email",     			 with: "user@example.com"
-	        fill_in "password",    			 with: "foobar"
+	        fill_in "email",     						 with: "user@example.com"
+	        fill_in "password",    					 with: "foobar"
 	        fill_in "password_confirmation", with: "foobar"
 	      end
 
