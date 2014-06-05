@@ -1,6 +1,15 @@
 require 'spec_helper'
 
 describe User do
+  it "has a valid factory"
+  it "is invalid without an email"
+  it "is invalid without a password"
+  it "is invalid without a password_confirmation"
+  it "has a unique email"
+  it "has a password over 5 characters"
+
+
+=begin 
 	before { @user = User.new(email: "tester@fandm.edu", password: "secret", 
 		password_confirmation: "secret", address_line_one: "123 abc str.") }
 
@@ -9,11 +18,14 @@ describe User do
 	it { should respond_to (:email) }
 	it { should respond_to (:password) }
 	it { should respond_to (:password_confirmation) }
-  it { should respond_to (:remember_token) }
+  it { should respond_to (:auth_token) }
   it { should respond_to (:authenticate) }
 	it { should respond_to (:address_line_one) }
   it { should respond_to (:admin) }
 
+rescue Exception => e
+  
+end
 	it { should be_valid }
   it { should_not be_admin }
 
@@ -94,4 +106,5 @@ describe User do
     before { @user.save }
     its(:auth_token) {should_not be_blank }
   end
+=end
 end

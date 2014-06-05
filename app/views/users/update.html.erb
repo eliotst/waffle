@@ -1,0 +1,27 @@
+<head>
+  <title>Edit</title>
+</head>
+
+<h1>Update your profile</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Confirm Password" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.label :address_line_one, "Address Line One" %>
+      <%= f.text_field :address_line_one %>
+
+      <%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

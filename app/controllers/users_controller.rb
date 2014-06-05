@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
-  before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: :destroy
+  before_action [:correct_user, :admin_user],   only: [:edit, :update, :destroy]
 
   def index
     @users = User.paginate(page: params[:page])
@@ -27,10 +26,11 @@ class UsersController < ApplicationController
 	end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
-    if @user.update_attributes(user_params)
+     if @user.update_attributes(user_params)
       redirect_to @user, notice: "Profile updated!"
     else
       render 'edit'
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
 	private
 		def user_params
   		params.require(:user).permit(:email, :password,
-         :password_confirmation)
+         :password_confirmation, :address_line_one)
 		end
 
     #Before filters
