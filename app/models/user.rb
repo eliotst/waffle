@@ -5,10 +5,11 @@ class User < ActiveRecord::Base
 	before_create :create_auth_token
 
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-	validates :email, presence: true, length: { in: 6..50}, 
+	validates :email, presence: true, length: { in: 6..80}, 
 		format: { with: VALID_EMAIL_REGEX }, 
 		uniqueness: { case_sensitive: false }
 	validates_presence_of :password, :on => :create
+	validates_presence_of :password_confirmation
 	validates_confirmation_of :password
 	validates :password, length: { minimum: 5 }
 

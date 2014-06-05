@@ -1,12 +1,29 @@
 require 'spec_helper'
 
 describe User do
-  it "has a valid factory"
-  it "is invalid without an email"
-  it "is invalid without a password"
-  it "is invalid without a password_confirmation"
-  it "has a unique email"
-  it "has a password over 5 characters"
+  it "has a valid factory" do
+    FactoryGirl.create(:user).should be_valid
+  end
+  it "is invalid without an email" do
+    FactoryGirl.build(:user, email: nil).should_not be_valid
+  end
+  it "is invalid without correct email format " do
+    addresses = %w[user@foo,com user_at_foo.org example.user@foo.
+                 foo@bar_baz.com foo@bar+baz.com]
+    addresses.each do |invalid_address|
+      @user.email = invalid_address
+      expect(@user).not_to be_valid
+    end
+  end
+  it "is invalid without a password" do
+    FactoryGirl.build(:user, password: nil).should_not be_valid
+  end
+  it "is invalid without a password_confirmation" do
+    FactoryGirl.build(:user, password_confirmation: nil).should_not be_valid
+  end
+  it "is invalid with a password under 5 characters" do
+    FactoryGirl.build(:user, password: '1234').should_not be_valid
+  end
 
 
 =begin 
@@ -50,16 +67,7 @@ end
 	    before { @user.email = "a" * 3 }
 	    it { should_not be_valid }
   	end
-  	describe "when email format is invalid" do
-	    it "should be invalid" do
-	      	addresses = %w[user@foo,com user_at_foo.org example.user@foo.
-	                     foo@bar_baz.com foo@bar+baz.com]
-	      	addresses.each do |invalid_address|
-	        	@user.email = invalid_address
-	        	expect(@user).not_to be_valid
-	      	end
-	    end
-  	end
+  	
 	describe "when email format is valid" do
 	    it "should be valid" do
 	    	addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
