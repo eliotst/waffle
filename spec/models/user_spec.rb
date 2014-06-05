@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe User do
+  it "creates a user" do
+    user = User.create(email: 'email@example.com',
+     password: "abc123", password_confirmation: "abc123")
+  end
   it "has a valid factory" do
     FactoryGirl.create(:user).should be_valid
   end
