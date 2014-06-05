@@ -11,9 +11,15 @@ describe User do
     addresses = %w[user@foo,com user_at_foo.org example.user@foo.
                  foo@bar_baz.com foo@bar+baz.com]
     addresses.each do |invalid_address|
-      @user.email = invalid_address
-      expect(@user).not_to be_valid
+      FactoryGirl.build(:user, 
+        email: invalid_address).should_not be_valid
     end
+  end
+  it "does not allow duplicate emails" do
+    user = FactoryGirl.create(:user, email: 'wrong@example.com',
+     password: "abc123", password_confirmation: "abc123")
+    FactoryGirl.build(:user, email: 'wrong@example.com', password: "abc123",
+     password_confirmation: "abc123").should_not be_valid
   end
   it "is invalid without a password" do
     FactoryGirl.build(:user, password: nil).should_not be_valid
