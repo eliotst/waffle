@@ -1,4 +1,5 @@
 require 'faker'
+
 #************** Validations for User *********************
 #
 #  validates :email, presence: true, length: { in: 6..80}, 
@@ -10,12 +11,13 @@ require 'faker'
 #  validates :password, length: { minimum: 5 }
 
 FactoryGirl.define do 
-  factory :user do |f| 
-    f.email { |n| "person_#{n}@example.com" }
-    f.password "foobar" 
-    f.password_confirmation "foobar"
-  end
-  factory :admin do
-    admin true
+  factory :user do 
+    sequence (:email) { |n| "person_#{n}@example.com" }
+    password "secret" 
+    password_confirmation "secret"
+
+    factory :admin do
+      admin true
+    end
   end 
 end
