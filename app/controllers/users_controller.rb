@@ -30,7 +30,8 @@ class UsersController < ApplicationController
   end
 
   def update
-     if @user.update_attributes(user_params)
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
       redirect_to @user, notice: "Profile updated!"
     else
       render 'edit'
