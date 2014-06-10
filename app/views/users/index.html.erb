@@ -4,6 +4,12 @@
 </head>
 <h1>All users</h1>
 
+<div>
+  <% if current_user.admin? %>
+    Format: Name | Email | State | Edit | Delete
+  <% end %>
+</div>
+
 <%= will_paginate %>
 
 <ul class="users">
