@@ -12,14 +12,26 @@
       <%= f.label :email %>
       <%= f.text_field :email %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+      <!<%= f.label :password %>
+      <!<%= f.password_field :password %>
 
-      <%= f.label :password_confirmation, "Confirm Password" %>
-      <%= f.password_field :password_confirmation %>
+      <!<%= f.label :password_confirmation, "Confirm Password" %>
+      <!<%= f.password_field :password_confirmation %>
 
       <%= f.label :address_line_one, "Address Line One" %>
       <%= f.text_field :address_line_one %>
+
+      <%= f.label :address_line_two, "Address Line Two" %>
+      <%= f.text_field :address_line_two %>
+
+      <%= f.label :city, "City" %>
+      <%= f.text_field :city %>
+
+      <%= f.label :state, "State" %>
+      <%= f.text_field :state %>
+
+      <%= f.label :zip_code, "Zip Code" %>
+      <%= f.text_field :zip_code %>
 
       <%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
     <% end %>
