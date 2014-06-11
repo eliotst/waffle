@@ -7,11 +7,11 @@
 <div class="row">
   <div class="span5 offset3">
     <%= form_tag sessions_path do %>
-  		<%= label_tag :email %>
-  		<%= text_field_tag :email %>
-  		<%= label_tag :password %>
-  		<%= password_field_tag :password %>
-    	<%= submit_tag "Log in", class: "btn btn-large btn-primary" %>
+      <%= label_tag :email %>
+      <%= text_field_tag :email %>
+      <%= label_tag :password %>
+      <%= password_field_tag :password %>
+      <%= submit_tag "Log in", class: "btn btn-large btn-primary" %>
     <% end %>
 
     <p>New user? <%= link_to "Sign up now!", sign_up_path %></p>

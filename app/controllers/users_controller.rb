@@ -10,20 +10,20 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-	def new
-		@user = User.new
-	end
+  def new
+    @user = User.new
+  end
   
- 	def create
-  	@user = User.new(user_params)
-  	if @user.save
+  def create
+    @user = User.new(user_params)
+    if @user.save
       log_in @user
       flash[:success] = "Signed up! Thank you!"
-   		redirect_to @user
-  	else
-   		render "new"
-  	end
-	end
+      redirect_to @user
+    else
+      render "new"
+    end
+  end
 
   def edit
     @user = User.find(params[:id])
@@ -48,12 +48,12 @@ class UsersController < ApplicationController
     end
   end
 
-	private
-		def user_params
-  		params.require(:user).permit(:email, :password,
+  private
+    def user_params
+      params.require(:user).permit(:email, :password,
          :password_confirmation, :name, :address_line_one, 
          :address_line_two, :city, :state, :zip_code )
-		end
+    end
 
     #Before filters
 
