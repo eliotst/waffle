@@ -1,12 +1,12 @@
 <head>
-  <title>Edit user</title>
+  <title>Validate user</title>
 </head>
 
-<h1>Update your profile</h1>
+<h1>Validate your email</h1>
 
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
+    <%= form_for @user, :url => validate_path(params[:id]) do |f| %>
       <%= render 'shared/error_messages' %>
       <%= f.Validate "Validate", class: "btn btn-large btn-primary" %>
     <% end %>

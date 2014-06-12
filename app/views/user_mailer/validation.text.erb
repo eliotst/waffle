@@ -1,3 +1,5 @@
 To validate your account, click the URL below.
 
-<%= validate_url(@user.valid_token) %>
+<%= update_validation_url(@user.auth_token) %>
+
+If you did not request your password to be reset, just ignore this email and your password will continue to stay the same.
