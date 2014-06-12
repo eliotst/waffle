@@ -1,0 +1,20 @@
+<head>
+  <title>Edit user</title>
+</head>
+
+<h1>Update your profile</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
+      <%= f.Validate "Validate", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to image_tag("waffle.png", size: "70x55", alt: "Waffle"), about_path %>
+
+<div class="fandmLogo pull-right">
+  <%= link_to image_tag("fmlogo.jpg", size: "70x55", alt: "FandM"), 'http://www.fandm.edu/' %>
+</div>

@@ -18,8 +18,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "Signed up! Thank you!"
+      flash[:success] = "Signed up! Thank you! 
+        You should receive a validation email shortly."
       redirect_to @user
+      @user.send_validation
     else
       render "new"
     end

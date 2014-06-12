@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
 		SecureRandom.urlsafe_base64
 	end
 
+	def User.new_valid_token
+		SecureRandom.urlsafe_base64
+	end
+
 	def User.digest(token)
 		Digest::SHA1.hexdigest(token.to_s)
 	end
@@ -45,11 +49,20 @@ class User < ActiveRecord::Base
 	  UserMailer.password_reset(self).deliver
 	end
 
+	def send_validation
+	  create_valid_token
+	  save!(validate: false)
+	  UserMailer.validation(self).deliver
+	end
 
 	private
 
 		def create_auth_token
 			self.auth_token = User.digest(User.new_auth_token)
+		end
+
+		def create_valid_token
+			self.valid_token = User.digest(User.new_valid_token)
 		end
 
 end
