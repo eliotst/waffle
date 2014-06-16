@@ -6,20 +6,12 @@
 
 <div class="row">
   <div class="span5 offset3">
-    <%= form_for @user, :url => validate_path(params[:id]) do |f| %>
-      <% if @user.errors.any? %>
-        <div class="error_messages">
-          <h2>Form is invalid</h2>
-          <ul>
-            <% for message in @user.errors.full_messages %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-      <%= f.label :Check_box_to_validate %>
-      <%= f.check_box :validate,  %>
-      <%= f.submit "Finish Validation", class: "btn btn-large btn-primary" %>
+    <%= form_tag validations_path, :method => :post do %>
+      <div class="field">
+        <%= label_tag :email %>
+        <%= text_field_tag :email, params[:email] %>
+      </div>
+      <%= submit_tag "Validate", class: "btn btn-large btn-primary" %>
     <% end %>
   </div>
 </div>

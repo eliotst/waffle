@@ -33,7 +33,14 @@
 			<%= f.text_field :city %>
 
 			<%= f.label :state, "State" %>
-			<%= f.text_field :state %>
+			<%= f.select(:state, options_for_select([['AL'], ['AK'],
+			  ['AZ'], ['AR'], ['CA'], ['CO'], ['CT'], ['DE'], ['FL'],
+			  ['GA'], ['HI'], ['ID'], ['IL'], ['IN'], ['IA'], ['KS'],
+			  ['KY'], ['LA'], ['ME'], ['MD'], ['MA'], ['MI'], ['MN'],
+			  ['MS'], ['MO'], ['MT'], ['NE'], ['NV'], ['NH'], ['NJ'],
+			  ['NM'], ['NY'], ['NC'], ['ND'], ['OH'], ['OK'], ['OR'],
+			  ['PA'], ['RI'], ['SC'], ['SD'], ['TN'], ['TX'], ['UT'],
+			  ['VT'], ['VA'], ['WA'], ['WV'], ['WI'], ['WY']])) %>
 
 			<%= f.label :zip_code, "Zip Code" %>
 			<%= f.text_field :zip_code %>

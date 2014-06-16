@@ -14,14 +14,6 @@ describe User do
   it "is invalid with an email under 5 characters" do
     FactoryGirl.build(:user, email: '1234').should_not be_valid
   end
-#  it "is invalid without correct email format " do
-#    addresses = %w[user@foo,com user_at_foo.org example.user@foo.
-#                 foo@bar_baz.com foo@bar+baz.com]
-#    addresses.each do |invalid_address|
-#      FactoryGirl.build(:user, 
-#        email: invalid_address).should_not be_valid
-#    end
-#  end
   it "does not allow duplicate emails" do
     user = FactoryGirl.create(:user, email: 'wrong@example.com',
      password: "abc123", password_confirmation: "abc123")
@@ -44,5 +36,9 @@ describe User do
   it "can be made an admin" do
     user = FactoryGirl.create(:user, admin: true)
     user.admin.should be_true
+  end
+  it "has an email that can be valid" do
+    user = FactoryGirl.create(:user, is_valid: true)
+    user.is_valid.should be_true
   end
 end

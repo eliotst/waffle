@@ -5,7 +5,7 @@ class ValidationsController < ApplicationController
   def create
     user = User.find_by_email(params[:email])
     user.send_validation if user
-    redirect_to @user, :notice => "Email validation sent!"
+    redirect_to root_url, :notice => "Email validation sent!"
   end
 
   def edit
@@ -14,8 +14,8 @@ class ValidationsController < ApplicationController
 
   def update
     @user = User.find_by_valid_token!(params[:id])
-    if @user.update_attributes(user_params)
-      redirect_to @user, :notice => "Password validated!"
+    if @user.update_attribute(:is_valid, "true")
+      redirect_to root_url, :notice => "Email validated!"
     else
       render :edit
     end
