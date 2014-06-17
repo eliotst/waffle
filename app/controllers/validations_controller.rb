@@ -10,14 +10,12 @@ class ValidationsController < ApplicationController
 
   def edit
     @user = User.find_by_valid_token!(params[:id])
-  end
-
-  def update
-    @user = User.find_by_valid_token!(params[:id])
-    if @user.update_attribute(:is_valid, "true")
+    if @user
+      @user.is_valid = true
+      @user.save!(validate: false)
       redirect_to root_url, :notice => "Email validated!"
     else
-      render :edit
+      redirect_to root_url, :notice => "Invalid user or link."
     end
   end
 

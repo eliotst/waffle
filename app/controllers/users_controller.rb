@@ -17,11 +17,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in @user
       flash[:success] = "Signed up! Thank you! 
         You should receive a validation email shortly."
       @user.send_validation
-      redirect_to @user
+      redirect_to root_url
     else
       render "new"
     end
