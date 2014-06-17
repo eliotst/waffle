@@ -1,37 +1,5 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<head>
-  <title>Waffle <%= yield(:title) %></title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<p> Hello world </p>
-
-<%= yield %>
-
-</body>
-=======
-	<head>
-		<title>Authenticater</title>
-		<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-		<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-		<%= csrf_meta_tags %>
-		<%= render 'layouts/shim' %>
-	</head>
-	<body>
-		<%= render 'layouts/header' %>
-		<div class="container">
-			<%= yield %>
-			<%= render 'layouts/footer' %>
-		</div>		
-	</body>
->>>>>>> authenticate
-</html>
-=======
   <head>
     <title>Authenticater</title>
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
@@ -51,4 +19,3 @@
     </div>    
   </body>
 </html>
->>>>>>> authenticate
