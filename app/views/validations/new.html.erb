@@ -1,0 +1,17 @@
+<head>
+  <title>Email Validation Page</title>
+</head>
+
+<h1>Validate Email </h1>
+
+<div class="row">
+  <div class="span5 offset3">
+    <%= form_tag validations_path, :method => :post do %>
+      <div class="field">
+        <%= label_tag :email %>
+        <%= text_field_tag :email, params[:email] %>
+      </div>
+      <%= submit_tag "Validate", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

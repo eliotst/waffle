@@ -1,0 +1,57 @@
+<head>
+	<title>Edit user</title>
+</head>
+
+<h1>Update your profile</h1>
+
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(@user) do |f| %>
+			<%= render 'shared/error_messages' %>
+
+			<%= f.label :email %>
+			<%= f.text_field :email %>
+
+			<%= f.label :password %>
+			<%= f.password_field :password %>
+
+			<%= f.label :password_confirmation, "Confirm Password" %>
+			<%= f.password_field :password_confirmation %>
+
+			<hr>
+
+			<%= f.label :name, "Name" %>
+    	<%= f.text_field :name %>
+
+			<%= f.label :address_line_one, "Address Line One" %>
+    	<%= f.text_field :address_line_one %>
+
+			<%= f.label :address_line_two, "Address Line Two" %>
+			<%= f.text_field :address_line_two %>
+
+			<%= f.label :city, "City" %>
+			<%= f.text_field :city %>
+
+			<%= f.label :state, "State" %>
+			<%= f.select(:state, options_for_select([['AL'], ['AK'],
+			  ['AZ'], ['AR'], ['CA'], ['CO'], ['CT'], ['DE'], ['FL'],
+			  ['GA'], ['HI'], ['ID'], ['IL'], ['IN'], ['IA'], ['KS'],
+			  ['KY'], ['LA'], ['ME'], ['MD'], ['MA'], ['MI'], ['MN'],
+			  ['MS'], ['MO'], ['MT'], ['NE'], ['NV'], ['NH'], ['NJ'],
+			  ['NM'], ['NY'], ['NC'], ['ND'], ['OH'], ['OK'], ['OR'],
+			  ['PA'], ['RI'], ['SC'], ['SD'], ['TN'], ['TX'], ['UT'],
+			  ['VT'], ['VA'], ['WA'], ['WV'], ['WI'], ['WY']])) %>
+
+			<%= f.label :zip_code, "Zip Code" %>
+			<%= f.text_field :zip_code %>
+
+			<%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>
+
+<%= link_to image_tag("waffle.png", size: "70x55", alt: "Waffle"), about_path %>
+
+<div class="fandmLogo pull-right">
+	<%= link_to image_tag("fmlogo.jpg", size: "70x55", alt: "FandM"), 'http://www.fandm.edu/' %>
+</div>
