@@ -9,11 +9,10 @@ describe SessionsController do
     end
   end
 
-  describe "GET 'home'" do
+  describe "GET 'create'" do
     it "returns http success" do
-      get 'home'
+      get 'create'
       response.should be_success
     end
   end
-
 end

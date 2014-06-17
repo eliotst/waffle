@@ -1,27 +1,19 @@
 <!--this will be only for the admin-->
-<h1>Listing users</h1>
+<head>
+	<title>All users</title>
+</head>
+<h1>All users</h1>
 
-<table>
-	<tr>
-		<th>Email</th>
-		<th>Address Line One</th>
-		<th></th>
-		<th></th>
-		<th></th>
-	</tr>
+<div>
+  <% if current_user.admin? %>
+    Format: Name | Email | State | Edit | Delete
+  <% end %>
+</div>
 
-<% @users.each do |user| %>
-	<tr>
-		<td><%= user.email %></td>
-		<td><%= user.address_line_one %></td>
-		<td><%= link_to 'Show', user %></td>
-		<td><%= link_to 'Edit', edit_user_path(user) %></td>
-		<td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?'}  %></td>
-	</tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New User', sign_up_path %>
-<%= link_to 'Home', root_path %>
+<%= will_paginate %>
+<li>
+  <ul class="users">
+	 <%= render @users %> <! located at _user.html.erb > 
+  </ul>
+</li>
+<%= will_paginate %>

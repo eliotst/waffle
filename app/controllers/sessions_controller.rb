@@ -1,33 +1,26 @@
 class SessionsController < ApplicationController
 
-	def index
-	end
-
-	def show
-	end
-
 	def new
 	end
 
 	def create
 		user = User.authenticate(params[:email], params[:password])
 		if user
-			session[:user_id] = user.id
-			render "userHome", :notice => "Logged in!"
+			if user.is_valid
+				log_in user
+				redirect_back_or user
+			else
+				flash.now[:error] = "User email must be validated, please check your email."
+				render "new"
+			end
 		else
-			flash.now.alert = "Invalid email or password"
+			flash.now[:error] = "Invalid email or password"
 			render "new"
 		end
 	end
 
-	def edit
-  	end
-
-  	def update
-  	end
-
 	def destroy
-		session[:user_id] = nil
+		log_out
 		redirect_to root_url, :notice => "Logged out!"
 	end
 end

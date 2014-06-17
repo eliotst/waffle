@@ -1,0 +1,26 @@
+<head>
+  <title>Email Validation Page</title>
+</head>
+
+<h1>Validate Email </h1>
+
+<div class="row">
+  <div class="span5 offset3">
+    <%= form_for @user, :url => validation_path(params[:id]) do |f| %>
+      <% if @user.errors.any? %>
+        <div class="error_messages">
+          <h2>Form is invalid</h2>
+          <ul>
+            <% for message in @user.errors.full_messages %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%= f.label :Please_check_the_box_below_to_validate_and_then_click_submit %>
+      Validate? <%= f.check_box :is_valid %><br/><br/>
+
+      <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

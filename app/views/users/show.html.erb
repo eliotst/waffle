@@ -1,0 +1,32 @@
+<head>
+	<title>User Home Page</title>
+</head>
+
+<h1>User Home Page</h1>
+
+	<%= link_to image_tag("waffle.png", size: "70x55", alt: "waffle"),
+	 about_path %>
+	<div class="fandmLogo pull-right">
+	<%= link_to image_tag("fmlogo.jpg", size: "70x55", alt: "FandM"),
+	 'http://www.fandm.edu/' %>
+	</div>
+
+<div class="center">
+		<section>
+				You are currently involved in: <br />
+				The Affective Forecasting of Future Life Events Study
+		</section>
+</div>
+
+<div id="userHome_nav">
+	<% if current_user %>
+		<%= link_to "Edit Account", edit_user_path(current_user) %><br />
+		<%= link_to "Delete Account", current_user, :confirm => 
+			"Are you sure?", :method => :delete %>
+			<% if current_user.admin? %>
+        <br /><%= link_to "List of Current Users", users_path %>
+      <% end %>
+	<% end %>
+
+
+		
