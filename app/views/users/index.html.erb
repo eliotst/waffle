@@ -6,14 +6,12 @@
 
 <div>
   <% if current_user.admin? %>
-    Format: Name | Email | State | Edit | Delete
+    Format: Name | Email | State | Actions
   <% end %>
 </div>
 
 <%= will_paginate %>
-<li>
-  <ul class="users">
-	 <%= render @users %> <! located at _user.html.erb > 
-  </ul>
-</li>
+<ul class="users">
+ <%= render @users %> <! located at _user.html.erb > 
+</ul>
 <%= will_paginate %>
