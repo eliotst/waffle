@@ -4,12 +4,7 @@
 
 <h1>User Home Page</h1>
 
-	<%= link_to image_tag("waffle.png", size: "70x55", alt: "waffle"),
-	 about_path %>
-	<div class="fandmLogo pull-right">
-	<%= link_to image_tag("fmlogo.jpg", size: "70x55", alt: "FandM"),
-	 'http://www.fandm.edu/' %>
-	</div>
+<%= render 'shared/logos' %>
 
 <div class="center">
 		<section>
@@ -23,8 +18,10 @@
 		<%= link_to "Edit Account", edit_user_path(current_user) %><br />
 		<%= link_to "Delete Account", current_user, :confirm => 
 			"Are you sure?", :method => :delete %>
+		<br /><%= link_to "List of Current Questions", questions_path %>
 			<% if current_user.admin? %>
         <br /><%= link_to "List of Current Users", users_path %>
+        <br /><%= link_to "New Question", new_question_path %>
       <% end %>
 	<% end %>
 

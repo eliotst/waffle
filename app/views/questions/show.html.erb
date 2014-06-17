@@ -1,0 +1,21 @@
+<head>
+	<title>Question</title>
+</head>
+
+<h1>Question Page</h1>
+
+	<%= render 'shared/logos' %>
+
+<div class="center">
+	<section>
+		<%= @question.label %><br />
+		<%= @question.text %>
+	</section>
+</div>
+
+<div id="userHome_nav">
+	<% if @question %>
+    <br /><%= link_to "List of Questions", questions_path %>
+    <br /><%= link_to "New Question", new_question_path %>
+  <% end %>
+</div>

@@ -24,6 +24,14 @@ module SessionsHelper
     user == current_user
   end
 
+  def current_question=(question)
+    @current_question = question
+  end
+
+  def current_question?(question)
+    question == current_question
+  end
+
   def log_out
     current_user.update_attribute(:auth_token, User.digest(User.new_auth_token))
     cookies.delete(:auth_token)

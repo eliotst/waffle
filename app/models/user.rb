@@ -1,12 +1,13 @@
 class User < ActiveRecord::Base
+	has_many :questions
 	attr_accessor :password
 	before_save :encrypt_password
 	before_save { self.email = email.downcase }
 	before_create :create_auth_token
 
-#	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/
 	validates :email, presence: true, length: { minimum: 5 }, 
-#		format: { with: VALID_EMAIL_REGEX }, 
+		format: { with: VALID_EMAIL_REGEX }, 
 		uniqueness: { case_sensitive: false }
 	validates_presence_of :password, :on => :create
 	validates_presence_of :password_confirmation

@@ -1,0 +1,13 @@
+<head>
+	<title>All Questions</title>
+</head>
+<h1>All Questions</h1>
+
+<%= will_paginate %>
+  <ul class="questions">
+    Format: Label | Actions <br />
+    <%= render @questions %> <! located at _questions.html.erb >
+    <%= link_to 'New Question', new_question_path %>
+  </ul>
+<%= will_paginate %>
+

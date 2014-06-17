@@ -1,9 +1,7 @@
-<li>
-  <% if current_user.admin? %>
-    <%= user.name %> |
-    <%= link_to user.email, user %> |
-    <%= user.state %> |
-    <%= link_to 'Edit', edit_user_path(user) %> |
-    <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?'} %>
-  <% end %>
-</li>
+<% if current_user.admin? %>
+  <%= user.name %> |
+  <%= link_to user.email, user %> |
+  <%= user.state %> |
+  <%= link_to 'Edit', edit_user_path(user) %> |
+  <%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?'} %>
+<% end %>
