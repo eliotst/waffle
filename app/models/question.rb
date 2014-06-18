@@ -5,7 +5,7 @@ class Question < ActiveRecord::Base
 
   validates_presence_of :label
   validates :label, length: { maximum: 20 }
-  #validates :label, format: { with: /\A[a-zA-Z0-9_]\z/ }
+  validates :label, format: { with: /\A[a-zA-Z0-9_]+\z/ }
   validates :text, format: { with: /[\?]\z/ }
 
 end
