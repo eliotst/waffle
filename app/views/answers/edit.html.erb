@@ -1,0 +1,23 @@
+<head>
+	<title>Edit Answer</title>
+</head>
+
+<h1>Update your Answer</h1>
+
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(@answer) do |f| %>
+			<%= render 'shared/answer_error_messages' %>
+
+			<%= f.label :label %>
+			<%= f.label :text %>
+
+			<%= f.label :answer %>
+			<%= f.text_field :value %>
+
+			<%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>
+
+<%= render 'shared/logos' %>

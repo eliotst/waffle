@@ -1,0 +1,22 @@
+<head>
+	<title>Answer</title>
+</head>
+
+<h1>Answer Page</h1>
+
+	<%= render 'shared/logos' %>
+
+<div class="center">
+	<section>
+		<%= @question.label %><br />
+		<%= @question.text %><br />
+    <%= @answer.value %>
+	</section>
+</div>
+
+<div id="userHome_nav">
+	<% if @answer %>
+    <br /><%= link_to "List of Questions", questions_path %>
+    <br /><%= link_to "List of Answers", answers_path %>
+  <% end %>
+</div>

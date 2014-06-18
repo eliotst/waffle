@@ -1,0 +1,5 @@
+<%= link_to question.label, answer %> <br />
+<% if current_user? || current_user.admin? %>
+  <%= link_to 'Edit Answer', edit_answer_path(question) %> |
+  <%= link_to 'Delete Answer', answer, method: :delete, data: { confirm: 'Are you sure?'} %> <br/>
+<% end %>

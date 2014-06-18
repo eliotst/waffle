@@ -1,0 +1,23 @@
+<head>
+  <title>Answer the Question</title>
+</head>
+
+<h1>Answer the Question</h1>
+
+<div class="row">
+  <div class="span5 offset3">
+    <%= form_for [@question, @answer] do |f| %>
+      <%= render 'shared/question_error_messages' %>
+
+      <%= f.label :label %>
+      <%= f.label :text %>
+
+
+      <%= f.label :answer %>
+      <%= f.text_field :value %>
+
+      <%= f.submit "Submit Answer", class: "btn btn-large btn-primary" %>
+    <% end %>
+    <%= link_to "List of Current Questions", questions_path %>
+  </div>
+</div>

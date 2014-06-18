@@ -1,5 +1,6 @@
 <% if current_user.admin? %>
-  <%= user.name %> <br/>
+  <%= user.name %> |
+  <%= user.participant %> <br/>
   <%= link_to user.email, user %> |
   <%= user.state %> |
   <%= link_to 'Edit', edit_user_path(user) %> |

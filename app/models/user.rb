@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :questions
+	has_one :participant
 	attr_accessor :password
 	before_save :encrypt_password
 	before_save { self.email = email.downcase }
