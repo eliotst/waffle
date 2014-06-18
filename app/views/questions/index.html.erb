@@ -5,9 +5,15 @@
 
 <%= will_paginate %>
   <ul class="questions">
-    Format: Label | Actions <br />
-    <%= render @questions %> <! located at _questions.html.erb >
-    <%= link_to 'New Question', new_question_path %>
+    Format: Question Label<br /> 
+    <% if current_user.admin? %>
+      Actions are listed below each label<br/><br/>
+    <% end %>
+    <%= render @questions %> <br /><! located at _questions.html.erb >
+    <% if current_user.admin? %>
+      <%= link_to 'Make New Question', new_question_path %> <br/><br/>
+    <% end %>
+    <%= link_to 'Return to Your Home Page', current_user %>
   </ul>
 <%= will_paginate %>
 
