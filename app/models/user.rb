@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
 	validates_confirmation_of :password
 	validates :password, length: { minimum: 5 }
 
+	self.per_page = 10
 
 	def self.authenticate(email, password)
 		user = find_by_email(email)

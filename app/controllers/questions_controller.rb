@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     if @question.save
       flash[:success] = "Question saved."
-      render "new"
+      redirect_to questions_path
     else
       flash[:failure] = "An error occured. Question not saved."
       render "new"

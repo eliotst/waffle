@@ -8,4 +8,6 @@ class Question < ActiveRecord::Base
   validates :label, format: { with: /\A[a-zA-Z0-9_]+\z/ }
   validates :text, format: { with: /[\?]\z/ }
 
+  self.per_page = 10
+
 end
