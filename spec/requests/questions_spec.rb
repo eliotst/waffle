@@ -2,7 +2,12 @@ require 'spec_helper'
 
 describe "Questions" do
   describe "with valid information" do
+    let(:user) { FactoryGirl.create(:user, admin: true) }
     let(:question) { FactoryGirl.create(:question) }
+
+    before(:each) do
+      log_in user
+    end
     before { visit questions_path }
 
     describe "GET /questions" do

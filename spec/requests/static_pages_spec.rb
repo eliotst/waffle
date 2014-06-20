@@ -29,5 +29,11 @@ describe "StaticPages" do
       expect(page).to have_title('Contact')
     end
   end
+  describe "Help page" do
+    it "should have the title 'Help'" do
+      visit help_path
+      expect(page).to have_title('Help')
+    end
+  end
 
 end
