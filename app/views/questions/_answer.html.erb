@@ -1,0 +1,7 @@
+<div class="answer">
+  <i><%=h answer.name %> says:</i><br />
+  <%= simple_format h(answer.body) %>
+  <%= link_to 'Destroy Answer', answer,
+    :confirm => 'Are you sure?',
+    :method => :delete if logged_in? %>
+</div>

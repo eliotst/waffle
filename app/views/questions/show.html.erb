@@ -11,11 +11,33 @@
 		<%= @question.label %><br />
 		<%= @question.text %>
 	</section>
+
+  <h2>Answers</h2>
+    <div>
+      <% @question.answers.each do |answer| %>
+        <strong>Answer:</strong>
+        <%= answer.inspect %>
+        <% if answer.value %>
+          <%= answer.value %>
+        <% else %>
+          No answer provided.
+        <% end %>
+      <% end %>
+
+      <% if current_user.admin %>
+        <%= link_to "Edit Question", edit_question_path(@question) %>
+      <% elsif current_user %>
+        <%= link_to "Answer", edit_question_path(@question) %>
+      <% end %>
+    </div>
+  
 </div>
 
 <div id="userHome_nav">
 	<% if @question %>
     <br /><%= link_to "List of Questions", questions_path %>
+    <br /><%= link_to "Edit", edit_question_path(@question) %>
     <br /><%= link_to "New Question", new_question_path %>
   <% end %>
 </div>
+

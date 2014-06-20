@@ -1,19 +1,24 @@
 class AnswersController < ApplicationController
-  def new(question_id)
+  def new
     @question = Question.find(params[:question_id])
     @answer = @question.answer.new
   end
 
-  def create(question_id)
-    @question = Question.find(params[:question_id]
-    @answer = @question.answer.build(answer_params)
+  def create
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.create(answer_params)
     if @answer.save
       flash[:success] = "Answer saved."
-      redirect_to questions_path
+      redirect_to question_path(@question)
     else
       flash[:failure] = "An error occured. Answer not saved."
       render "new"
     end
+  end
+
+  def show
+    @question = Question.find(params[:question_id])
+    @answer = @question.Answer.find(params[:id])
   end
 
   def index
@@ -34,9 +39,9 @@ class AnswersController < ApplicationController
   end
 
   def destroy
-    Answer.find(params[:id]).destroy
+    @answer = Answer.find(params[:id]).destroy
     flash[:success] = "Answer deleted."
-    redirect_to answers_path
+    redirect_to(@answer.question)
   end
 
   private

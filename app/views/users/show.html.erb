@@ -22,7 +22,6 @@
         <br /><%= link_to "List of Current Users", users_path %>
       <% end %>
       <br /><%= link_to "List of Current Questions", questions_path %>
-      <br /><%= link_to "List of Answers", answers_path %>
       <% if current_user.admin? %>
         <br /><%= link_to "New Question", new_question_path %>
       <% end %>
