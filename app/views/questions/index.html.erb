@@ -6,7 +6,7 @@
 <%= will_paginate %>
   <ul class="questions">
     Format: Question Label<br /> 
-    <% if current_user.admin? %>
+    <% if current_user.admin %>
       Actions are listed below each label<br/><br/>
     <% end %>
     <%= render @questions %> <br /><! located at _questions.html.erb >
