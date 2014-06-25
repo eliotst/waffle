@@ -6,14 +6,14 @@
 
 <div class="row">
   <div class="span5 offset3">
-    <%= form_for [@question, @answer] do |f| %>
+    <%= form_for ([@question, @question.answers.build]) do |f| %>
       <%= render 'shared/question_error_messages' %>
 
-      <%= f.label :label %>
-      <%= f.label :text %>
+      Title: <%= @question.label %><br />
+      Question: <%= @question.text %><br />
+      Previous Answer: <%= @answer.value %>
 
-
-      <%= f.label :answer %>
+      <%= f.label :value, "New Answer:" %>
       <%= f.text_field :value %>
 
       <%= f.submit "Submit Answer", class: "btn btn-large btn-primary" %>

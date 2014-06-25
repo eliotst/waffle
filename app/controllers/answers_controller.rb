@@ -14,7 +14,7 @@ class AnswersController < ApplicationController
         flash[:success] = "Answer saved."
         redirect_to question_path(@question)
       else
-        flash[:failure] = "An error occured. Answer not saved."
+        flash[:failure] = "An error occurred. Answer not saved."
         render "new"
       end
     end

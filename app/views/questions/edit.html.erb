@@ -20,15 +20,6 @@
 
 				<%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
 			<% end %>
-		<% elsif current_user.admin == false && current_user %>
-
-	    <%= form_for ([@question, @question.answers.build]) do |f| %>
-	      
-	      <%= f.label :value, "New answer:" %>
-	      <%= f.text_field :value %>
-	      
-	      <%= f.submit "Submit Answer", class: "btn btn-large btn-primary" %>
-	    <% end %>
 		<% end %>
 	</div>
 </div>
