@@ -1,15 +1,15 @@
 class AnswersController < ApplicationController
   def new
-    @participant = Participant.find_by_user_id(current_user.id)
     @question = Question.find(params[:question_id])
     @answer = @question.answers.new
+    @answer.participant = Participant.find_by_user_id(current_user.id)
   end
 
   def create
     if logged_in?
-      @participant = Participant.find_by_user_id(current_user.id)
       @question = Question.find(params[:question_id])
       @answer = @question.answers.create(answer_params)
+      @answer.participant = Participant.find_by_user_id(current_user.id)
       if @answer.save
         flash[:success] = "Answer saved."
         redirect_to question_path(@question)
@@ -23,6 +23,7 @@ class AnswersController < ApplicationController
   def show
     @question = Question.find(params[:question_id])
     @answer = @question.Answer.find(params[:id])
+    @answer.participant = Participant.find_by_user_id(current_user.id)
   end
 
   def index
@@ -30,11 +31,15 @@ class AnswersController < ApplicationController
   end
 
   def edit
-    @answer = Answer.find(params[:id])
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.find(params[:id])
+    @answer.participant = Participant.find_by_user_id(current_user.id)
   end
 
   def update
-    @answer = Answer.find(params[:id])
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.find(params[:id])
+    @answer.participant = Participant.find_by_user_id(current_user.id)
     if @answer.update_attributes(answer_params)
       redirect_to @answer, notice: "Answer Updated."
     else
@@ -43,7 +48,9 @@ class AnswersController < ApplicationController
   end
 
   def destroy
-    @answer = Answer.find(params[:id]).destroy
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.find(params[:id]).destroy
+    @answer.participant = Participant.find_by_user_id(current_user.id)
     flash[:success] = "Answer deleted."
     redirect_to(@answer.question)
   end

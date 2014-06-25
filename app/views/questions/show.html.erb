@@ -12,25 +12,25 @@
 		<%= @question.text %>
 	</section>
 
-  <h2>Answers</h2>
-    <div>
-      <% @question.answers.each do |answer| %>
-        <strong>Answer:</strong>
-        <%= answer.inspect %>
-        <% if answer.value %>
-          <%= answer.value %>
-        <% else %>
-          No answer provided.
-        <% end %>
+  <div>
+    <br />Answer:<br />
+    <% @question.answers.each do |answer| %>
+      <strong>Answer:</strong>
+      
+      <% if answer.value %>
+        <%= answer.value %><br />
+      <% else %>
+        No answer provided.
       <% end %>
+    <% end %>
 
-      <% if current_user.admin %>
-        <%= link_to "Edit Question", edit_question_path(@question) %>
-      <% elsif current_user %>
-        <%= link_to "Answer Question", new_question_answer_path(@question) %>
-      <% end %>
-    </div>
-  
+    <% if current_user.admin %>
+      <%= link_to "Edit Question", edit_question_path(@question) %>
+    <% elsif current_user %>
+      <%= link_to "Answer Question", new_question_answer_path(@question) %>
+      <%= link_to "Edit Answer", edit_question_answer_path(@question.answer) %>
+    <% end %> 
+  </div> 
 </div>
 
 <div id="userHome_nav">
