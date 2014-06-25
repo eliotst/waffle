@@ -26,3 +26,7 @@ doc/
 .secret
 
 app/assets/images/smile.jpg
+
+spec/models/answer_spec.rb
+
+app/controllers/users_controller.rb
