@@ -10,6 +10,6 @@ it "creates an answer" do
     create(:answer).should be_valid
   end
   it "is invalid without something in the value" do
-    build(:question, value: nil).should_not be_valid
+    build(:answer, value: nil).should_not be_valid
   end
 end

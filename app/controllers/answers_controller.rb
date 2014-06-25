@@ -1,18 +1,22 @@
 class AnswersController < ApplicationController
   def new
+    @participant = Participant.find_by_user_id(current_user.id)
     @question = Question.find(params[:question_id])
     @answer = @question.answers.new
   end
 
   def create
-    @question = Question.find(params[:question_id])
-    @answer = @question.answers.create(answer_params)
-    if @answer.save
-      flash[:success] = "Answer saved."
-      redirect_to question_path(@question)
-    else
-      flash[:failure] = "An error occured. Answer not saved."
-      render "new"
+    if logged_in?
+      @participant = Participant.find_by_user_id(current_user.id)
+      @question = Question.find(params[:question_id])
+      @answer = @question.answers.create(answer_params)
+      if @answer.save
+        flash[:success] = "Answer saved."
+        redirect_to question_path(@question)
+      else
+        flash[:failure] = "An error occured. Answer not saved."
+        render "new"
+      end
     end
   end
 

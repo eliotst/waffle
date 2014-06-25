@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(user_params)
+    @participant = @user.create_participant
     if @user.save
       flash[:success] = "Signed up! Thank you! 
         You should receive a validation email shortly."
