@@ -19,7 +19,7 @@
       
       <% if answer.value %>
         <%= answer.value %><br />
-        <%= link_to "Edit Answer", edit_question_answer_path(@question, @answer) %>
+        <%= link_to "Edit Answer", edit_question_answer_path(answer) %>
       <% else %>
         No answer provided.
       <% end %>
