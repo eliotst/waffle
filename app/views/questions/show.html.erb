@@ -19,16 +19,15 @@
       
       <% if answer.value %>
         <%= answer.value %><br />
-        <%= link_to "Edit Answer", edit_question_answer_path(answer) %>
+        <%= link_to "Edit Answer", edit_question_answer_path(@question, answer) %>
       <% else %>
-        No answer provided.
+        No answer provided. <br />
+        <%= link_to "Answer Question", new_question_answer_path(@question) %>
       <% end %>
     <% end %>
 
     <% if current_user.admin %>
       <%= link_to "Edit Question", edit_question_path(@question) %>
-    <% elsif current_user %>
-      <%= link_to "Answer Question", new_question_answer_path(@question) %>
     <% end %> 
   </div> 
 </div>

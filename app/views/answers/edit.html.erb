@@ -6,7 +6,7 @@
 
 <div class="row">
 	<div class="span6 offset3">
-		<%= form_for ([@question, @question.answers.edit]) do |f| %>
+		<%= form_for ([@question, @answer]) do |f| %>
 			<%= render 'shared/answer_error_messages' %>
 
 			<%= f.label :label %>

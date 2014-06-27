@@ -41,7 +41,7 @@ class AnswersController < ApplicationController
     @answer = @question.answers.find(params[:id])
     @answer.participant = Participant.find_by_user_id(current_user.id)
     if @answer.update_attributes(answer_params)
-      redirect_to @answer, notice: "Answer Updated."
+      redirect_to @question, notice: "Answer Updated."
     else
       render 'edit'
     end
