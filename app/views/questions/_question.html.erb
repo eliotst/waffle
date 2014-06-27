@@ -2,4 +2,6 @@
 <% if current_user.admin? %>
   <%= link_to 'Edit Question', edit_question_path(question) %> |
   <%= link_to 'Delete Question', question, method: :delete, data: { confirm: 'Are you sure?'} %> <br/>
+<% elsif current_user %>
+  <%= link_to 'Answer Question', new_question_answer_path(question) %>
 <% end %>

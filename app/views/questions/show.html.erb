@@ -20,11 +20,11 @@
       <% if answer.value %>
         <%= answer.value %><br />
         <%= link_to "Edit Answer", edit_question_answer_path(@question, answer) %>
-        <%= link_to "Delete Answer", delete_question_answer_path(@question, answer) %>
-      <% else %>
-        No answer provided. <br />
-        <%= link_to "Answer Question", new_question_answer_path(@question) %>
+         <br />
+        <%= link_to "Delete Answer", question_answer_path(@question, answer), 
+        method: :delete, data: { confirm: 'Are you sure?'} %> <br />
       <% end %>
+      <%= link_to "Answer Question", new_question_answer_path(@question) %>
     <% end %>
 
     <% if current_user.admin %>
