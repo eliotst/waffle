@@ -20,6 +20,7 @@
       <% if answer.value %>
         <%= answer.value %><br />
         <%= link_to "Edit Answer", edit_question_answer_path(@question, answer) %>
+        <%= link_to "Delete Answer", delete_question_answer_path(@question, answer) %>
       <% else %>
         No answer provided. <br />
         <%= link_to "Answer Question", new_question_answer_path(@question) %>

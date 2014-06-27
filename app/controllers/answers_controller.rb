@@ -22,11 +22,12 @@ class AnswersController < ApplicationController
 
   def show
     @question = Question.find(params[:question_id])
-    @answer = @question.Answer.find(params[:id])
+    @answer = @question.answers.find(params[:id])
     @answer.participant = Participant.find_by_user_id(current_user.id)
   end
 
   def index
+    @question = Question.find(params[:question_id])
     @answers = Answer.paginate(page: params[:page])
   end
 
