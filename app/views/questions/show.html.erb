@@ -7,13 +7,13 @@
 	<%= render 'shared/logos' %>
 
 <div class="center">
-	<section>
-		<%= @question.label %><br />
-		<%= @question.text %>
-	</section>
+	
+		<br />Question: <%= @question.label %><br />
+		<%= @question.text %> <br /><br />
+	
 
   <div>
-    <br />Answer:<br />
+    Answer:<br />
     <% @question.answers.each do |answer| %>
       <strong>Answer:</strong>
       
@@ -24,20 +24,28 @@
         <%= link_to "Delete Answer", question_answer_path(@question, answer), 
         method: :delete, data: { confirm: 'Are you sure?'} %> <br />
       <% end %>
+    <% end %>
+    <% if current_user.admin %>
+      <%= link_to "Edit Question", edit_question_path(@question) %><br />
+      <%= link_to 'Delete Question', @question, method: :delete, data: { confirm: 'Are you sure?'} %> <br/>
+    <% else %>
       <%= link_to "Answer Question", new_question_answer_path(@question) %>
     <% end %>
+    
 
-    <% if current_user.admin %>
-      <%= link_to "Edit Question", edit_question_path(@question) %>
-    <% end %> 
-  </div> 
+     
+  </div>
 </div>
 
 <div id="userHome_nav">
 	<% if @question %>
-    <br /><%= link_to "List of Questions", questions_path %>
-    <br /><%= link_to "Edit", edit_question_path(@question) %>
-    <br /><%= link_to "New Question", new_question_path %>
+    <% if current_user.admin %>
+      <br /><%= link_to "List of Questions", questions_path %>
+      <br /><%= link_to "Edit", edit_question_path(@question) %>
+      <br /><%= link_to "New Question", new_question_path %>
+    <% else %>
+      <br /><%= link_to "List of Questions", questions_path %>
+    <% end %>
   <% end %>
 </div>
 

@@ -50,8 +50,9 @@ class AnswersController < ApplicationController
 
   def destroy
     @question = Question.find(params[:question_id])
-    @answer = @question.answers.find(params[:id]).destroy
+    @answer = @question.answers.find(params[:id])
     @answer.participant = Participant.find_by_user_id(current_user.id)
+    @answer.destroy
     flash[:success] = "Answer deleted."
     redirect_to(@answer.question)
   end
