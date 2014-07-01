@@ -1,20 +1,28 @@
 <head>
-  <title>Validate user</title>
+	<title>Edit user</title>
 </head>
 
-<h1>Validate your email</h1>
+<h1>Edit User Information</h1>
+
+<p>For security reasons, you must input your password and password confirmation. You may change your password here or keep it the same.</p>
 
 <div class="row">
-  <div class="span6 offset3">
-    <%= form_for @user, :url => validation_path(params[:id]) do |f| %>
-      <%= render 'shared/error_messages' %>
-      <%= f.Validate "Validate", class: "btn btn-large btn-primary" %>
-    <% end %>
-  </div>
+	<div class="span6 offset3">
+		<%= form_for(@user) do |f| %>
+			<%= render 'shared/error_messages' %>
+
+			<%= f.label :email %>
+			<%= f.text_field :email %>
+
+			<%= f.label :password %>
+			<%= f.password_field :password %>
+
+			<%= f.label :password_confirmation, "Confirm Password" %>
+			<%= f.password_field :password_confirmation %>
+
+			<%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
 </div>
 
-<%= link_to image_tag("waffle.png", size: "70x55", alt: "Waffle"), about_path %>
-
-<div class="fandmLogo pull-right">
-  <%= link_to image_tag("fmlogo.jpg", size: "70x55", alt: "FandM"), 'http://www.fandm.edu/' %>
-</div>
+<%= render 'shared/logos' %>

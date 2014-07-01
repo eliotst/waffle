@@ -3,5 +3,9 @@
   <%= link_to 'Edit Question', edit_question_path(question) %> |
   <%= link_to 'Delete Question', question, method: :delete, data: { confirm: 'Are you sure?'} %> <br/>
 <% elsif current_user %>
-  <%= link_to 'Answer Question', new_question_answer_path(question) %> <br />
+  <% if question.answers.size > 0 %>
+    <%= link_to 'Edit or Delete Answers', question_answers_path(question) %> <br />
+  <% else %>
+    <%= link_to 'Answer Question', new_question_answer_path(question) %> <br />
+  <% end %>
 <% end %>
