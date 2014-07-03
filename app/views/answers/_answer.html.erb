@@ -1,6 +1,8 @@
-<%= link_to @question.label, question_answer_path(@question, answer) %> <br />
-<%= answer.value %> | 
-<% if current_user %>
-  <%= link_to 'Edit Answer', edit_question_answer_path(@question, answer) %> |
-  <%= link_to 'Delete Answer', question_answer_path(@question, answer), method: :delete, data: { confirm: 'Are you sure?'} %> <br/>
+<% if answer.question == @question %>
+	<%= link_to @question.label, question_answer_path(@question, answer) %> <br />
+	<%= answer.value %> | 
+	<% if current_user %>
+	  <%= link_to 'Edit Answer', edit_question_answer_path(@question, answer) %> |
+	  <%= link_to 'Delete Answer', question_answer_path(@question, answer), method: :delete, data: { confirm: 'Are you sure?'} %> <br/>
+	<% end %>
 <% end %>

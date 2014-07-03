@@ -29,6 +29,9 @@ class AnswersController < ApplicationController
   def index
     @question = Question.find(params[:question_id])
     @answers = Answer.paginate(page: params[:page])
+    @answers.each do |answer|
+      answer.participant = Participant.find_by_user_id(current_user.id)
+    end
   end
 
   def edit
