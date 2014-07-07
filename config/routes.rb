@@ -1,4 +1,5 @@
 Waffle::Application.routes.draw do
+  get "blocks/create"
   root to: 'static_pages#home'
 
   match '/sign_up',   to: 'users#new',             via: 'get'

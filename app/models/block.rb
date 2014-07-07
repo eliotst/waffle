@@ -1,4 +1,4 @@
-class Blocks < ActiveRecord::Base
+class Block < ActiveRecord::Base
   has_many :questions
 
   validates_presence_of :label

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140707145145) do
+ActiveRecord::Schema.define(version: 20140707191621) do
 
   create_table "answers", force: true do |t|
     t.string   "value"
@@ -24,14 +24,14 @@ ActiveRecord::Schema.define(version: 20140707145145) do
   add_index "answers", ["participant_id"], name: "index_answers_on_participant_id"
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
 
-  create_table "blocks", force: true do |t|
+  create_table "block", force: true do |t|
     t.string   "label"
     t.integer  "question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "blocks", ["question_id"], name: "index_blocks_on_question_id"
+  add_index "block", ["question_id"], name: "index_block_on_question_id"
 
   create_table "participants", force: true do |t|
     t.integer  "user_id"
