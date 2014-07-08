@@ -1,5 +1,4 @@
 Waffle::Application.routes.draw do
-  get "blocks/create"
   root to: 'static_pages#home'
 
   match '/sign_up',   to: 'users#new',             via: 'get'
@@ -18,6 +17,7 @@ Waffle::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :password_resets
   resources :validations
+  resources :blocks
   resources :questions do
     resources :answers
   end

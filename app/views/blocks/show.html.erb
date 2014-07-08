@@ -1,0 +1,23 @@
+<head>
+	<title>Block</title>
+</head>
+
+<h1>Block Page</h1>
+
+  <%= render 'shared/logos' %>
+
+<p>
+  <strong>Label:</strong>strong>
+  <%=h @block.label %>
+</p>
+<ol>
+<% for question in @block.questions %>
+	<li><%=h question.content %></li>
+<% end %>
+</ol>
+
+<p>
+	<%= link_to "Edit", edit_block_path(@block) %> |
+	<%= link_to "Destroy", @block, :confirm => 'Are you sure?', :method => :delete %> |
+	<%= link_to "View all Blocks", blocks_path %>
+</p>
