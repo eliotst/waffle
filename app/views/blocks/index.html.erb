@@ -1,0 +1,20 @@
+<!--only for the admin-->
+<head>
+	<title>All Blocks</title>
+</head>
+<h1>All blocks</h1>
+<%= render 'shared/logos' %><br />
+
+<div>
+  <% if current_user.admin? %>
+    <strong>Format:</strong> Block Label with actions listed below<br/><br/>
+  <% end %>
+</div>
+
+<%= will_paginate %>
+<ul class="blocks">
+ <%= render @blocks %> <! located at _block.html.erb > 
+</ul>
+<%= will_paginate %>
+
+<%= link_to "Create a Block", new_block_path %>

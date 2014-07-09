@@ -1,0 +1,19 @@
+<head>
+	<title>Edit Block</title>
+</head>
+
+<h1>Update your Block</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+		
+    <% if current_user.admin %>
+      <%= form_for(@block) do |f| %>
+        <%= render 'shared/block_error_messages' %>
+        <%= render 'form' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<%= render 'shared/logos' %>

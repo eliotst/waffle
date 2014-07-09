@@ -1,5 +1,7 @@
-require 'spec_helper'
+require File.dirname(__FILE__) + '/../spec_helper'
 
 describe Block do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should be valid" do
+    Block.new.should be_valid
+  end
 end

@@ -24,6 +24,7 @@
       <br /><%= link_to "List of Current Questions", questions_path %>
       <% if current_user.admin? %>
         <br /><%= link_to "New Question", new_question_path %>
+        <br /><%= link_to "New Block", new_block_path %>
       <% end %>
 	<% end %>
 

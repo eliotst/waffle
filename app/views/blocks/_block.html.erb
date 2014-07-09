@@ -1,0 +1,8 @@
+<% if current_user.admin? %>
+  <%= block.label %> <br />
+  <% for question in block.questions %>
+	<%=h question.content %>
+  <% end %> <br />
+  <%= link_to 'Edit', edit_block_path(block) %> |
+  <%= link_to 'Delete', block, method: :delete, data: { confirm: 'Are you sure?'} %><br/>
+<% end %>
