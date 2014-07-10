@@ -10,11 +10,12 @@
     <strong>Format:</strong> Block Label with actions listed below<br/><br/>
   <% end %>
 </div>
+<% if current_user.admin? %>
+  <%= will_paginate %>
+  <ul class="blocks">
+    <%= render @blocks %> <! located at _block.html.erb > 
+  </ul>
+  <%= will_paginate %>
 
-<%= will_paginate %>
-<ul class="blocks">
- <%= render @blocks %> <! located at _block.html.erb > 
-</ul>
-<%= will_paginate %>
-
-<%= link_to "Create a Block", new_block_path %>
+  <%= link_to "Create a Block", new_block_path %>
+<% end %>

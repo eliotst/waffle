@@ -3,7 +3,7 @@ class BlocksController < ApplicationController
   	@block = Block.new
   	3.times do |n|
   	  question = @block.questions.build 
-  	  1.times do |n|
+  	  3.times do |n|
   	    question.answers.build
   	  end
   	end  

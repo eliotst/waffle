@@ -12,9 +12,16 @@
   <strong>
   	<%= @block.label %> <br />
   </strong>
+  <ol>
   	<% for question in @block.questions %>
   	<li><%=h question.text %></li>
+    <ul>
+      <% for answer in question.answers %>
+        <li><%= h answer.value %></li>
+      <% end %>
+    </ul>
   	<% end %> <br />
+  </ol>
   	<%= link_to 'Edit', edit_block_path(@block) %> |
   	<%= link_to 'Delete', @block, method: :delete, data: { confirm: 'Are you sure?'} %><br/>
   <% end %> 
