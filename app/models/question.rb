@@ -2,6 +2,9 @@ class Question < ActiveRecord::Base
   belongs_to :block
   belongs_to :user
   has_many :answers, :dependent => :destroy
+  accepts_nested_attributes_for :answers, 
+  	:reject_if => lambda { |a| a[:value].blank? },
+  	:allow_destroy => true
 
   validates_presence_of :text
 

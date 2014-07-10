@@ -1,17 +1,11 @@
 <%= form_for @block do |f| %>
-  <%= f.error_messages %>
   <p>
     <%= f.label :label %>
     <%= f.text_field :label %>
   </p>
   <%= f.fields_for :questions do |builder| %>
-  <p>
-  	<%= builder.label :label, "Question" %>
-  	<%= builder.text_area :label, :rows => 1 %>
-  	<%= builder.label :text, "Question" %>
-  	<%= builder.text_area :text, :rows => 3 %>
-  </p>
+  	<%= render 'question_fields', :f => builder %>
   <% end %>
-  <p><%= f.submit "Create block", class: "Center btn btn-large btn-primary" %>
+  <p><%= f.submit "Submit block", class: "Center btn btn-large btn-primary" %>
   <%= link_to "List of Current Blocks", blocks_path, class: "btn btn-large btn-link" %></p>
 <% end %>

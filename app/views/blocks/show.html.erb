@@ -4,21 +4,22 @@
 
 <h1>Block Page</h1>
 
-  <%= render 'shared/logos' %>
+<%= render 'shared/logos' %>
 <br />
-
-<p><strong>Format:</strong> Block Label with content and actions listed below<br/><br/> 
+<strong><br />Format:</strong> Block Label with content and actions listed below<br/><br/> 
 <ul class="blocks">
   <% if current_user.admin? %>
+  <strong>
   	<%= @block.label %> <br />
+  </strong>
   	<% for question in @block.questions %>
-	  <%=h question.content %>
+  	<li><%=h question.text %></li>
   	<% end %> <br />
   	<%= link_to 'Edit', edit_block_path(@block) %> |
   	<%= link_to 'Delete', @block, method: :delete, data: { confirm: 'Are you sure?'} %><br/>
   <% end %> 
 </ul>
-</p>
+
 <p>
   <%= link_to "View all Blocks", blocks_path %>
 </p>

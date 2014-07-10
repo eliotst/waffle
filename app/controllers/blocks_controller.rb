@@ -2,7 +2,10 @@ class BlocksController < ApplicationController
   def new
   	@block = Block.new
   	3.times do |n|
-  		@block.questions.build 
+  	  question = @block.questions.build 
+  	  1.times do |n|
+  	    question.answers.build
+  	  end
   	end  
   end
 
@@ -22,6 +25,18 @@ class BlocksController < ApplicationController
 
   def edit
   	@block = Block.find(params[:id])
+  end
+
+  def update
+  	@block = Block.find(params[:id])
+  	#for question in @block.questions
+  	#	@question = Question.find(params[@block.question.id])
+  	#end
+    if @block.update_attributes(block_params)
+      redirect_to @block, notice: "Block updated!"
+    else
+      render 'edit'
+    end
   end
 
   def index
@@ -47,6 +62,6 @@ class BlocksController < ApplicationController
   private
 
   def block_params
-    params.require(:block).permit(:label)
+    params.require(:block).permit(:label, questions_attributes: [:label, :text])
   end
 end
