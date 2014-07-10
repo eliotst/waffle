@@ -1,10 +1,11 @@
-<%= f.label :label, "Question Label" %>
-<%= f.text_area :label, :rows => 1 %>
-<%= f.label :text, "Question" %>
-<%= f.text_area :text, :rows => 3 %>
-<%= f.check_box :_destroy %>
-<%= f.label :_destroy, "Remove Question" %><br/>
-
+<p>
+  <%= f.label :label, "Question Label" %>
+  <%= f.text_area :label, :rows => 1 %>
+  <%= f.label :text, "Question" %>
+  <%= f.text_area :text, :rows => 3 %>
+  <%= f.check_box :_destroy %>
+  <%= f.label :_destroy, "Remove Question" %>
+</p>
 <% f.fields_for :answers do |builder| %>
   <%= render 'answer_fields', :f => builder %>
 <% end %>
