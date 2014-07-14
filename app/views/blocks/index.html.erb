@@ -6,16 +6,15 @@
 <%= render 'shared/logos' %><br />
 
 <div>
-  <% if current_user.admin? %>
+  <% if current_user %>
     <strong>Format:</strong> Block Label with actions listed below<br/><br/>
-  <% end %>
 </div>
-<% if current_user.admin? %>
-  <%= will_paginate %>
-  <ul class="blocks">
-    <%= render @blocks %> <! located at _block.html.erb > 
-  </ul>
-  <%= will_paginate %>
-
-  <%= link_to "Create a Block", new_block_path %>
-<% end %>
+    <%= will_paginate %>
+    <ul class="blocks">
+      <%= render @blocks %> <! located at _block.html.erb > 
+    </ul>
+    <%= will_paginate %>
+    <% if current_user.admin? %>
+      <%= link_to "Create a Block", new_block_path %>
+    <% end %>
+  <% end %>

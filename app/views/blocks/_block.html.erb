@@ -1,10 +1,13 @@
-<% if current_user.admin? %>
+<% if current_user %>
   <strong><%= block.label %></strong><br />
   <ol>
     <% for question in block.questions %>
     <li><%=h question.text %></li>
     <% end %> 
   </ol>
-  <%= link_to 'Edit', edit_block_path(block) %> |
-  <%= link_to 'Delete', block, method: :delete, data: { confirm: 'Are you sure?'} %><br/>
+  <%= link_to 'Edit', edit_block_path(block) %>
+<% elsif current_user.admin? %>
+  | <%= link_to 'Delete', block, method: :delete, data: { confirm: 'Are you sure?'} %><br/>
+<% else %>
+<br/>
 <% end %><br />

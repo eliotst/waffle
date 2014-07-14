@@ -32,6 +32,9 @@ class BlocksController < ApplicationController
   	#for question in @block.questions
   	#	@question = Question.find(params[@block.question.id])
   	#end
+    #if not current_user.admin?
+    #  @particiant = Particiant.find(:participant_id)
+    #end
     if @block.update_attributes(block_params)
       redirect_to @block, notice: "Block updated!"
     else
