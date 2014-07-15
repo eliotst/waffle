@@ -2,4 +2,5 @@
   <%= f.label :value, "Answer" %>
   <%= f.text_field :value %>
   <%= link_to_remove_fields "Remove", f %>
+  <%= f.hidden_field :participant_id, :value => @answer.participant %>
 </p>
