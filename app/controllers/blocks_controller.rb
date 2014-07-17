@@ -3,7 +3,7 @@ class BlocksController < ApplicationController
   	@block = Block.new
   	3.times do |n|
   	  question = @block.questions.build 
-  	  3.times do |n|
+  	  1.times do |n|
   	    question.answers.build
   	  end
   	end  
@@ -29,9 +29,6 @@ class BlocksController < ApplicationController
 
   def update
   	@block = Block.find(params[:id])
-  	#for question in @block.questions
-  	#	@question = Question.find(params[@block.question.id])
-  	#end
     if not current_user.admin?
       @particiant = current_user.participant
     end
@@ -44,9 +41,6 @@ class BlocksController < ApplicationController
 
   def index
   	@blocks = Block.paginate(page: params[:page])
-  end
-
-  def add(block_id, question_id)
   end
 
   def destroy

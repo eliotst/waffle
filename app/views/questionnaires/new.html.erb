@@ -1,0 +1,14 @@
+<head>
+  <title>New Questionnaire</title>
+</head>
+
+<h1>New Questionnaire</h1>
+
+<div class="row">
+  <div class="span5 offset3">
+    <%= form_for @questionnaire do |f| %>
+      <%= render 'shared/questionnaire_error_messages' %>
+      <%= render 'form' %>
+    <% end %>
+  </div>
+</div>

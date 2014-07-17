@@ -8,7 +8,7 @@
 <br />
 <strong><br />Format:</strong> Block Label with content and actions listed below<br/><br/> 
 <ul class="blocks">
-  <% if current_user.admin? %>
+  <!<% if current_user.admin? %>
   <strong>
   	<%= @block.label %> <br />
   </strong>
@@ -24,7 +24,7 @@
   </ol>
   	<%= link_to 'Edit', edit_block_path(@block) %> |
   	<%= link_to 'Delete', @block, method: :delete, data: { confirm: 'Are you sure?'} %><br/>
-  <% end %> 
+  <!<% end %> 
 </ul>
 
 <p>

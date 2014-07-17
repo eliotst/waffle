@@ -21,10 +21,11 @@
 			<% if current_user.admin? %>
         <br /><%= link_to "List of Current Users", users_path %>
       <% end %>
-      <br /><%= link_to "List of Current Questions", questions_path %>
+      <br /><%= link_to "List of current Blocks", blocks_path %>
+      <br /><%= link_to "List of current Questionnaires", questionnaires_path %>
       <% if current_user.admin? %>
-        <br /><%= link_to "New Question", new_question_path %>
         <br /><%= link_to "New Block", new_block_path %>
+        <br /><%= link_to "New Questionnaire", new_questionnaire_path %>
       <% end %>
 	<% end %>
 

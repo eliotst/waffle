@@ -7,7 +7,7 @@
     <%= f.fields_for :questions do |builder| %>
     	<%= render 'question_fields', :f => builder %>
     <% end %>
-    <p><%= link_to_add_fields "add Question", f, :questions %></p>
+    <p><%= link_to_add_fields "Add Question", f, :questions %></p>
     <p><%= f.submit "Submit block", class: "btn btn-primary btn-large btn-block" %></p>
     <%= link_to "List of Current Blocks", blocks_path %> 
   <% else %>
@@ -16,9 +16,6 @@
       <ol>
         <% for question in @block.questions %>
           <li><%=h question.text %></li>
-          <%= f.fields_for :questions do |builder| %>
-            <%= render 'question_shows', :f => builder %>
-          <% end %>
         <% end %> 
       </ol>
     </p>
