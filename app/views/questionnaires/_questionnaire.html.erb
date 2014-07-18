@@ -7,6 +7,11 @@
         <% for question in block.questions %>
           <li><b><%=h question.label %></b></li>
           <%=h question.text %>
+          <ol>
+            <% for answer in question.answers %>
+              <li><i><%=h answer.value %></i></li>
+            <% end %>
+          </ol>
         <% end %>
       </ol>
     <% end %> <br />
