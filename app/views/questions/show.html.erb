@@ -16,7 +16,6 @@
     Answer:<br />
     <% @question.answers.each do |answer| %>
       <strong>Answer:</strong>
-      
       <% if answer.value %>
         <%= answer.value %><br />
         <%= link_to "Edit Answer", edit_question_answer_path(@question, answer) %>
@@ -26,6 +25,17 @@
       <% end %>
     <% end %>
     <% if current_user.admin %>
+      Answer Choice(s):<br />
+      <% @question.choices.each do |choice| %>
+        <strong>Choice:</strong>
+        <% if choice.value %>
+          <%= choice.value %><br />
+          <%= link_to "Edit Choice", edit_question_choice_path(@question, choice) %>
+           <br />
+          <%= link_to "Delete Choice", question_choice_path(@question, choice), 
+          method: :delete, data: { confirm: 'Are you sure?'} %> <br />
+        <% end %>
+      <% end %>
       <%= link_to "Edit Question", edit_question_path(@question) %><br />
       <%= link_to 'Delete Question', @question, method: :delete, data: { confirm: 'Are you sure?'} %> <br/>
     <% else %>

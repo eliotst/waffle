@@ -1,0 +1,21 @@
+<head>
+	<title>Choice</title>
+</head>
+
+<h1>Answer Choice Page</h1>
+
+	<%= render 'shared/logos' %>
+
+<div class="center">
+	<section>
+		<%= @question.label %><br />
+		<%= @question.text %><br />
+    <%= @choice.value %>
+	</section>
+</div>
+
+<div id="userHome_nav">
+	<% if @choice %>
+    <br /><%= link_to "List of Questions", questions_path %>
+  <% end %>
+</div>

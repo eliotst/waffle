@@ -60,6 +60,8 @@ class BlocksController < ApplicationController
 
   def block_params
     params.require(:block).permit(:label, questions_attributes: 
-      [:label, :text, :id, :_destroy, answers_attributes: [:value, :id, :participant_id,:_destroy]])
+      [:label, :text, :id, :_destroy, answers_attributes: 
+      [:value, :id, :participant_id,:_destroy], choices_attributes:
+      [:value, :id, :_destroy]])
   end
 end

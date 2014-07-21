@@ -1,0 +1,22 @@
+<head>
+  <title>Set Answer Choices for the Question</title>
+</head>
+
+<h1>Set Answer Choices for the Question</h1>
+
+<div class="row">
+  <div class="span5 offset3">
+    <%= form_for ([@question, @question.choices.new]) do |f| %>
+      <%= render 'shared/choice_error_messages' %>
+
+      Title: <%= @question.label %><br />
+      Question: <%= @question.text %><br />
+
+      <%= f.label :value, "New Choice:" %>
+      <%= f.text_field :value %>
+
+      <%= f.submit "Submit Choice", class: "btn btn-large btn-primary" %>
+    <% end %>
+    <%= link_to "List of Current Questions", questions_path %>
+  </div>
+</div>

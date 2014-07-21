@@ -20,6 +20,7 @@ Waffle::Application.routes.draw do
   resources :questionnaires
   resources :blocks
   resources :questions do
+    resources :choices
     resources :answers
   end
   
