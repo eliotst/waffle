@@ -7,7 +7,7 @@
 <div class="row">
   <div class="span5 offset3">
     <%= form_for ([@question, @question.answers.new]) do |f| %>
-      <%= render 'shared/question_error_messages' %>
+      <%= render 'shared/answer_error_messages' %>
 
       Title: <%= @question.label %><br />
       Question: <%= @question.text %><br />

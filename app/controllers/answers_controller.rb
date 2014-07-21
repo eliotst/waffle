@@ -9,7 +9,16 @@ class AnswersController < ApplicationController
     if logged_in?
       @question = Question.find(params[:question_id])
       @answer = @question.answers.create(answer_params)
-      @answer.participant = Participant.find_by_user_id(current_user.id)
+      if Participant.find_by_user_id(current_user.id) == nil
+        if current_user.admin
+          @answer.participant = 1
+        else
+          flash[:failure] = "User's participant id could not be found.
+           Please contact emotionlab@fandm.edu"
+        end
+      else
+        @answer.participant = Participant.find_by_user_id(current_user.id)
+      end
       if @answer.save
         flash[:success] = "Answer saved."
         redirect_to question_path(@question)
