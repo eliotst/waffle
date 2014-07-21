@@ -8,14 +8,8 @@
 	<div class="span6 offset3">
 		<%= form_for ([@question, @choice]) do |f| %>
 			<%= render 'shared/choice_error_messages' %>
+			<%= render 'choice_types' %>
 
-			<%= f.label :label %>
-			<%= f.label :text %>
-
-			<%= f.label :choice %>
-			<%= f.text_field :value %>
-
-			<%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
 		<% end %>
 	</div>
 </div>
