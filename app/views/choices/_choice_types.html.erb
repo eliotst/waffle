@@ -33,5 +33,10 @@
   <%= f.radio_button :value, "select" %>
   <%= f.label "select_field" %>
 
+  <% if :value == "radio_button" %>
+    How many buttons would you like?
+    <%= f.number_field :value %>
+  <% end %>
+
   <%= f.submit "Submit Choice", class: "btn btn-large btn-primary" %>
 <% end %>
