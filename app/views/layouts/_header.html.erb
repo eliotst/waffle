@@ -18,11 +18,15 @@
 							</a>
 							<ul class="dropdown-menu">
 								<li><%= link_to "User Settings", edit_user_path(current_user) %></li>
-								<li><%= link_to "List of Current Questions", questions_path %></li>
+								<li><%= link_to "List of Current Studies", studies_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Delete Account", current_user, :confirm => 
+                  "Are you sure?", :method => :delete %></li>
 								<% if current_user.admin? %>
 									<li class="divider"></li>
 									<li><%= link_to "List of Current Users", users_path %></li>
-									<li><%= link_to "New Question", new_question_path %></li>
+                  <li><%= link_to "New Questionnaire", new_questionnaire_path %></li>
+									<li><%= link_to "New Study", new_study_path %></li>
 								<% end %>
 								<li class="divider"></li>
 								<li><%= link_to "Log out", log_out_path, method: "delete" %></li>

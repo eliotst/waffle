@@ -23,9 +23,11 @@
       <% end %>
       <br /><%= link_to "List of current Blocks", blocks_path %>
       <br /><%= link_to "List of current Questionnaires", questionnaires_path %>
+      <br /><%= link_to "List of current Studies", studies_path %>
       <% if current_user.admin? %>
         <br /><%= link_to "New Block", new_block_path %>
         <br /><%= link_to "New Questionnaire", new_questionnaire_path %>
+        <br /><%= link_to "New Study", new_study_path %>
       <% end %>
 	<% end %>
 
