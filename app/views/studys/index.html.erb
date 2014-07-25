@@ -1,0 +1,20 @@
+<!--only for the admin-->
+<head>
+	<title>All Studies</title>
+</head>
+<h1>All Studies</h1>
+<%= render 'shared/logos' %><br />
+
+<div>
+  <% if current_user %>
+    <strong>Format:</strong> Study Title with actions listed below<br/><br/>
+</div>
+    <%= will_paginate %>
+    <ul class="studys">
+      <%= render @studys %> <! located at _study.html.erb > 
+    </ul>
+    <%= will_paginate %>
+    <% if current_user.admin? %>
+      <%= link_to "Create a Study", new_study_path %>
+    <% end %>
+  <% end %>

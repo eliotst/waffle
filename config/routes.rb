@@ -19,6 +19,7 @@ Waffle::Application.routes.draw do
   resources :validations
   resources :questionnaires
   resources :blocks
+  resources :studys
   resources :questions do
     resources :choices
     resources :answers

@@ -1,0 +1,42 @@
+<head>
+  <title>Study</title>
+</head>
+
+<h1>Study Page</h1>
+
+<%= render 'shared/logos' %>
+<br />
+<strong><br />Format:</strong> Study Title with content and actions listed below<br/><br/> 
+<div class="studys">
+  <strong>
+    <%= @study.title %>
+  </strong><br />
+  <ol>
+  	<% for questionnaire in study.questionnaires %>
+      <li><i><%=h questionnaire.label %></i></li>
+      <ol>
+        <% for block in questionnaire.blocks %>
+          <li><b><%=h blocks.label %></b></li>
+            <ol>
+              <% for question in block.questions %>
+                <li><b><%=h question.label %></b></li>
+                <%=h question.text %>
+                <ol>
+                  <% for answer in question.answers %>
+                    <li><i><%=h answer.value %></i></li>
+                  <% end %>
+                </ol>
+              <% end %>
+            </ol>
+        <% end %> <br />
+      </ol>
+    <% end %>
+  </ol>
+  	<%= link_to 'Edit', edit_study_path(@study) %> |
+  	<%= link_to 'Delete', @study, method: :delete, data: { confirm: 'Are you sure?'} %>
+    <br/> 
+</div>
+
+<p>
+  <%= link_to "View all Studies", studys_path %>
+</p>

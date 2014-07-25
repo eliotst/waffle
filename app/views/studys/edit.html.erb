@@ -1,0 +1,19 @@
+<head>
+	<title>Edit Study</title>
+</head>
+
+<h1>Update your Study</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+		
+    <% if current_user %>
+      <%= form_for(@study) do |f| %>
+        <%= render 'shared/study_error_messages' %>
+        <%= render 'form' %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<%= render 'shared/logos' %>

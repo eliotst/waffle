@@ -1,0 +1,23 @@
+<%= form_for @study do |f| %>
+  <% if current_user.admin %>
+    <p>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </p>
+    <%= f.fields_for :questionnaires do |builder| %>
+      <%= render 'questionnaire_fields', :f => builder %>
+    <% end %>
+    <p><%= link_to_add_fields "Add Questionnaire", f, :questionnaires %></p>
+    <p><%= f.submit "Submit Study", class: "btn btn-primary btn-large btn-block" %></p>
+    <%= link_to "List of Current Studies", studys_path %> 
+  <% else %>
+    <p>
+      <strong><%= @study.title %></strong>
+      <ol>
+        <% for questionnaire in @study.questionnaires %>
+          <li><%=h questionnaire.label %></li>
+        <% end %> 
+      </ol>
+    </p>
+  <% end %>
+<% end %>
