@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe StudysController do
+describe StudiesController do
 
   describe "GET 'create'" do
     it "returns http success" do

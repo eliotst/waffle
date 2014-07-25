@@ -10,8 +10,8 @@
     <strong>Format:</strong> Study Title with actions listed below<br/><br/>
 </div>
     <%= will_paginate %>
-    <ul class="studys">
-      <%= render @studys %> <! located at _study.html.erb > 
+    <ul class="studies">
+      <%= render @studies %> <! located at _study.html.erb > 
     </ul>
     <%= will_paginate %>
     <% if current_user.admin? %>

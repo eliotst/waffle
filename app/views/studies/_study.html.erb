@@ -1,23 +1,29 @@
 <% if current_user %>
-  <strong><%= study.title %></strong><br />
+  Study: <strong><%= study.title %></strong><br />
   <ol>
     <% for questionnaire in study.questionnaires %>
       <li><i><%=h questionnaire.label %></i></li>
       <ol>
         <% for block in questionnaire.blocks %>
-          <li><b><%=h blocks.label %></b></li>
+          <li><b><%=h block.label %></b></li>
             <ol>
               <% for question in block.questions %>
                 <li><b><%=h question.label %></b></li>
-                <%=h question.text %>
+                Question: <%=h question.text %>
                 <ol>
-                  <% for answer in question.answers %>
-                    <li><i><%=h answer.value %></i></li>
+                  <% if current_user.admin %>
+                    <% for choice in question.choices %>
+                      <li><i><%=h choice.value %></i></li>
+                    <% end %>
+                  <% elsif current_user %>
+                    <% for answer in question.answers %>
+                      <li><i><%=h answer.value %></i></li>
+                    <% end %>
                   <% end %>
                 </ol>
               <% end %>
             </ol>
-        <% end %> <br />
+        <% end %>
       </ol>
     <% end %>
   </ol>

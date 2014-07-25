@@ -1,4 +1,4 @@
-class StudysController < ApplicationController
+class StudiesController < ApplicationController
   def new
     @study = Study.new
     questionnaire = @study.questionnaires.build
@@ -33,14 +33,14 @@ class StudysController < ApplicationController
   end
 
   def index
-    @studys = Study.paginate(page: params[:page])
+    @studies = Study.paginate(page: params[:page])
   end
 
   def destroy
     if current_user.admin?
       Study.find(params[:id]).destroy
       flash[:success] = "Study deleted."
-      redirect_to studys_path
+      redirect_to studies_path
     else
       flash[:notice] = "Only admins may delete a study."
     end
@@ -52,8 +52,8 @@ class StudysController < ApplicationController
     params.require(:study).permit(:title, questionnaires_attributes:
       [:label, :id, :_destroy, blocks_attributes: 
       [:label, :id, :_destroy, questions_attributes: 
-      [:label, :text, :id, :_destroy, answers_attributes: 
-      [:value, :id, :participant_id, :_destroy], choices_attributes: 
+      [:label, :id, :_destroy, :text, answers_attributes: 
+      [:value, :id, :_destroy, :participant_id], choices_attributes: 
       [:value, :id, :_destroy]]]])
   end
 end
