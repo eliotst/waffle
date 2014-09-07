@@ -10,10 +10,11 @@ class User < ActiveRecord::Base
 	validates :email, presence: true, length: { minimum: 5 }, 
 		format: { with: VALID_EMAIL_REGEX }, 
 		uniqueness: { case_sensitive: false }
-	validates_presence_of :password, :on => :create
-	validates_presence_of :password_confirmation
-	validates_confirmation_of :password
-	validates :password, length: { minimum: 5 }
+	validates :password,
+    length: { minimum: 5 },
+    presence: { on: :create },
+    confirmation: true
+  validates :password_confirmation, presence: true
 
 	self.per_page = 10
 

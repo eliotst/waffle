@@ -1,28 +1,30 @@
 require 'spec_helper'
 
 describe Question do
-  it "creates a question" do
-    question = Question.create(text: "Words words words?",
-     label: "word")
-  end
   it "has a valid factory" do
     create(:question).should be_valid
   end
-  it "is invalid with a space in the label" do
-    build(:question, label: "bad label").should_not be_valid
+  describe "the question text" do
+    it "should be invalid if empty" do
+      build(:question, text: nil).should_not be_valid
+    end
+    it "should be invalid without an ending question mark" do
+      build(:question, text: "invalid").should_not be_valid
+    end
   end
-  it "is invalid with a symbol in the label" do
-    build(:question, label: "bad_label%").should_not be_valid
-  end
-  it "is invalid with more than 20 characters in the label" do
-    build(:question, label: "abcdefghijklmnopqrstu").should_not be_valid
-  end
-  it "is invalid when the text doesn't end in a '?'" do
-    build(:question, text: "This isn't a question.").should_not be_valid
-  end
-  it "is valid when the text does end in a '?'" do
-    build(:question, text: "This is a question?").should be_valid
+  describe "the label" do
+    it "should be invalid with a label that is too long" do
+      build(:question, label: "123456789012345678901").should_not be_valid
+    end
+    it "should be invalid if the label has spaces" do
+      build(:question, label: "invalid label").should_not be_valid
+    end
+    it "should be invalid if it is not alphanumeric only" do
+      build(:question, label: "invalid!").should_not be_valid
+    end
+    it "should be invalid if not unique" do
+      create(:question, label: "foo")
+      build(:question, label: "foo").should_not be_valid
+    end
   end
 end
-
-

@@ -29,7 +29,7 @@ describe UserMailer do
     end
 
     it "renders the body" do
-      mail.body.encoded.should match("To validate your account, click the URL below.\r\n\r\n#{edit_validation_url(user.valid_token)}\r\n\r\nYou will be redirected to a page for security reasons.")
+      mail.body.encoded.should match("To validate your account, click the URL below.\r\n\r\n#{edit_validation_url(user.valid_token)}\r\n")
     end
   end
 

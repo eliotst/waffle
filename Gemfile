@@ -6,10 +6,14 @@ gem 'rails', '4.0.5'
 group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'
+  gem 'factory_girl'
+  gem 'factory_girl_rails'
+  gem 'pry-debugger'
 end
 
 group :test do
   gem 'selenium-webdriver', '2.35.1'
+  gem 'database_cleaner'
   gem 'capybara', '2.1.0'
 end
 
@@ -51,9 +55,6 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'nifty-generators', '>= 0.4.0'
 
-group :development, :test do
-  gem 'factory_girl_rails'
-end
 # Use unicorn as the app server
 # gem 'unicorn'
 

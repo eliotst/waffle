@@ -1,9 +1,13 @@
 class Answer < ActiveRecord::Base
   belongs_to :participant
   belongs_to :question
-  before_save { @participant = self.participant }
 
-  validates_presence_of :participant
+  validates :participant,
+    presence: true
+  validates :value,
+    presence: true
+  validates :question,
+    presence: true
 
   self.per_page = 10
 end

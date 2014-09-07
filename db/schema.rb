@@ -79,9 +79,7 @@ ActiveRecord::Schema.define(version: 20140725145304) do
     t.datetime "updated_at"
     t.string   "address_line_one"
     t.string   "auth_token"
-    t.string   "password_reset_token"
-    t.datetime "password_reset_sent_at"
-    t.boolean  "admin",                  default: false
+    t.boolean  "admin",            default: false
     t.string   "address_line_two"
     t.string   "city"
     t.string   "state"
@@ -91,6 +89,7 @@ ActiveRecord::Schema.define(version: 20140725145304) do
     t.boolean  "is_valid"
   end
 
+  add_index "users", ["auth_token"], name: "index_users_on_auth_token"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end
