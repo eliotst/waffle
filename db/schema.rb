@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140725145304) do
+ActiveRecord::Schema.define(version: 20140907230012) do
+
+  create_table "answer_types", force: true do |t|
+    t.string   "label"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "answer_validations", force: true do |t|
+    t.string   "label"
+    t.string   "regular_expression"
+    t.integer  "answer_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "answers", force: true do |t|
     t.string   "value"
@@ -32,18 +47,24 @@ ActiveRecord::Schema.define(version: 20140725145304) do
   end
 
   create_table "choices", force: true do |t|
-    t.string   "value"
+    t.string   "label"
+    t.string   "text"
+    t.integer  "order"
+    t.integer  "answer_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "question_id"
   end
+
+  add_index "choices", ["answer_type_id"], name: "index_choices_on_answer_type_id"
 
   create_table "participants", force: true do |t|
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "study_id"
   end
 
+  add_index "participants", ["study_id"], name: "index_participants_on_study_id"
   add_index "participants", ["user_id"], name: "index_participants_on_user_id"
 
   create_table "questionnaires", force: true do |t|
@@ -56,13 +77,10 @@ ActiveRecord::Schema.define(version: 20140725145304) do
   create_table "questions", force: true do |t|
     t.string   "text"
     t.string   "label"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "block_id"
   end
-
-  add_index "questions", ["user_id"], name: "index_questions_on_user_id"
 
   create_table "studies", force: true do |t|
     t.string   "title"
