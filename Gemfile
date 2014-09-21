@@ -8,7 +8,6 @@ group :development, :test do
   gem 'rspec-rails', '2.13.1'
   gem 'factory_girl'
   gem 'factory_girl_rails'
-  gem 'pry-debugger'
 end
 
 group :test do

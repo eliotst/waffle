@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
-  before_action [:correct_user, :admin_user],   only: [:edit, :update, :destroy]
+  before_action :must_be_logged_in, except: [ :new, :create ]
+  before_action :must_be_logged_out, only: [ :new, :create ]
+  before_action :must_be_correct_user, only: [ :edit, :update, :destroy, :show ]
 
   def index
     @users = User.paginate(page: params[:page])
@@ -16,12 +17,11 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(user_params)
-    @participant = @user.create_participant
     if @user.save
       flash[:success] = "Signed up! Thank you! 
         You should receive a validation email shortly."
       @user.send_validation
-      redirect_to root_url
+      redirect_to users_url
     else
       render "new"
     end
@@ -41,9 +41,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    destroying_self = current_user.id.to_s == params[:id]
+    was_admin_user = is_admin_user?
     User.find(params[:id]).destroy
     flash[:success] = "User deleted."
-    if current_user.admin?
+    if was_admin_user && !destroying_self
       redirect_to users_url
     else
       redirect_to root_url
@@ -58,21 +60,16 @@ class UsersController < ApplicationController
          :auth_token, :password_reset_token )
     end
 
-    #Before filters
-
-    def logged_in_user
-      unless logged_in?
-        store_location
-        redirect_to log_in_url, notice: "Please log in."
-      end  
+    def must_be_logged_out
+      if logged_in? && !is_admin_user?
+        redirect_to root_url, notice: "You already have an account."
+      end
     end
 
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
-
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
+    def must_be_correct_user
+      if !is_admin_user?
+        @user = User.find(params[:id])
+        redirect_to(root_url) unless current_user?(@user)
+      end
     end
 end

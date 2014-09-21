@@ -1,5 +1,4 @@
 module SessionsHelper
-
   def log_in(user)
     auth_token = User.new_auth_token
     cookies.permanent[:auth_token] = auth_token
@@ -16,8 +15,11 @@ module SessionsHelper
   end
 
   def current_user
-    auth_token = User.digest(cookies[:auth_token])
-    @current_user ||= User.find_by(auth_token: auth_token)
+    if @current_user == nil
+      auth_token = User.digest(cookies[:auth_token])
+      @current_user ||= User.find_by(auth_token: auth_token)
+    end
+    @current_user
   end
 
   def current_user?(user)
@@ -45,5 +47,9 @@ module SessionsHelper
 
   def store_location
     session[:return_to] = request.url if request.get?
+  end
+
+  def is_admin_user?
+    !current_user.nil? && current_user.admin?
   end
 end

@@ -1,5 +1,5 @@
 def log_in(user, options={})
-  if options[:no_capybara]
+  if !options[:capybara]
     # Sign in when not using Capybara.
     auth_token = User.new_auth_token
     cookies[:auth_token] = auth_token
