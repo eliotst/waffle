@@ -2,8 +2,10 @@
 
 FactoryGirl.define do
   factory :answer_validation do
-    sequence(:label) { |n| "answer_validation_#{n}" }
     regular_expression "."
     answer_type
+    factory :number_validation do
+      regular_expression '\d+'
+    end
   end
 end

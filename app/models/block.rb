@@ -6,7 +6,11 @@ class Block < ActiveRecord::Base
   	reject_if: lambda { |a| a[:text].blank? },
   	allow_destroy: true
 
-  validates :label, presence:true
+  validates :label,
+    presence: true,
+    length: { maximum: 20 },
+    format: { with: /\A[a-zA-Z0-9_]+\z/ },
+    uniqueness: true
 
   self.per_page = 10
 end

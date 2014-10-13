@@ -19,11 +19,9 @@ Waffle::Application.routes.draw do
   resources :validations
   resources :questionnaires
   resources :blocks
+  resources :answer_types
   resources :studies
-  resources :questions do
-    resources :choices
-    resources :answers
-  end
+  resources :questions
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

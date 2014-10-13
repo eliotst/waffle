@@ -1,19 +1,16 @@
 class BlocksController < ApplicationController
+  before_action :must_be_logged_in
+  before_action :must_be_admin
+
   def new
   	@block = Block.new
-  	3.times do |n|
-  	  question = @block.questions.build 
-  	  1.times do |n|
-  	    question.answers.build
-  	  end
-  	end  
   end
 
   def create
   	@block = Block.new(block_params)
   	if @block.save
   	  flash[:notice] = "Block created succesfully."
-  	  redirect_to @block
+  	  redirect_to blocks_path
   	else
   	  render :action => 'new'
   	end
@@ -44,24 +41,14 @@ class BlocksController < ApplicationController
   end
 
   def destroy
-  	if current_user.admin?
-  	  Block.find(params[:id]).destroy
-      flash[:success] = "Block deleted."
-      redirect_to blocks_path
-    else
-      flash[:notice] = "Only admins may delete a block."
-    end
-  end
-
-  def fillOut
+    Block.find(params[:id]).destroy
+    flash[:success] = "Block deleted."
+    redirect_to blocks_path
   end
 
   private
-
   def block_params
     params.require(:block).permit(:label, questions_attributes: 
-      [:label, :text, :id, :_destroy, answers_attributes: 
-      [:value, :id, :participant_id,:_destroy], choices_attributes:
-      [:value, :id, :_destroy]])
+      [:label, :text, :id, :_destroy, :answer_type_label])
   end
 end

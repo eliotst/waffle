@@ -11,4 +11,7 @@ describe Study do
     create(:study, title: 'Study')
     build(:study, title: 'Study').should_not be_valid
   end
+  it_behaves_like "a model with a label" do
+    let(:model_factory) { :study }
+  end
 end

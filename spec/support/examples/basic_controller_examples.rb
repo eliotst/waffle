@@ -35,7 +35,7 @@ shared_examples "indexable controller" do
       get 'index'
       response.should be_success
     end
-    it "assigns projects" do
+    it "assigns model variables" do
       get 'index'
       assigns(list_variable).should eq(model_list)
     end
@@ -108,9 +108,9 @@ shared_examples "editable controller" do
         put 'update', :id => model.id, model_variable => valid_model_parameters
         model.reload
         valid_model_parameters.each do |key, value|
-          if !value.is_a? Hash
+          if !value.is_a? Hash and !value.is_a? Array
             model.send(key).should == value
-         end
+          end
         end
       end
       it "redirects to the show view" do
@@ -123,6 +123,17 @@ shared_examples "editable controller" do
         put 'update', :id => model.id, model_variable => invalid_model_parameters
         model.reload
         response.should render_template :edit
+      end
+      it "doesn't update the model" do
+        put 'update', :id => model.id, model_variable => invalid_model_parameters
+        model.reload
+        same = true
+        invalid_model_parameters.each do |key, value|
+          if !value.is_a? Hash and !value.is_a? Array
+            same = same and model.send(key) == value
+          end
+        end
+        same.should be_true
       end
     end
   end

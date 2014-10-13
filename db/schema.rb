@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140907230012) do
+ActiveRecord::Schema.define(version: 20141001010057) do
 
   create_table "answer_types", force: true do |t|
     t.string   "label"
@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20140907230012) do
   end
 
   create_table "answer_validations", force: true do |t|
-    t.string   "label"
     t.string   "regular_expression"
     t.integer  "answer_type_id"
     t.datetime "created_at"
@@ -47,7 +46,7 @@ ActiveRecord::Schema.define(version: 20140907230012) do
   end
 
   create_table "choices", force: true do |t|
-    t.string   "label"
+    t.string   "value"
     t.string   "text"
     t.integer  "order"
     t.integer  "answer_type_id"
@@ -80,12 +79,16 @@ ActiveRecord::Schema.define(version: 20140907230012) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "block_id"
+    t.integer  "answer_type_id"
   end
+
+  add_index "questions", ["answer_type_id"], name: "index_questions_on_answer_type_id"
 
   create_table "studies", force: true do |t|
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "label"
   end
 
   create_table "users", force: true do |t|

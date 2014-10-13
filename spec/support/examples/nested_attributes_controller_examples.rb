@@ -2,18 +2,14 @@ shared_examples "createable with nested attributes controller" do
   describe "valid attributes" do
     it "should create the child class" do
         expect {
-          post 'create', valid_model_parameters
-        }.to change(child_class, :count).by(1)
-    end
-    it "should set the child property in the parent class" do
-      post 'create', valid_model_parameters
-      assigns(model_variable).send(child_variable).should be
+          post 'create', model_variable => valid_model_parameters
+        }.to change(child_class, :count).by(number_of_children)
     end
   end
   describe "invalid attributes" do
     it "should not create the child class" do
         expect {
-          post 'create', invalid_model_parameters
+          post 'create', model_variable => invalid_model_parameters
         }.to change(child_class, :count).by(0)
     end
   end
