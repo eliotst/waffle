@@ -1,6 +1,6 @@
 shared_examples "a model with a label" do
   it "should be invalid with a label that is too long" do
-    build(model_factory, label: "123456789012345678901").should_not be_valid
+    build(model_factory, label: "1" * 40).should_not be_valid
   end
   it "should be invalid if the label has spaces" do
     build(model_factory, label: "invalid label").should_not be_valid

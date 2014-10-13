@@ -8,10 +8,8 @@ class AnswerType < ActiveRecord::Base
   	allow_destroy: true
 
   validates :label,
-    presence: true,
-    length: { maximum: 20 },
-    format: { with: /\A[a-zA-Z0-9_]+\z/ },
-    uniqueness: true
+    uniqueness: true,
+    label: true
   validates :description, presence: true
   validate :check_voices_and_validations
 

@@ -46,9 +46,16 @@ class AnswerTypesController < ApplicationController
   private
   def answer_type_params
     params.require(:answer_type).permit(:label, :description,
-                                        choices_attributes: [ :id, :value, :text, :order ],
+                                        choices_attributes: [
+                                          :id,
+                                          :_destroy,
+                                          :value,
+                                          :text,
+                                          :order
+                                        ],
                                         answer_validation_attributes: [
                                           :id,
+                                          :_destroy,
                                           :regular_expression
                                         ])
   end

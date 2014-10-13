@@ -1,21 +1,21 @@
 require 'spec_helper'
 
-describe BlocksController, type: :controller do
+describe QuestionnairesController, type: :controller do
   before(:each) do
     @admin_user = create(:user, admin: true)
     @regular_user = create(:user)
   end
   describe "showing" do
     before(:each) do
-      @block = create(:block)
+      @questionnaire = create(:questionnaire)
     end
     context "as an admin" do
       before(:each) do
         log_in(@admin_user)
       end
       it_behaves_like "showable controller" do
-        let(:model) { @block }
-        let(:model_variable) { :block }
+        let(:model) { @questionnaire }
+        let(:model_variable) { :questionnaire }
       end
     end
     context "as a regular user" do
@@ -24,65 +24,37 @@ describe BlocksController, type: :controller do
       end
       it_behaves_like "unauthorized access handler" do
         let!(:action) do
-          get 'show', id: @block.id
+          get 'show', id: @questionnaire.id
         end
       end
     end
     context "as no one" do
       it_behaves_like "not logged in handler" do
-        let!(:action) { get :show, id: @block.id }
+        let!(:action) { get :show, id: @questionnaire.id }
       end
     end
   end
 
   describe "creating" do
-    before(:each) do
-      @answer_type = create(:answer_type, label: "answer_type")
-    end
     let(:valid_model_parameters) {
       {
-        label: "block_one",
-        questions_attributes: [
-          {
-            label: "question_one",
-            text: "What is the question?",
-            answer_type_id: @answer_type.id
-          },
-          {
-            label: "question_two",
-            text: "What is the question?",
-            answer_type_id: @answer_type.id
-          }
-        ]
+        label: "questionnaire_one"
       }
     }
     let(:invalid_model_parameters) {
       {
-        label: "block number one",
-        questions_attributes: [
-          {
-            label: "label_for_question_one",
-            text: "What is the question?",
-            answer_type: "label_for_answer_type"
-          },
-          {
-            label: "label_for_question_two",
-            text: "What is the question?",
-            answer_type: "label_for_answer_type"
-          }
-        ]
+        label: "questionnaire number one"
       }
     }
     context "as an admin" do
-      let(:model_variable) { :block }
-      let(:model_class) { Block }
       before(:each) do
         log_in(@admin_user)
       end
-      it_behaves_like "createable controller"
-      it_behaves_like "createable with nested attributes controller" do
-        let(:child_class) { Question }
-        let(:number_of_children) { 2 }
+      it_behaves_like "createable controller" do
+        let(:model_variable) { :questionnaire }
+        let(:model_class) { Questionnaire }
+      end
+      describe "nested parameters" do
       end
     end
     context "as a regular user" do
@@ -102,10 +74,10 @@ describe BlocksController, type: :controller do
             get 'new'
           end
         end
-        it "doesn't create a new block" do
+        it "doesn't create a new questionnaire" do
           expect {
             post 'create', valid_model_parameters
-          }.to change(Block, :count).by(0)
+          }.to change(Questionnaire, :count).by(0)
         end
       end
     end
@@ -123,10 +95,10 @@ describe BlocksController, type: :controller do
             post :create, valid_model_parameters
           end
         end
-        it "doesn't create a new block" do
+        it "doesn't create a new questionnaire" do
           expect {
             post 'create', valid_model_parameters
-          }.to change(Block, :count).by(0)
+          }.to change(Questionnaire, :count).by(0)
         end
       end
     end
@@ -134,50 +106,19 @@ describe BlocksController, type: :controller do
 
   describe "editing" do
     before(:each) do
-      @block = create(:block)
-      @answer_type = create(:answer_type)
-      @question_one = create(:question, block_id: @block.id)
-      @question_two = create(:question, block_id: @block.id)
+      @questionnaire = create(:questionnaire)
     end
-    let(:model_variable) { :block }
-    let(:model_class) { Block }
-    let(:model) { @block }
+    let(:model_variable) { :questionnaire }
+    let(:model_class) { Questionnaire }
+    let(:model) { @questionnaire }
     let(:valid_model_parameters) {
       {
-        label: "block_one",
-        questions_attributes: [
-          {
-            id: @question_one.id,
-            label: "question_one",
-            text: "What is the question?",
-            answer_type_id: @answer_type.id
-          },
-          {
-            id: @question_two.id,
-            label: "question_two",
-            text: "What is the question?",
-            answer_type_id: @answer_type.id
-          }
-        ]
+        label: "questionnaire_one"
       }
     }
     let(:invalid_model_parameters) {
       {
-        label: "block number one",
-        questions_attributes: [
-          {
-            id: @question_one.id,
-            label: "question_one",
-            text: "What is the question?",
-            answer_type_id: @answer_type.id
-          },
-          {
-            id: @question_two.id,
-            label: "question_two",
-            text: "What is the question?",
-            answer_type_id: @answer_type.id
-          }
-        ]
+        label: "questionnaire number one"
       }
     }
     context "as an admin" do
@@ -185,6 +126,8 @@ describe BlocksController, type: :controller do
         log_in(@admin_user)
       end
       it_behaves_like "editable controller"
+      describe "nested parameters" do
+      end
     end
     context "as a regular user" do
       before(:each) do
@@ -193,21 +136,21 @@ describe BlocksController, type: :controller do
       describe "edit" do
         it_behaves_like "unauthorized access handler" do
           let!(:action) do
-            get 'edit', id: @block.id
+            get 'edit', id: @questionnaire.id
           end
         end
       end
       describe "update" do
         it_behaves_like "unauthorized access handler" do
           let!(:action) do
-            get 'edit', id: @block.id
+            get 'edit', id: @questionnaire.id
           end
         end
         it "doesn't update the study" do
           expect {
-            post 'update', id: @block.id,
+            post 'update', id: @questionnaire.id,
               study: valid_model_parameters
-          }.not_to change { @block }
+          }.not_to change { @questionnaire }
         end
       end
     end
@@ -215,20 +158,20 @@ describe BlocksController, type: :controller do
       describe "edit" do
         it_behaves_like "not logged in handler" do
           let!(:action) do
-            get 'edit', id: @block.id
+            get 'edit', id: @questionnaire.id
           end
         end
       end
       describe "update" do
         it_behaves_like "not logged in handler" do
           let!(:action) do
-            post 'update', id: @block.id, block: valid_model_parameters
+            post 'update', id: @questionnaire.id, questionnaire: valid_model_parameters
           end
         end
         it "doesn't update the study" do
           expect {
-            post 'update', id: @block.id, block: valid_model_parameters
-          }.not_to change { @block }
+            post 'update', id: @questionnaire.id, questionnaire: valid_model_parameters
+          }.not_to change { @questionnaire }
         end
       end
     end
@@ -236,17 +179,17 @@ describe BlocksController, type: :controller do
 
   describe "indexing" do
     before(:each) do
-      @block_one = create(:block)
-      @block_two = create(:block)
-      @blocks = [ @block_one, @block_two ]
+      @questionnaire_one = create(:questionnaire)
+      @questionnaire_two = create(:questionnaire)
+      @questionnaires = [ @questionnaire_one, @questionnaire_two ]
     end
     context "as an admin" do
       before(:each) do
         log_in(@admin_user)
       end
       it_behaves_like "indexable controller" do
-        let(:model_list) { @blocks }
-        let(:list_variable) { :blocks }
+        let(:model_list) { @questionnaires }
+        let(:list_variable) { :questionnaires }
       end
     end
     context "as a regular user" do
@@ -268,16 +211,16 @@ describe BlocksController, type: :controller do
 
   describe "destroying" do
     before(:each) do
-      @block = create(:block)
+      @questionnaire = create(:questionnaire)
     end
     context "as an admin" do
       before(:each) do
         log_in(@admin_user)
       end
       it_behaves_like "destroyable controller" do
-        let(:model) { @block }
-        let(:model_class) { Block }
-        let(:resulting_page) { blocks_path }
+        let(:model) { @questionnaire }
+        let(:model_class) { Questionnaire }
+        let(:resulting_page) { questionnaires_path }
       end
     end
     context "as a regular user" do
@@ -286,25 +229,25 @@ describe BlocksController, type: :controller do
       end
       it_behaves_like "unauthorized access handler" do
         let!(:action) do
-          delete 'destroy', :id => @block.id
+          delete 'destroy', :id => @questionnaire.id
         end
       end
       it "does not delete anything" do
         expect {
-          delete 'destroy', :id => @block.id
-        }.not_to change { Block.count }
+          delete 'destroy', :id => @questionnaire.id
+        }.not_to change { Questionnaire.count }
       end
     end
     context "as no one" do
       it_behaves_like "not logged in handler" do
         let!(:action) do
-          delete 'destroy', :id => @block.id
+          delete 'destroy', :id => @questionnaire.id
         end
       end
       it "does not delete anything" do
         expect {
-          delete 'destroy', :id => @block.id
-        }.not_to change { Block.count }
+          delete 'destroy', :id => @questionnaire.id
+        }.not_to change { Questionnaire.count }
       end
     end
   end

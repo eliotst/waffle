@@ -7,10 +7,8 @@ class Block < ActiveRecord::Base
   	allow_destroy: true
 
   validates :label,
-    presence: true,
-    length: { maximum: 20 },
-    format: { with: /\A[a-zA-Z0-9_]+\z/ },
-    uniqueness: true
+    uniqueness: true,
+    label: true
 
   self.per_page = 10
 end

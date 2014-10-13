@@ -1,4 +1,7 @@
 class QuestionnairesController < ApplicationController
+  before_action :must_be_logged_in
+  before_action :must_be_admin
+
   def new
     @questionnaire = Questionnaire.new
     block = @questionnaire.blocks.build
@@ -9,7 +12,7 @@ class QuestionnairesController < ApplicationController
     @questionnaire = Questionnaire.new(questionnaire_params)
     if @questionnaire.save
       flash[:notice] = "Questionnaire created succesfully."
-      redirect_to @questionnaire
+      redirect_to questionnaires_path
     else
       render :action => 'new'
     end
@@ -47,12 +50,7 @@ class QuestionnairesController < ApplicationController
   end
 
   private
-  
   def questionnaire_params
-    params.require(:questionnaire).permit(:label, blocks_attributes: 
-      [:label, :id, :_destroy, questions_attributes: 
-      [:label, :text, :id, :_destroy, answers_attributes: 
-      [:value, :id, :participant_id, :_destroy], choices_attributes: 
-      [:value, :id, :_destroy]]])
+    params.require(:questionnaire).permit(:label)
   end
 end
