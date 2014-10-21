@@ -63,3 +63,6 @@ gem 'nifty-generators', '>= 0.4.0'
 # gem 'debugger', group: [:development, :test]
 
 gem "mocha", group: :test
+
+gem 'daemons-rails', github: 'mirasrael/daemons-rails'
+
