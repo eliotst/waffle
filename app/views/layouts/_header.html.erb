@@ -23,8 +23,10 @@
 								<li><%= link_to "User Settings", edit_user_path(current_user) %></li>
 								<li><%= link_to "List of Current Studies", studies_path %></li>
                 <li class="divider"></li>
-                <li><%= link_to "Delete Account", current_user, :confirm => 
-                  "Are you sure?", :method => :delete %></li>
+                <li><%= link_to "Delete Account", current_user, data: {
+                        :confirm => "Are you sure?"
+                    }, :method => :delete %>
+                </li>
 								<% if current_user.admin? %>
 									<li class="divider"></li>
 									<li><%= link_to "List of Current Users", users_path %></li>

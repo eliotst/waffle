@@ -1,0 +1,97 @@
+study:
+    title: Favorites
+    label: favorites
+    answer_types:
+        -
+            label: movie_genres
+            description: Movie genres
+            choices:
+                -
+                    value: action_genre
+                    text: actions
+                    order: 1
+                -
+                    value: comedy_genre
+                    text: comedies
+                    order: 2
+                -
+                    value: foreign_genre
+                    text: foreign films
+                    order: 3
+                -
+                    value: drama_genre
+                    text: dramas
+                    order: 4
+        -
+            label: persons_name
+            description: People's Names
+            regular_expression: /\w+\s\w+/
+        -
+            label: movie_title
+            description: Movie Titles
+            regular_expression: /.+/
+        -
+            label: year
+            description: Year
+            regular_expression: /\d{4}/
+    blocks:
+        -
+              label: actors
+              questions:
+                  -
+                      label: favorite_male_actor
+                      text: Who is your favorite male actor?
+                      answer_type_label: persons_name
+                  -
+                      label: favorite_female_actor
+                      text: Who is your favorite female actor?
+                      answer_type_label: persons_name
+                  -
+                      label: least_favorite_male_actor
+                      text: Who is your least favorite male actor?
+                      answer_type_label: persons_name
+                  -
+                      label: least_favorite_female_actor
+                      text: Who is your least favorite male actor?
+                      answer_type_label: persons_name
+        -
+              label: genres
+              questions:
+                  -
+                      label: favorite_genre
+                      text: What is your favorite movie genre?
+                      answer_type_label: movie_genres
+                  -
+                      label: least_favorite_genre
+                      text: What is your least favorite movie genre?
+                      answer_type_label: movie_genres
+        -
+              label: movies
+              questions:
+                  -
+                      label: favorite_movie
+                      text: What is your favorite movie of all time?
+                      answer_type_label: movie_title
+                  -
+                      label: least_favorite_movie
+                      text: What is your least favorite movie of all time?
+                      answer_type_label: movie_title
+    questionnaires:
+      -
+          label: movie_favorites
+          blocks:
+                - movies
+                - actors
+      -
+        label: movie_favorites_2
+        blocks:
+              - actors
+              - movies
+              - genres
+    schedule:
+        -
+            time_offset_hours: 24
+            questionnaire: movie_favorites
+        -
+            time_offset_hours: 48
+            questionnaire: movie_favorites_2

@@ -51,6 +51,6 @@ class QuestionnairesController < ApplicationController
 
   private
   def questionnaire_params
-    params.require(:questionnaire).permit(:label)
+    params.require(:questionnaire).permit(:label, :study_id)
   end
 end

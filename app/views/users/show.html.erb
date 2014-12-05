@@ -1,5 +1,5 @@
 <head>
-	<title>User Home Page</title>
+  <title>User Home Page</title>
 </head>
 
 <h1>User Home Page</h1>
@@ -7,29 +7,8 @@
 <%= render 'shared/logos' %>
 
 <div class="center">
-		<section>
-				You are currently involved in: <br />
-				The Affective Forecasting of Future Life Events Study
-		</section>
+    <section>
+        You are currently involved in: <br />
+        The Affective Forecasting of Future Life Events Study
+    </section>
 </div>
-
-<div id="userHome_nav">
-	<% if current_user %>
-		<%= link_to "Edit Account", edit_user_path(current_user) %><br />
-		<%= link_to "Delete Account", current_user, :confirm => 
-			"Are you sure?", :method => :delete %>
-			<% if current_user.admin? %>
-        <br /><%= link_to "List of Current Users", users_path %>
-      <% end %>
-      <br /><%= link_to "List of current Blocks", blocks_path %>
-      <br /><%= link_to "List of current Questionnaires", questionnaires_path %>
-      <br /><%= link_to "List of current Studies", studies_path %>
-      <% if current_user.admin? %>
-        <br /><%= link_to "New Block", new_block_path %>
-        <br /><%= link_to "New Questionnaire", new_questionnaire_path %>
-        <br /><%= link_to "New Study", new_study_path %>
-      <% end %>
-	<% end %>
-
-
-		
