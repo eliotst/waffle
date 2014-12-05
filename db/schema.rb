@@ -93,6 +93,31 @@ ActiveRecord::Schema.define(version: 20141021014219) do
 
   add_index "questions", ["answer_type_id"], name: "index_questions_on_answer_type_id"
 
+  create_table "schedule_entries", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "time_to_send"
+    t.boolean  "sent"
+  end
+
+  create_table "schedule_template_entries", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "time_offset_hours"
+    t.boolean  "sent"
+  end
+
+  create_table "schedule_templates", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "schedules", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "start_time_epoch_seconds"
+  end
+
   create_table "studies", force: true do |t|
     t.string   "title"
     t.datetime "created_at"
