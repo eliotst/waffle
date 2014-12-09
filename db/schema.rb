@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141018223557) do
+ActiveRecord::Schema.define(version: 20141116231649) do
 
   create_table "answer_types", force: true do |t|
     t.string   "label"
@@ -89,25 +89,45 @@ ActiveRecord::Schema.define(version: 20141018223557) do
     t.datetime "updated_at"
     t.string   "time_to_send"
     t.boolean  "sent"
+    t.integer  "participant_id"
+    t.integer  "schedule_template_id"
+    t.integer  "questionnaire_id"
   end
+
+  add_index "schedule_entries", ["participant_id"], name: "index_schedule_entries_on_participant_id"
+  add_index "schedule_entries", ["questionnaire_id"], name: "index_schedule_entries_on_questionnaire_id"
+  add_index "schedule_entries", ["schedule_template_id"], name: "index_schedule_entries_on_schedule_template_id"
 
   create_table "schedule_template_entries", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "time_offset_hours"
     t.boolean  "sent"
+    t.integer  "schedule_template_id"
+    t.integer  "questionnaire_id"
   end
+
+  add_index "schedule_template_entries", ["questionnaire_id"], name: "index_schedule_template_entries_on_questionnaire_id"
+  add_index "schedule_template_entries", ["schedule_template_id"], name: "index_schedule_template_entries_on_schedule_template_id"
 
   create_table "schedule_templates", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "study_id"
   end
+
+  add_index "schedule_templates", ["study_id"], name: "index_schedule_templates_on_study_id"
 
   create_table "schedules", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "start_time_epoch_seconds"
+    t.integer  "participant_id"
+    t.integer  "schedule_template_id"
   end
+
+  add_index "schedules", ["participant_id"], name: "index_schedules_on_participant_id"
+  add_index "schedules", ["schedule_template_id"], name: "index_schedules_on_schedule_template_id"
 
   create_table "studies", force: true do |t|
     t.string   "title"

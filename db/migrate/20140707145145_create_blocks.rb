@@ -3,6 +3,7 @@ class CreateBlocks < ActiveRecord::Migration
     create_table :blocks do |t|
       t.string :label
       t.references :question, index: true
+      t.references :questionnaire_id, index: true
 
       t.timestamps
     end
