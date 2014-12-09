@@ -8,7 +8,7 @@ shared_examples "a model with a label" do
   it "should be invalid if it is not alphanumeric only" do
     build(model_factory, label: "invalid!").should_not be_valid
   end
-  it "should be invalid if not unique" do
+  it "must have be unique for a study" do
     create(model_factory, label: "foo")
     build(model_factory, label: "foo").should_not be_valid
   end

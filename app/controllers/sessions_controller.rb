@@ -1,10 +1,12 @@
 class SessionsController < ApplicationController
+  protect_from_forgery except: :create
 
 	def new
 	end
 
 	def create
 		user = User.authenticate(params[:email], params[:password])
+    puts user
 		if user
 			if user.is_valid
 				log_in user

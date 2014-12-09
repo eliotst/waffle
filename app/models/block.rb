@@ -1,10 +1,7 @@
 class Block < ActiveRecord::Base
+  has_many :block_questionnaires
   has_many :questions, dependent: :destroy
-  belongs_to :questionnaire
-
-  accepts_nested_attributes_for :questions, 
-  	reject_if: lambda { |a| a[:text].blank? },
-  	allow_destroy: true
+  has_many :questionnaires, through: :block_questionnaires
 
   validates :label,
     uniqueness: true,

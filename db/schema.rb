@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20141116231649) do
+=======
+ActiveRecord::Schema.define(version: 20141021014219) do
+>>>>>>> FETCH_HEAD
 
   create_table "answer_types", force: true do |t|
     t.string   "label"
@@ -38,11 +42,20 @@ ActiveRecord::Schema.define(version: 20141116231649) do
   add_index "answers", ["participant_id"], name: "index_answers_on_participant_id"
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
 
+  create_table "block_questionnaires", force: true do |t|
+    t.integer  "block_id"
+    t.integer  "questionnaire_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "block_questionnaires", ["block_id"], name: "index_block_questionnaires_on_block_id"
+  add_index "block_questionnaires", ["questionnaire_id"], name: "index_block_questionnaires_on_questionnaire_id"
+
   create_table "blocks", force: true do |t|
     t.string   "label"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "questionnaire_id"
   end
 
   create_table "choices", force: true do |t|

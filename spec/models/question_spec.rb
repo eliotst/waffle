@@ -8,9 +8,6 @@ describe Question do
     it "should be invalid if empty" do
       build(:question, text: nil).should_not be_valid
     end
-    it "should be invalid without an ending question mark" do
-      build(:question, text: "invalid").should_not be_valid
-    end
     it "should be invalid without an answer type" do
       build(:question, answer_type: nil).should_not be_valid
     end

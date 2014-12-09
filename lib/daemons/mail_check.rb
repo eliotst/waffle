@@ -10,7 +10,7 @@ Dir.chdir(root)
 require File.join(root, "config", "environment")
 
 def send_all
-  @schedule_entries = ScheduleEntries.find_by_sent(false)
+  @schedule_entries = ScheduleEntry.all      #find_by_sent(false)   this is done in if statement later
   @schedule_entries.each do |t|
     if t.sent == false
       if t.time_to_send < Time.now.utc

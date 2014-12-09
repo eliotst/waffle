@@ -3,16 +3,11 @@ class Question < ActiveRecord::Base
   belongs_to :answer_type
   has_many :answers, dependent: :destroy
 
-  accepts_nested_attributes_for :answers,
-  	reject_if: lambda { |a| a[:value].blank? },
-  	allow_destroy: true
-
   validates :label,
     uniqueness: true,
     label: true
   validates :text,
-    presence: true,
-    format: { with: /[\?.]\z/ }
+    presence: true
   validates :answer_type,
     presence: true
 
