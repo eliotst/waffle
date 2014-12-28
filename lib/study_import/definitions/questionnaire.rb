@@ -1,5 +1,6 @@
 
 class StudyImport::Definitions::Questionnaire
+  attr_accessor(:blocks)
   attr_accessor(:label)
   attr_accessor(:study_label)
 
@@ -17,9 +18,22 @@ class StudyImport::Definitions::Questionnaire
   def create(client)
     url = Rails.application.routes.url_helpers.questionnaires_path
     client.post url, questionnaire: to_dictionary
+    self.add_blocks(client)
+  end
+
+  def add_blocks(client)
+    questionnaire = Questionnaire.find_by_label(@label)
+    @blocks.each do |block_label|
+      block = Block.find_by_label(block_label)
+      url = Rails.application.routes.url_helpers.block_questionnaires_path
+      client.post url,
+        questionnaire_id: questionnaire.id,
+        block_id: block.id
+    end
   end
 
   def read(config_node)
     @label = config_node["label"]
+    @blocks = config_node["blocks"]
   end
 end

@@ -7,5 +7,12 @@ describe Questionnaire do
   it_behaves_like "a model with a label" do
     let(:model_factory) { :questionnaire }
   end
+  describe "destroy" do
+    it "destroys the block questionnaires" do
+      questionnaire = create(:questionnaire_with_blocks)
+      questionnaire.destroy
+      BlockQuestionnaire.count.should == 0
+    end
+  end
 end
 

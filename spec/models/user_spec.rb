@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
   it "creates a user" do
-    user = User.create(email: 'email@example.com',
+    create(:user, email: 'email@example.com',
       password: "abc123", password_confirmation: "abc123")
   end
   it "has a valid factory" do
@@ -15,7 +15,7 @@ describe User do
     build(:user, email: '1234').should_not be_valid
   end
   it "does not allow duplicate emails" do
-    user = create(:user, email: 'wrong@example.com',
+    create(:user, email: 'wrong@example.com',
       password: "abc123", password_confirmation: "abc123")
     build(:user, email: 'wrong@example.com', password: "abc123",
       password_confirmation: "abc123").should_not be_valid
@@ -31,14 +31,6 @@ describe User do
   end
   it "is not normally an admin" do
     user = create(:user)
-    user.admin.should be_false
-  end
-  it "can be made an admin" do
-    user = create(:user, admin: true)
-    user.admin.should be_true
-  end
-  it "has an email that can be valid" do
-    user = create(:user, is_valid: true)
-    user.is_valid.should be_true
+    user.is_admin.should be_false
   end
 end

@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20141116231649) do
-=======
-ActiveRecord::Schema.define(version: 20141021014219) do
->>>>>>> FETCH_HEAD
+ActiveRecord::Schema.define(version: 20141216004910) do
 
   create_table "answer_types", force: true do |t|
     t.string   "label"
@@ -25,11 +21,13 @@ ActiveRecord::Schema.define(version: 20141021014219) do
   end
 
   create_table "answer_validations", force: true do |t|
-    t.string   "regular_expression"
+    t.string   "regular_expression", default: "--- !ruby/regexp /.*/\n...\n"
     t.integer  "answer_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "answer_validations", ["answer_type_id"], name: "index_answer_validations_on_answer_type_id"
 
   create_table "answers", force: true do |t|
     t.string   "value"
@@ -71,9 +69,9 @@ ActiveRecord::Schema.define(version: 20141021014219) do
 
   create_table "participants", force: true do |t|
     t.integer  "user_id"
+    t.integer  "study_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "study_id"
   end
 
   add_index "participants", ["study_id"], name: "index_participants_on_study_id"
@@ -81,62 +79,64 @@ ActiveRecord::Schema.define(version: 20141021014219) do
 
   create_table "questionnaires", force: true do |t|
     t.string   "label"
+    t.integer  "study_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "study_id"
   end
+
+  add_index "questionnaires", ["study_id"], name: "index_questionnaires_on_study_id"
 
   create_table "questions", force: true do |t|
     t.string   "text"
     t.string   "label"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "block_id"
     t.integer  "answer_type_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "questions", ["answer_type_id"], name: "index_questions_on_answer_type_id"
+  add_index "questions", ["block_id"], name: "index_questions_on_block_id"
 
   create_table "schedule_entries", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "time_to_send"
+    t.datetime "time_to_send"
     t.boolean  "sent"
     t.integer  "participant_id"
-    t.integer  "schedule_template_id"
+    t.integer  "schedule_id"
     t.integer  "questionnaire_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "schedule_entries", ["participant_id"], name: "index_schedule_entries_on_participant_id"
   add_index "schedule_entries", ["questionnaire_id"], name: "index_schedule_entries_on_questionnaire_id"
-  add_index "schedule_entries", ["schedule_template_id"], name: "index_schedule_entries_on_schedule_template_id"
+  add_index "schedule_entries", ["schedule_id"], name: "index_schedule_entries_on_schedule_id"
 
   create_table "schedule_template_entries", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "time_offset_hours"
-    t.boolean  "sent"
     t.integer  "schedule_template_id"
     t.integer  "questionnaire_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "schedule_template_entries", ["questionnaire_id"], name: "index_schedule_template_entries_on_questionnaire_id"
   add_index "schedule_template_entries", ["schedule_template_id"], name: "index_schedule_template_entries_on_schedule_template_id"
 
   create_table "schedule_templates", force: true do |t|
+    t.integer  "study_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "study_id"
   end
 
   add_index "schedule_templates", ["study_id"], name: "index_schedule_templates_on_study_id"
 
   create_table "schedules", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "start_time_epoch_seconds"
+    t.datetime "start_time"
     t.integer  "participant_id"
     t.integer  "schedule_template_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "schedules", ["participant_id"], name: "index_schedules_on_participant_id"
@@ -144,31 +144,27 @@ ActiveRecord::Schema.define(version: 20141021014219) do
 
   create_table "studies", force: true do |t|
     t.string   "title"
+    t.string   "label"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "label"
   end
 
   create_table "users", force: true do |t|
-    t.string   "new"
     t.string   "email"
     t.string   "password_hash"
     t.string   "password_salt"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "address_line_one"
-    t.string   "auth_token"
-    t.boolean  "admin",            default: false
     t.string   "address_line_two"
     t.string   "city"
     t.string   "state"
     t.string   "zip_code"
     t.string   "name"
-    t.string   "valid_token"
+    t.boolean  "is_admin"
     t.boolean  "is_valid"
+    t.string   "auth_token"
+    t.string   "valid_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
-
-  add_index "users", ["auth_token"], name: "index_users_on_auth_token"
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end

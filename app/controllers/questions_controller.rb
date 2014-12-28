@@ -2,45 +2,27 @@ class QuestionsController < ApplicationController
   before_action :must_be_logged_in
   before_action :must_be_admin
 
-  def new
-  	@question = Question.new
-  end
-
   def create
   	@question = Question.new(question_params)
   	if @question.save
-  	  flash[:notice] = "Question created succesfully."
-  	  redirect_to questions_path
-  	else
-  	  render :action => 'new'
+      render :json => @question.to_json
+    else
+      render :json => { :errors => @question.errors.full_messages }
   	end
-  end
-
-  def show
-  	@question = Question.find(params[:id])
-  end
-
-  def edit
-  	@question = Question.find(params[:id])
   end
 
   def update
   	@question = Question.find(params[:id])
     if @question.update_attributes(question_params)
-      redirect_to @question, notice: "Question updated!"
+      render :json => @question.to_json
     else
-      render 'edit'
+      render :json => { :errors => @question.errors.full_messages }
     end
-  end
-
-  def index
-  	@questions = Question.paginate(page: params[:page])
   end
 
   def destroy
     Question.find(params[:id]).destroy
-    flash[:success] = "Question deleted."
-    redirect_to questions_path
+    render :json => true
   end
 
   private

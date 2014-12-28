@@ -17,7 +17,6 @@ class StudyImport::Definitions::AnswerType
       dictionary[:choices_attributes] = {}
       index = 0
       @choices.each do |choice|
-        puts index
         dictionary[:choices_attributes][index] = choice.to_dictionary
         index = index + 1
       end
@@ -26,7 +25,6 @@ class StudyImport::Definitions::AnswerType
         regular_expression: @regular_expression
       }
     end
-    puts dictionary
     dictionary
   end
 

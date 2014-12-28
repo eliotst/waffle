@@ -1,46 +1,37 @@
 class ScheduleTemplatesController < ApplicationController
-  def new
-    @schedule_template = Schedule_template.new
-  end
+  before_action :must_be_logged_in
+  before_action :must_be_admin
 
   def create
-    @schedule_template = Schedule_template.new(schedule_template_params)
+    @schedule_template = ScheduleTemplate.new(schedule_template_params)
     if @schedule_template.save
-      flash[:notice] = "Schedule template created succesfully."
-      redirect_to schedule_templates_path
+      render :json => @schedule_template.to_json
     else
-      render :action => 'new'
+      render :json => { :errors => @schedule_template.errors.full_messages }
     end
-  end
-
-  def edit
-    @schedule_template = Schedule_template.find(params[:id])
   end
 
   def update
-    @schedule_template = Schedule_template.find(params[:id])
+    @schedule_template = ScheduleTemplate.find(params[:id])
     if @schedule_template.update_attributes(schedule_template_params)
-      redirect_to @schedule_template, notice: "Schedule Template updated!"
+      render :json => @schedule_template.to_json
     else
-      render 'edit'
+      render :json => { :errors => @schedule_template.errors.full_messages }
     end
   end
 
-  def index
-    @schedule_template = Schedule_template.paginate(page: params[:page])
-  end
-
-  def show
-    if current_user.admin?
-      @schedule_template = Schedule_template.find(params[:id])
-    else
-      flash[:notice] = "Only admins may look at details of a schedule template."
-    end
+  def destroy
+    ScheduleTemplate.find(params[:id]).destroy
+    render :json => true
   end
 
 private
   def schedule_template_params
-    params.require(:schedule_template).permit(:schedule_template_entries)
+    params.require(:schedule_template).permit(:study_id, schedule_template_entries_attributes: [
+                                          :id,
+                                          :_destroy,
+                                          :questionnaire_id,
+                                          :time_offset_hours
+                                        ])
   end
-
 end

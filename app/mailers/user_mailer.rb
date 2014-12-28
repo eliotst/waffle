@@ -13,7 +13,6 @@ class UserMailer < ActionMailer::Base
 
   def notify(user, questionnaire)
     @questionnaire = questionnaire 
-    mail :to => user.email, :subject => “New Questionnaire!”
+    mail :to => user.email, :subject => "New Questionnaire!"
   end
-
 end

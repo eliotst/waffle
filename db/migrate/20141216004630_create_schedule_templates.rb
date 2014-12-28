@@ -1,7 +1,7 @@
 class CreateScheduleTemplates < ActiveRecord::Migration
   def change
     create_table :schedule_templates do |t|
-      t.references :participant_id, index: true
+      t.references :study, index: true
 
       t.timestamps
     end

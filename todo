@@ -1,0 +1,41 @@
+Eliot
+0. clean up code
+  a. get tests to run (models: DONE, controllers: DONE, importer: DONE)
+  b. validate data better in importer
+    a. add schema validation
+    b. test reading
+  c. cascading deletes (DONE-ISH)
+    a. easy ones (DONE)
+    b. delete when all associated are deleted
+    c. delete when study is deleted
+    d. soft deletes
+  d. clean up migrations (DONE)
+  e. add initial admin user on migration (DONE)
+  f. clean up dead actions in controllers (DONE)
+  g. add missing controller tests
+    a. BlockQuestionnaires
+    b. PasswordResets
+    c. Sessions
+    d. Validations
+1. add default value for answer validation regex (DONE)
+2. schedule entries
+  a. model specs (DONE)
+  b. controller (DONE)
+  c. controller specs (DONE)
+  d. importers (DONE)
+  e. importer specs (DONE)
+  f. import reading
+3. answers
+  a. revisit
+  b. multiselect
+4. screeners (auto after sign up)
+5. add questionnaire answer form page
+6. add study list page
+7. add my studies page
+8. scope everything to study
+  a. cascade study deletion to everything
+
+Steele
+0. clean up layout
+1. add dropdown icon to user e-mail on header so that users know its a dropdown
+1. redirect users to logged in page when logged in

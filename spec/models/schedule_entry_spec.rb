@@ -4,13 +4,13 @@ describe ScheduleEntry do
   it "has a valid factory" do
     create(:schedule_entry).should be_valid
   end
-  it_behaves_like "a model with a time to send" do
-    let(:model_factory) { :time_to_send }
+  it "should not be valid without a time to send" do
+    build(:schedule_entry, time_to_send: nil).should_not be_valid
   end
-  it_behaves_like "a model with a participant" do
-    let(:model_factory) { :participant }
+  it "should not be valid without a participant" do
+    build(:schedule_entry, participant: nil).should_not be_valid
   end
-  it_behaves_like "a model with a schedule template" do
-    let(:model_factory) { :schedule_template }
+  it "should not be valid without a schedule" do
+    build(:schedule_entry, schedule: nil).should_not be_valid
   end
 end

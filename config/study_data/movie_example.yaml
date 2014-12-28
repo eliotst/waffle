@@ -88,10 +88,11 @@ study:
               - actors
               - movies
               - genres
-    schedule:
-        -
-            time_offset_hours: 24
-            questionnaire: movie_favorites
-        -
-            time_offset_hours: 48
-            questionnaire: movie_favorites_2
+    schedule_template:
+        entries:
+            -
+                time_offset_hours: 24
+                questionnaire_label: movie_favorites
+            -
+                time_offset_hours: 48
+                questionnaire_label: movie_favorites_2

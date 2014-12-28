@@ -5,7 +5,7 @@ describe UsersController, type: :controller do
     describe "yourself" do
       context "as an admin" do
         before(:each) do
-          @admin_user = create(:user, admin: true)
+          @admin_user = create(:admin)
           log_in(@admin_user)
         end
         it_behaves_like "showable controller" do
@@ -32,7 +32,7 @@ describe UsersController, type: :controller do
     describe "another user" do
       context "as an admin" do
         before(:each) do
-          @admin_user = create(:user, admin: true)
+          @admin_user = create(:admin)
           @other_user = create(:user)
           log_in(@admin_user)
         end
@@ -78,7 +78,7 @@ describe UsersController, type: :controller do
     }
     context "as an admin" do
       before(:each) do
-        @admin_user = create(:user, admin: true)
+        @admin_user = create(:admin)
         log_in(@admin_user)
       end
       it_behaves_like "createable controller" do
@@ -131,7 +131,7 @@ describe UsersController, type: :controller do
     describe "yourself" do
       context "as an admin" do
         before(:each) do
-          @admin_user = create(:user, admin: true)
+          @admin_user = create(:admin)
           log_in(@admin_user)
         end
         it_behaves_like "editable controller" do
@@ -153,7 +153,7 @@ describe UsersController, type: :controller do
     describe "another user" do
       context "as an admin" do
         before(:each) do
-          @admin_user = create(:user, admin: true)
+          @admin_user = create(:admin)
           @other_user = create(:user)
           log_in(@admin_user)
         end
@@ -208,7 +208,7 @@ describe UsersController, type: :controller do
   describe "indexing" do
     context "as an admin" do
       before(:each) do
-        @admin_user = create(:user, admin: true)
+        @admin_user = create(:admin)
         @users_list = [ @admin_user, create(:user), create(:user) ]
         log_in(@admin_user)
       end
@@ -239,7 +239,7 @@ describe UsersController, type: :controller do
     describe "yourself" do
       context "as an admin" do
         before(:each) do
-          @admin_user = create(:user, admin: true)
+          @admin_user = create(:admin)
           log_in(@admin_user)
         end
         it_behaves_like "destroyable controller" do
@@ -268,7 +268,7 @@ describe UsersController, type: :controller do
     describe "another user" do
       context "as an admin" do
         before(:each) do
-          @admin_user = create(:user, admin: true)
+          @admin_user = create(:admin)
           @other_user = create(:user)
           log_in(@admin_user)
         end

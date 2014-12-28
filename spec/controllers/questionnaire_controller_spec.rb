@@ -2,37 +2,8 @@ require 'spec_helper'
 
 describe QuestionnairesController, type: :controller do
   before(:each) do
-    @admin_user = create(:user, admin: true)
+    @admin_user = create(:admin)
     @regular_user = create(:user)
-  end
-  describe "showing" do
-    before(:each) do
-      @questionnaire = create(:questionnaire)
-    end
-    context "as an admin" do
-      before(:each) do
-        log_in(@admin_user)
-      end
-      it_behaves_like "showable controller" do
-        let(:model) { @questionnaire }
-        let(:model_variable) { :questionnaire }
-      end
-    end
-    context "as a regular user" do
-      before(:each) do
-        log_in(@regular_user)
-      end
-      it_behaves_like "unauthorized access handler" do
-        let!(:action) do
-          get 'show', id: @questionnaire.id
-        end
-      end
-    end
-    context "as no one" do
-      it_behaves_like "not logged in handler" do
-        let!(:action) { get :show, id: @questionnaire.id }
-      end
-    end
   end
 
   describe "creating" do
@@ -50,7 +21,7 @@ describe QuestionnairesController, type: :controller do
       before(:each) do
         log_in(@admin_user)
       end
-      it_behaves_like "createable controller" do
+      it_behaves_like "createable ajax controller" do
         let(:model_variable) { :questionnaire }
         let(:model_class) { Questionnaire }
       end
@@ -61,17 +32,10 @@ describe QuestionnairesController, type: :controller do
       before(:each) do
         log_in(@regular_user)
       end
-      describe "new" do
-        it_behaves_like "unauthorized access handler" do
-          let!(:action) do
-            get 'new'
-          end
-        end
-      end
       describe "create" do
         it_behaves_like "unauthorized access handler" do
           let!(:action) do
-            get 'new'
+            post 'create', valid_model_parameters
           end
         end
         it "doesn't create a new questionnaire" do
@@ -82,13 +46,6 @@ describe QuestionnairesController, type: :controller do
       end
     end
     context "as no one" do
-      describe "new" do
-        it_behaves_like "not logged in handler" do
-          let!(:action) do
-            get 'new'
-          end
-        end
-      end
       describe "create" do
         it_behaves_like "not logged in handler" do
           let!(:action) do
@@ -125,25 +82,17 @@ describe QuestionnairesController, type: :controller do
       before(:each) do
         log_in(@admin_user)
       end
-      it_behaves_like "editable controller"
-      describe "nested parameters" do
-      end
+      it_behaves_like "editable ajax controller"
     end
     context "as a regular user" do
       before(:each) do
         log_in(@regular_user)
       end
-      describe "edit" do
-        it_behaves_like "unauthorized access handler" do
-          let!(:action) do
-            get 'edit', id: @questionnaire.id
-          end
-        end
-      end
       describe "update" do
         it_behaves_like "unauthorized access handler" do
           let!(:action) do
-            get 'edit', id: @questionnaire.id
+            post 'update', id: @questionnaire.id,
+              study: valid_model_parameters
           end
         end
         it "doesn't update the study" do
@@ -155,13 +104,6 @@ describe QuestionnairesController, type: :controller do
       end
     end
     context "as no one" do
-      describe "edit" do
-        it_behaves_like "not logged in handler" do
-          let!(:action) do
-            get 'edit', id: @questionnaire.id
-          end
-        end
-      end
       describe "update" do
         it_behaves_like "not logged in handler" do
           let!(:action) do
@@ -173,38 +115,6 @@ describe QuestionnairesController, type: :controller do
             post 'update', id: @questionnaire.id, questionnaire: valid_model_parameters
           }.not_to change { @questionnaire }
         end
-      end
-    end
-  end
-
-  describe "indexing" do
-    before(:each) do
-      @questionnaire_one = create(:questionnaire)
-      @questionnaire_two = create(:questionnaire)
-      @questionnaires = [ @questionnaire_one, @questionnaire_two ]
-    end
-    context "as an admin" do
-      before(:each) do
-        log_in(@admin_user)
-      end
-      it_behaves_like "indexable controller" do
-        let(:model_list) { @questionnaires }
-        let(:list_variable) { :questionnaires }
-      end
-    end
-    context "as a regular user" do
-      before(:each) do
-        log_in(@regular_user)
-      end
-      it_behaves_like "unauthorized access handler" do
-        let!(:action) do
-          get 'index'
-        end
-      end
-    end
-    context "as no one" do
-      it_behaves_like "not logged in handler" do
-        let!(:action) { get :index }
       end
     end
   end
@@ -217,7 +127,7 @@ describe QuestionnairesController, type: :controller do
       before(:each) do
         log_in(@admin_user)
       end
-      it_behaves_like "destroyable controller" do
+      it_behaves_like "destroyable ajax controller" do
         let(:model) { @questionnaire }
         let(:model_class) { Questionnaire }
         let(:resulting_page) { questionnaires_path }

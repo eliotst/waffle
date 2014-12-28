@@ -37,13 +37,13 @@ describe StudyImport::Definitions::AnswerType do
         expect(@answer_type.to_dictionary).to eq({
           label: 'foo',
           description: 'foo',
-          choices_attributes: [
-            {
+          choices_attributes: {
+            0 => {
               value: 'bar',
               text: 'bar',
               order: 1
             }
-          ]
+          }
         })
       end
     end

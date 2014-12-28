@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+User.create(email: "admin@waffle.com",
+            password: "12345",
+            password_confirmation: "12345",
+            is_valid: true,
+            is_admin: true)

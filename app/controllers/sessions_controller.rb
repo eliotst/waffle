@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
 
 	def create
 		user = User.authenticate(params[:email], params[:password])
-    puts user
 		if user
 			if user.is_valid
 				log_in user

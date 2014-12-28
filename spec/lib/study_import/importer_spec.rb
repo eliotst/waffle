@@ -14,7 +14,7 @@ describe StudyImport::Importer, type: :request do
   describe "when importing the movie example data" do
     describe "for the studies" do
       it "creates the correct number" do
-        expect(Study.count).to equal(1)
+        expect(Study.count).to eq(1)
       end
       it "creates the movies study" do
         expect(Study.find_by_label("favorites")).to_not be_nil
@@ -22,7 +22,7 @@ describe StudyImport::Importer, type: :request do
     end
     describe "for the questionnaires" do
       it "creates the correct number" do
-        expect(Questionnaire.count).to equal(2)
+        expect(Questionnaire.count).to eq(2)
       end
       it "creates the favorites questionnaire" do
         expect(Questionnaire.find_by_label("movie_favorites")).to_not be_nil
@@ -33,7 +33,7 @@ describe StudyImport::Importer, type: :request do
     end
     describe "for the blocks" do
       it "creates the correct number" do
-        expect(Block.count).to equal(3)
+        expect(Block.count).to eq(3)
       end
       describe "actors block" do
         before(:each) do
@@ -43,7 +43,7 @@ describe StudyImport::Importer, type: :request do
           expect(@block).to be
         end
         it "creates the actors block's questions" do
-          expect(@block.questions.count).to equal(4)
+          expect(@block.questions.count).to eq(4)
         end
       end
       describe "genres block" do
@@ -54,7 +54,7 @@ describe StudyImport::Importer, type: :request do
           expect(@block).to be
         end
         it "creates the actors block's questions" do
-          expect(@block.questions.count).to equal(2)
+          expect(@block.questions.count).to eq(2)
         end
       end
       describe "movies block" do
@@ -65,13 +65,13 @@ describe StudyImport::Importer, type: :request do
           expect(@block).to be
         end
         it "creates the actors block's questions" do
-          expect(@block.questions.count).to equal(2)
+          expect(@block.questions.count).to eq(2)
         end
       end
     end
     describe "for the answer types" do
       it "creates the correct number"  do
-        expect(AnswerType.count).to equal(4)
+        expect(AnswerType.count).to eq(4)
       end
       describe "move_genres answer type" do
         before(:each) do
@@ -81,13 +81,21 @@ describe StudyImport::Importer, type: :request do
           expect(@answer_type).to be
         end
         it "creates the answer type's choices" do
-          expect(@answer_type.choices.count).to equal(4)
+          expect(@answer_type.choices.count).to eq(4)
         end
       end
     end
     describe "for the questions" do
       it "creates the correct number" do
-        expect(Question.count).to equal(8)
+        expect(Question.count).to eq(8)
+      end
+    end
+    describe "for the schedule templates" do
+      it "creates the correct number" do
+        expect(ScheduleTemplate.count).to eq(1)
+      end
+      it "creates the correct number of schedule template entries" do
+        expect(ScheduleTemplateEntry.count).to eq(2)
       end
     end
   end

@@ -1,5 +1,8 @@
 <% if current_user %>
-  Study: <strong><%= study.title %></strong><br />
+  Study: <strong><%= study.title %></strong>
+    <% if current_user.admin? %>
+      <%= link_to '(del)', study, method: :delete, data: { confirm: 'Are you sure?'} %>
+    <% end %>
   <ol>
     <% for questionnaire in study.questionnaires %>
       <li><i><%=h questionnaire.label %></i></li>
@@ -7,18 +10,17 @@
         <% for block in questionnaire.blocks %>
           <li><b><%=h block.label %></b></li>
             <ol>
-              <% for question in block.questions %>
+                <% for question in block.questions %>
+                    <% puts question %>
                 <li><b><%=h question.label %></b></li>
                 Question: <%=h question.text %>
+                Answer Type: <%=h question.answer_type.label %>
                 <ol>
-                  <% if current_user.admin %>
-                    <% for choice in question.choices %>
+                    <% for choice in question.answer_type.choices %>
                       <li><i><%=h choice.value %></i></li>
-                    <% end %>
-                  <% elsif current_user %>
-                    <% for answer in question.answers %>
-                      <li><i><%=h answer.value %></i></li>
-                    <% end %>
+                  <% end %>
+                  <% if !question.answer_type.answer_validation.nil? %>
+                      <li><i><%=h question.answer_type.answer_validation.regular_expression %></i></li>
                   <% end %>
                 </ol>
               <% end %>
@@ -27,10 +29,4 @@
       </ol>
     <% end %>
   </ol>
-  <%= link_to 'Edit Study', edit_study_path(study) %>
 <% end %>
-<% if current_user.admin? %>
-  | <%= link_to 'Delete', study, method: :delete, data: { confirm: 'Are you sure?'} %><br/>
-<% else %>
-<br/>
-<% end %><br />
