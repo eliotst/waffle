@@ -2,5 +2,9 @@
 
 FactoryGirl.define do
   factory :schedule_entry do
+    time_to_send Time.now
+    participant
+    schedule
+    questionnaire
   end
 end

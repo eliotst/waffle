@@ -1,6 +1,6 @@
 class AnswerType < ActiveRecord::Base
-  has_many :choices
-  has_one :answer_validation
+  has_many :choices, dependent: :destroy
+  has_one :answer_validation, dependent: :destroy
 
   accepts_nested_attributes_for :answer_validation, 
   	allow_destroy: true

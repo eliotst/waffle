@@ -14,7 +14,4 @@
       <%= render @studies %> <! located at _study.html.erb > 
     </ul>
     <%= will_paginate %>
-    <% if current_user.admin? %>
-      <%= link_to "Create a Study", new_study_path %>
-    <% end %>
   <% end %>

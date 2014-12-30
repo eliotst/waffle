@@ -2,5 +2,8 @@
 
 FactoryGirl.define do
   factory :schedule_template_entry do
+    time_offset_hours 24
+    questionnaire
+    schedule_template
   end
 end

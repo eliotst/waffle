@@ -1,7 +1,6 @@
 class Questionnaire < ActiveRecord::Base
-  has_many :block_questionnaires
-  has_many :blocks, through: :block_questionnaires,
-    dependent: :destroy
+  has_many :block_questionnaires, dependent: :destroy
+  has_many :blocks, through: :block_questionnaires
   belongs_to :study
 
   validates :label,

@@ -12,6 +12,15 @@ describe AnswerType do
       build(:answer_type, description: nil).should_not be_valid
     end
   end
+  describe "destroying" do
+    it "should delete its answer validation" do
+    end
+    it "should delete its choices" do
+      answer_type = create(:number_validation_answer_type)
+      answer_type.destroy
+      AnswerValidation.count.should == 0
+    end
+  end
   it "can not have both an answer validation and a choice" do
     answer_type = build(:answer_type)
     answer_type.answer_validation = build(:answer_validation, answer_type: answer_type)

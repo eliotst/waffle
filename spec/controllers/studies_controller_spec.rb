@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe StudiesController, type: :controller do
   before(:each) do
-    @admin_user = create(:user, admin: true)
+    @admin_user = create(:admin)
     @regular_user = create(:user)
   end
   describe "showing" do
@@ -51,7 +51,7 @@ describe StudiesController, type: :controller do
       before(:each) do
         log_in(@admin_user)
       end
-      it_behaves_like "createable controller" do
+      it_behaves_like "createable ajax controller" do
         let(:model_variable) { :study }
         let(:model_class) { Study }
       end
@@ -59,13 +59,6 @@ describe StudiesController, type: :controller do
     context "as a regular user" do
       before(:each) do
         log_in(@regular_user)
-      end
-      describe "new" do
-        it_behaves_like "unauthorized access handler" do
-          let!(:action) do
-            get :new
-          end
-        end
       end
       describe "create" do
         it_behaves_like "unauthorized access handler" do
@@ -81,13 +74,6 @@ describe StudiesController, type: :controller do
       end
     end
     context "as no one" do
-      describe "new" do
-        it_behaves_like "not logged in handler" do
-          let!(:action) do
-            get 'new'
-          end
-        end
-      end
       describe "create" do
         it_behaves_like "not logged in handler" do
           let!(:action) do
@@ -126,23 +112,17 @@ describe StudiesController, type: :controller do
       before(:each) do
         log_in(@admin_user)
       end
-      it_behaves_like "editable controller"
+      it_behaves_like "editable ajax controller"
     end
     context "as a regular user" do
       before(:each) do
         log_in(@regular_user)
       end
-      describe "edit" do
-        it_behaves_like "unauthorized access handler" do
-          let!(:action) do
-            get 'edit', id: @study.id
-          end
-        end
-      end
       describe "update" do
         it_behaves_like "unauthorized access handler" do
           let!(:action) do
-            get 'edit', id: @study.id
+            post 'update', id: @study.id,
+              study: valid_model_parameters
           end
         end
         it "doesn't update the study" do
@@ -154,13 +134,6 @@ describe StudiesController, type: :controller do
       end
     end
     context "as no one" do
-      describe "edit" do
-        it_behaves_like "not logged in handler" do
-          let!(:action) do
-            get 'edit', id: @study.id
-          end
-        end
-      end
       describe "update" do
         it_behaves_like "not logged in handler" do
           let!(:action) do

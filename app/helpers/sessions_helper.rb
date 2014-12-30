@@ -50,6 +50,6 @@ module SessionsHelper
   end
 
   def is_admin_user?
-    !current_user.nil? && current_user.admin?
+    !current_user.nil? && current_user.is_admin?
   end
 end

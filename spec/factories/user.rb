@@ -8,7 +8,7 @@ FactoryGirl.define do
     is_valid true
 
     factory :admin do
-      admin true
+      is_admin true
     end
   end
 end

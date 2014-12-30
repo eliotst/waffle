@@ -2,19 +2,12 @@ class StudiesController < ApplicationController
   before_action :must_be_logged_in
   before_action :must_be_admin, only: [ :edit, :update, :destroy, :new, :create ]
 
-  def new
-    @study = Study.new
-    questionnaire = @study.questionnaires.build
-    questionnaire.blocks.build  
-  end
-
   def create
     @study = Study.new(study_params)
     if @study.save
-      flash[:notice] = "Study created succesfully."
-      redirect_to studies_path
+      render :json => @study.to_json
     else
-      render :action => 'new'
+      render :json => { :errors => @study.errors.full_messages }
     end
   end
 
@@ -22,16 +15,12 @@ class StudiesController < ApplicationController
     @study = Study.find(params[:id])
   end
 
-  def edit
-    @study = Study.find(params[:id])
-  end
-
   def update
     @study = Study.find(params[:id])
     if @study.update_attributes(study_params)
-      redirect_to @study, notice: "Study updated!"
+      render :json => @study.to_json
     else
-      render 'edit'
+      render :json => { :errors => @study.errors.full_messages }
     end
   end
 

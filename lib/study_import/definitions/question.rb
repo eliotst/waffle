@@ -5,7 +5,6 @@ class StudyImport::Definitions::Question
   attr_accessor(:text)
 
   def answer_type_id
-    puts @answer_type_label
     AnswerType.find_by_label(@answer_type_label).id
   end
 

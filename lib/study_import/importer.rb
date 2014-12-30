@@ -7,6 +7,7 @@ class StudyImport::Importer
   attr_accessor(:block_definitions)
   attr_accessor(:question_definitions)
   attr_accessor(:questionnaire_definitions)
+  attr_accessor(:schedule_template_definition)
 
   def initialize(yaml, http_client)
     @yaml_data = yaml
@@ -27,7 +28,7 @@ class StudyImport::Importer
     read_answer_types_node study_node["answer_types"]
     read_blocks_node study_node["blocks"]
     read_questionnaires_node study_node["questionnaires"]
-    read_schedule_node study_node["schedule"]
+    read_schedule_node study_node["schedule_template"]
   end
 
   def create_data
@@ -35,12 +36,13 @@ class StudyImport::Importer
     @answer_type_definitions.each do |definition|
       definition.create(@client)
     end
-    @questionnaire_definitions.each do |definition|
-      definition.create(@client)
-    end
     @block_definitions.each do |definition|
       definition.create(@client)
     end
+    @questionnaire_definitions.each do |definition|
+      definition.create(@client)
+    end
+    @schedule_template_definition.create(@client)
   end
 
   def read_study_node(study_node)
@@ -77,5 +79,8 @@ class StudyImport::Importer
   end
 
   def read_schedule_node(schedule_node)
+    @schedule_template_definition = StudyImport::Definitions::ScheduleTemplate.new
+    @schedule_template_definition.read(schedule_node)
+    @schedule_template_definition.study_label = @study_definition.label
   end
 end

@@ -2,48 +2,27 @@ class BlocksController < ApplicationController
   before_action :must_be_logged_in
   before_action :must_be_admin
 
-  def new
-  	@block = Block.new
-  end
-
   def create
   	@block = Block.new(block_params)
   	if @block.save
-  	  flash[:notice] = "Block created succesfully."
-  	  redirect_to blocks_path
-  	else
-  	  render :action => 'new'
+      render :json => @block.to_json
+    else
+      render :json => { :errors => @block.errors.full_messages }
   	end
-  end
-
-  def show
-  	@block = Block.find(params[:id])
-  end
-
-  def edit
-  	@block = Block.find(params[:id])
   end
 
   def update
   	@block = Block.find(params[:id])
-    if not current_user.admin?
-      @particiant = current_user.participant
-    end
     if @block.update_attributes(block_params)
-      redirect_to @block, notice: "Block updated!"
+      render :json => @block.to_json
     else
-      render 'edit'
+      render :json => { :errors => @block.errors.full_messages }
     end
-  end
-
-  def index
-  	@blocks = Block.paginate(page: params[:page])
   end
 
   def destroy
     Block.find(params[:id]).destroy
-    flash[:success] = "Block deleted."
-    redirect_to blocks_path
+    render :json => true
   end
 
   private

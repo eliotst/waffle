@@ -19,10 +19,12 @@ Waffle::Application.routes.draw do
   resources :password_resets
   resources :validations
   resources :questionnaires
+  resources :block_questionnaires
   resources :blocks
   resources :answer_types
   resources :studies
   resources :questions
+  resources :schedule_templates
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

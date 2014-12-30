@@ -12,4 +12,11 @@ describe Participant do
     create(:participant, user: test_user)
     build(:participant, user: test_user).should_not be_valid
   end
+  describe "destroy" do
+    it "destroys the participants' answers" do
+      participant = create(:participant_with_answers)
+      participant.destroy
+      Answer.count.should == 0
+    end
+  end
 end

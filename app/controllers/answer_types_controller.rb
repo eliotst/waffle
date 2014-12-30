@@ -2,45 +2,27 @@ class AnswerTypesController < ApplicationController
   before_action :must_be_logged_in
   before_action :must_be_admin
 
-  def new
-    @answer_type = AnswerType.new
-  end
-
   def create
     @answer_type = AnswerType.new(answer_type_params)
     if @answer_type.save
-      flash[:notice] = "Answer type created succesfully."
-      redirect_to answer_types_path
+      render :json => @answer_type.to_json
     else
-      render :action => 'new'
+      render :json => { :errors => @answer_type.errors.full_messages }
     end
-  end
-
-  def show
-    @answer_type = AnswerType.find(params[:id])
-  end
-
-  def edit
-    @answer_type = AnswerType.find(params[:id])
   end
 
   def update
     @answer_type = AnswerType.find(params[:id])
     if @answer_type.update_attributes(answer_type_params)
-      redirect_to @answer_type, notice: "Answer type updated!"
+      render :json => @answer_type.to_json
     else
-      render 'edit'
+      render :json => { :errors => @answer_type.errors.full_messages }
     end
-  end
-
-  def index
-    @answer_types = AnswerType.paginate(page: params[:page])
   end
 
   def destroy
     AnswerType.find(params[:id]).destroy
-    flash[:success] = "Answer type deleted."
-    redirect_to answer_types_path
+    render :json => true
   end
 
   private

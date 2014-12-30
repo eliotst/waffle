@@ -2,35 +2,8 @@ require 'spec_helper'
 
 describe AnswerTypesController, type: :controller do
   before(:each) do
-    @admin_user = create(:user, admin: true)
+    @admin_user = create(:admin)
     @regular_user = create(:user)
-  end
-  describe "showing" do
-    before(:each) do
-      @answer_type = create(:answer_type)
-    end
-    context "as an admin" do
-      before(:each) do
-        log_in(@admin_user)
-      end
-      it_behaves_like "showable controller" do
-        let(:model) { @answer_type }
-        let(:model_variable) { :answer_type }
-      end
-    end
-    context "as a regular user" do
-      before(:each) do
-        log_in(@regular_user)
-      end
-      it_behaves_like "unauthorized access handler" do
-        let!(:action) { get :show, id: @answer_type.id }
-      end
-    end
-    context "as no one" do
-      it_behaves_like "not logged in handler" do
-        let!(:action) { get :show, id: @answer_type.id }
-      end
-    end
   end
 
   describe "creating" do
@@ -76,7 +49,7 @@ describe AnswerTypesController, type: :controller do
             ]
           }
         }
-        it_behaves_like "createable controller" 
+        it_behaves_like "createable ajax controller" 
         it_behaves_like "createable with nested attributes controller" do
           let(:child_class) { Choice }
           let(:number_of_children) { 2 }
@@ -103,7 +76,7 @@ describe AnswerTypesController, type: :controller do
               }
           }
         }
-        it_behaves_like "createable controller"
+        it_behaves_like "createable ajax controller"
         it_behaves_like "createable with nested attributes controller" do
           let(:model_variable) { :answer_type }
           let(:child_class) { AnswerValidation }
@@ -114,11 +87,6 @@ describe AnswerTypesController, type: :controller do
     context "as a regular user" do
       before(:each) do
         log_in(@regular_user)
-      end
-      describe "new" do
-        it_behaves_like "unauthorized access handler" do
-          let!(:action) { get :new }
-        end
       end
       describe "create" do
         it_behaves_like "unauthorized access handler" do
@@ -134,13 +102,6 @@ describe AnswerTypesController, type: :controller do
       end
     end
     context "as no one" do
-      describe "new" do
-        it_behaves_like "not logged in handler" do
-          let!(:action) do
-            get 'new'
-          end
-        end
-      end
       describe "create" do
         it_behaves_like "not logged in handler" do
           let!(:action) do
@@ -209,7 +170,7 @@ describe AnswerTypesController, type: :controller do
             ]
           }
         }
-        it_behaves_like "editable controller"
+        it_behaves_like "editable ajax controller"
       end
       describe "answer validations" do
         before(:each) do
@@ -228,31 +189,24 @@ describe AnswerTypesController, type: :controller do
         let(:invalid_model_parameters) {
           {
             label: "1234",
-            description: "foo",
+            description: nil,
             answer_validation_attributes: 
               {
-                foo: "1"
+                regular_expression: "one"
               }
           }
         }
-        it_behaves_like "editable controller"
+        it_behaves_like "editable ajax controller"
       end
     end
     context "as a regular user" do
       before(:each) do
         log_in(@regular_user)
       end
-      describe "edit" do
-        it_behaves_like "unauthorized access handler" do
-          let!(:action) do
-            get 'edit', id: @answer_type.id
-          end
-        end
-      end
       describe "update" do
         it_behaves_like "unauthorized access handler" do
           let!(:action) do
-            get 'edit', id: @answer_type.id
+            post 'update', id: @answer_type.id, answer_type: valid_model_parameters
           end
         end
         it "doesn't update the answer type" do
@@ -264,13 +218,6 @@ describe AnswerTypesController, type: :controller do
       end
     end
     context "as no one" do
-      describe "edit" do
-        it_behaves_like "not logged in handler" do
-          let!(:action) do
-            get 'edit', id: @answer_type.id
-          end
-        end
-      end
       describe "update" do
         it_behaves_like "not logged in handler" do
           let!(:action) do
@@ -282,36 +229,6 @@ describe AnswerTypesController, type: :controller do
             post 'update', id: @answer_type.id, answer_type: valid_model_parameters
           }.not_to change { @answer_type }
         end
-      end
-    end
-  end
-
-  describe "indexing" do
-    before(:each) do
-      @answer_type_one = create(:answer_type)
-      @answer_type_two = create(:answer_type)
-      @answer_types = [ @answer_type_one, @answer_type_two ]
-    end
-    context "as an admin" do
-      before(:each) do
-        log_in(@admin_user)
-      end
-      it_behaves_like "indexable controller" do
-        let(:model_list) { @answer_types }
-        let(:list_variable) { :answer_types }
-      end
-    end
-    context "as a regular user" do
-      before(:each) do
-        log_in(@regular_user)
-      end
-      it_behaves_like "unauthorized access handler" do
-        let!(:action) { get :index }
-      end
-    end
-    context "as no one" do
-      it_behaves_like "not logged in handler" do
-        let!(:action) { get :index }
       end
     end
   end
@@ -324,7 +241,7 @@ describe AnswerTypesController, type: :controller do
       before(:each) do
         log_in(@admin_user)
       end
-      it_behaves_like "destroyable controller" do
+      it_behaves_like "destroyable ajax controller" do
         let(:model) { @answer_type }
         let(:model_class) { AnswerType }
         let(:resulting_page) { answer_types_path }
