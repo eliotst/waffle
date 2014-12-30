@@ -87,7 +87,7 @@ study:
         blocks:
               - actors
               - movies
-              - genres
+              - genre
     schedule:
         -
             time_offset_hours: 24
