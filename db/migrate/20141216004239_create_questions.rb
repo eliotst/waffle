@@ -3,6 +3,7 @@ class CreateQuestions < ActiveRecord::Migration
     create_table :questions do |t|
       t.string :text
       t.string :label
+      t.integer :number
       t.references :block, index: true
       t.references :answer_type, index: true
 

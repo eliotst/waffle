@@ -3,6 +3,7 @@ class StudyImport::Definitions::Question
   attr_accessor(:block_label)
   attr_accessor(:answer_type_label)
   attr_accessor(:text)
+  attr_accessor(:number)
 
   def answer_type_id
     AnswerType.find_by_label(@answer_type_label).id
@@ -17,7 +18,8 @@ class StudyImport::Definitions::Question
       answer_type_id: self.answer_type_id,
       label: @label,
       block_id: self.block_id,
-      text: @text
+      text: @text,
+      number: @number
     }
   end
 

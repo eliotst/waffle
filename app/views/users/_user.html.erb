@@ -1,4 +1,4 @@
-<% if current_user.admin? %>
+<% if current_user.is_admin? %>
   <%= user.name %> |
   <%= link_to user.email, user %> |
   <%= user.state %> |

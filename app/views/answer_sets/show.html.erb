@@ -1,0 +1,9 @@
+<h1>Answer Set</h1>
+<p>Questionnaire: <%= @answer_set.questionnaire.label %></p>
+<p>Participant: <%= @answer_set.participant.user.email %></p>
+<p>Time Taken: <%= @answer_set.created_at %></p>
+<h2>Answers</h2>
+<% @answer_set.answers.each do |answer| %>
+    <p><%= answer.question.text %></p>
+    <p><%= answer.value %></p>
+<% end %>

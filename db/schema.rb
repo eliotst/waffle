@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141216004910) do
+ActiveRecord::Schema.define(version: 20141228234442) do
+
+  create_table "answer_sets", force: true do |t|
+    t.integer  "questionnaire_id"
+    t.integer  "participant_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "answer_sets", ["participant_id"], name: "index_answer_sets_on_participant_id"
+  add_index "answer_sets", ["questionnaire_id"], name: "index_answer_sets_on_questionnaire_id"
 
   create_table "answer_types", force: true do |t|
     t.string   "label"
@@ -31,12 +41,14 @@ ActiveRecord::Schema.define(version: 20141216004910) do
 
   create_table "answers", force: true do |t|
     t.string   "value"
+    t.integer  "answer_set_id"
     t.integer  "participant_id"
     t.integer  "question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "answers", ["answer_set_id"], name: "index_answers_on_answer_set_id"
   add_index "answers", ["participant_id"], name: "index_answers_on_participant_id"
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
 
@@ -89,6 +101,7 @@ ActiveRecord::Schema.define(version: 20141216004910) do
   create_table "questions", force: true do |t|
     t.string   "text"
     t.string   "label"
+    t.integer  "number"
     t.integer  "block_id"
     t.integer  "answer_type_id"
     t.datetime "created_at"

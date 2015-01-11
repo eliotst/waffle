@@ -7,6 +7,7 @@ describe StudyImport::Definitions::Question do
     @question.text = 'foo?'
     @question.answer_type_label = 'foo'
     @question.block_label = 'foo'
+    @question.number = 1
     @answer_type = create(:answer_type, label: @question.answer_type_label)
     @block = create(:block, label: @question.block_label)
   end
@@ -33,6 +34,7 @@ describe StudyImport::Definitions::Question do
       label: @question.label,
       answer_type_id: @answer_type.id,
       block_id: @block.id,
+      number: @question.number,
       text: @question.text
     })
   end
@@ -45,6 +47,7 @@ describe StudyImport::Definitions::Question do
       @question = StudyImport::Definitions::Question.new
       @question.label = "foo"
       @question.text = "What the foo?"
+      @question.number = 1
       @question.block_label = "foo_block"
       @question.answer_type_label = "foo_answer_type"
       @question.create(self)

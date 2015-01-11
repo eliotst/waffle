@@ -2,8 +2,9 @@ Eliot
 0. clean up code
   a. get tests to run (models: DONE, controllers: DONE, importer: DONE)
   b. validate data better in importer
-    a. add schema validation
-    b. test reading
+    a. provide feedback to the user
+    b. add schema validation
+    c. test reading
   c. cascading deletes (DONE-ISH)
     a. easy ones (DONE)
     b. delete when all associated are deleted
@@ -17,6 +18,8 @@ Eliot
     b. PasswordResets
     c. Sessions
     d. Validations
+  h. develop API
+    a. make user specify json
 1. add default value for answer validation regex (DONE)
 2. schedule entries
   a. model specs (DONE)
@@ -24,13 +27,17 @@ Eliot
   c. controller specs (DONE)
   d. importers (DONE)
   e. importer specs (DONE)
-  f. import reading
+  f. import reading (DONE)
 3. answers
-  a. revisit
-  b. multiselect
-4. screeners (auto after sign up)
-5. add questionnaire answer form page
-6. add study list page
+  a. revisit (DONE)
+  b. multiselect (DONE)
+4. add questionnaire answer form page
+  a. add form page
+  b. add check to make sure not answering twice
+5. sign up
+  a. add studies list page
+  b. add sign up button
+6. screeners (auto after sign up)
 7. add my studies page
 8. scope everything to study
   a. cascade study deletion to everything

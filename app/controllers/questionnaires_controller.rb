@@ -1,6 +1,6 @@
 class QuestionnairesController < ApplicationController
   before_action :must_be_logged_in
-  before_action :must_be_admin
+  before_action :must_be_admin, except: :show
 
   def create
     @questionnaire = Questionnaire.new(questionnaire_params)

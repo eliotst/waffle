@@ -88,6 +88,10 @@ study:
               - actors
               - movies
               - genres
+      -
+          label: movie_favorites_3
+          blocks:
+                - genres
     schedule_template:
         entries:
             -

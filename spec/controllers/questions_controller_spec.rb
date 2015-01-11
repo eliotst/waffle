@@ -14,14 +14,16 @@ describe QuestionsController, type: :controller do
       {
         label: "question_one",
         text: "Question?",
-        answer_type_id: @answer_type.id
+        answer_type_id: @answer_type.id,
+        number: 1
       }
     }
     let(:invalid_model_parameters) {
       {
         label: "question number one",
         text: "Question?",
-        answer_type_id: @answer_type.id
+        answer_type_id: @answer_type.id,
+        number: 1
       }
     }
     context "as an admin" do
@@ -77,14 +79,16 @@ describe QuestionsController, type: :controller do
       {
         label: "question_one",
         text: "Question",
-        answer_type_id: @answer_type.id
+        answer_type_id: @answer_type.id,
+        number: 2
       }
     }
     let(:invalid_model_parameters) {
       {
         label: "question number one",
         text: "Question",
-        answer_type_id: @answer_type.id
+        answer_type_id: @answer_type.id,
+        number: 1
       }
     }
     context "as an admin" do

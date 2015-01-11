@@ -92,13 +92,13 @@ describe QuestionnairesController, type: :controller do
         it_behaves_like "unauthorized access handler" do
           let!(:action) do
             post 'update', id: @questionnaire.id,
-              study: valid_model_parameters
+              questionnaire: valid_model_parameters
           end
         end
-        it "doesn't update the study" do
+        it "doesn't update the questionnaire" do
           expect {
             post 'update', id: @questionnaire.id,
-              study: valid_model_parameters
+              questionnaire: valid_model_parameters
           }.not_to change { @questionnaire }
         end
       end
@@ -110,7 +110,7 @@ describe QuestionnairesController, type: :controller do
             post 'update', id: @questionnaire.id, questionnaire: valid_model_parameters
           end
         end
-        it "doesn't update the study" do
+        it "doesn't update the questionnaire" do
           expect {
             post 'update', id: @questionnaire.id, questionnaire: valid_model_parameters
           }.not_to change { @questionnaire }

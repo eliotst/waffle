@@ -1,6 +1,9 @@
 class Participant < ActiveRecord::Base
   belongs_to :user
-  has_many :answers, dependent: :destroy
+  belongs_to :study
+
+  has_many :answer_sets, dependent: :destroy
+  has_many :answers
 
   validates :user,
     presence: true,

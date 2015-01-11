@@ -27,6 +27,7 @@ class QuestionsController < ApplicationController
 
   private
   def question_params
-    params.require(:question).permit(:label, :text, :answer_type_id, :block_id)
+    params.require(:question).permit(:label, :text, :answer_type_id,
+                                     :block_id, :number)
   end
 end

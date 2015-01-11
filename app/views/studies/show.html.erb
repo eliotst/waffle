@@ -23,7 +23,7 @@
                 <li><b><%=h question.label %></b></li>
                 Question: <%=h question.text %>
                 <ol>
-                  <% if current_user.admin %>
+                  <% if current_user.is_admin %>
                     <% for choice in question.choices %>
                       <li><i><%=h choice.value %></i></li>
                     <% end %>

@@ -1,5 +1,5 @@
 <%= form_for @study do |f| %>
-  <% if current_user.admin %>
+  <% if current_user.is_admin %>
     <p>
       <%= f.label :title %>
       <%= f.text_field :title %>

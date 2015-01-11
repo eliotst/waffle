@@ -23,11 +23,14 @@ class StudyImport::Definitions::Block
   def read(config_node)
     @label = config_node["label"]
     @questions = []
+    number = 1
     config_node["questions"].each do |question_node|
       question_definition = StudyImport::Definitions::Question.new
       question_definition.read(question_node)
       question_definition.block_label = @label
+      question_definition.number = number
       @questions.append(question_definition)
+      number += 1
     end
   end
 end

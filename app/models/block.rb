@@ -1,6 +1,6 @@
 class Block < ActiveRecord::Base
   has_many :block_questionnaires, dependent: :destroy
-  has_many :questions, dependent: :destroy
+  has_many :questions, -> { order("number asc") }, dependent: :destroy
   has_many :questionnaires, through: :block_questionnaires
 
   validates :label,

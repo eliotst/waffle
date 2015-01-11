@@ -1,0 +1,14 @@
+<h1>Questionnaire</h1>
+
+<%= form_for @answer_set do |form| %>
+    <%= form.hidden_field :questionnaire_id, value: @answer_set.questionnaire.id %>
+    <% @answer_set.answers.each.with_index(1) do |answer, number| %>
+        <%= render partial: "question", locals: {
+            answer: answer,
+            form: form,
+            number: number,
+            question: answer.question,
+        } %>
+    <% end %>
+    <%= form.submit "Submit Answers" %>
+<% end %>

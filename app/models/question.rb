@@ -8,6 +8,9 @@ class Question < ActiveRecord::Base
     label: true
   validates :text,
     presence: true
+  validates :number,
+    presence: true,
+    uniqueness: { scope: :block }
   validates :answer_type,
     presence: true
 

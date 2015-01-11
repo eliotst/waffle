@@ -1,5 +1,4 @@
 Waffle::Application.routes.draw do
-  get "schedule_templates/create"
   root to: 'static_pages#home'
 
   match '/sign_up',   to: 'users#new',             via: 'get'
@@ -25,6 +24,7 @@ Waffle::Application.routes.draw do
   resources :studies
   resources :questions
   resources :schedule_templates
+  resources :answer_sets, only: [ :create, :destroy, :index, :new, :show ]
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

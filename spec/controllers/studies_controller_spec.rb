@@ -5,6 +5,7 @@ describe StudiesController, type: :controller do
     @admin_user = create(:admin)
     @regular_user = create(:user)
   end
+
   describe "showing" do
     before(:each) do
       @study = create(:study)

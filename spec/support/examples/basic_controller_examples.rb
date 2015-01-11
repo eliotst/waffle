@@ -49,15 +49,27 @@ end
 shared_examples "createable controller" do
   describe "new" do
     it "returns http success" do
-      get 'new'
+      if defined?(new_params)
+        get 'new', new_params
+      else
+        get 'new'
+      end
       response.should be_success
     end
     it "assigns model" do
-      get 'new'
+      if defined?(new_params)
+        get 'new', new_params
+      else
+        get 'new'
+      end
       assigns(model_variable).id.should == nil
     end
     it "renders the new view" do
-      get :new
+      if defined?(new_params)
+        get 'new', new_params
+      else
+        get 'new'
+      end
       response.should render_template :new
     end
   end

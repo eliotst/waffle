@@ -51,6 +51,7 @@ describe AnswerTypesController, type: :controller do
         }
         it_behaves_like "createable ajax controller" 
         it_behaves_like "createable with nested attributes controller" do
+          let(:model_variable) { :answer_type }
           let(:child_class) { Choice }
           let(:number_of_children) { 2 }
         end
