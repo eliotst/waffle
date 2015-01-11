@@ -24,3 +24,7 @@ doc/
 .DS_Store
 .idea
 .secret
+
+app/views/layouts/_header.html.erb
+
+config/study_data/movie_example.yaml
