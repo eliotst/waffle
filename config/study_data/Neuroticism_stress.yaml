@@ -1,4 +1,4 @@
-study: Neuroticism and Coping
+study:
     title: Personality and Coping
     label: Neuroticism
     answer_types:
@@ -168,166 +168,166 @@ study: Neuroticism and Coping
               questions:
                   -
                       label: initial_relaxed
-                      text: How accurate is this statement: "I am relaxed most of the time."?
+                      text: How accurate is this statement, "I am relaxed most of the time."?
                       answer_type_label: accuracy
                   -
                       label: initial_self_like
-                      text: How accurate is this statement: "I dislike myself."?
+                      text: How accurate is this statement, "I dislike myself."?
                       answer_type_label: accuracy
                   -
                       label: initial_worry
-                      text: How accurate is this statement: "I worry about things."?
+                      text: How accurate is this statement, "I worry about things."?
                       answer_type_label: accuracy
                   -
                       label: initial_panic
-                      text: How accurate is this statement: "I panic easily."?
+                      text: How accurate is this statement, "I panic easily."?
                       answer_type_label: accuracy
                   -
                       label: initial_self_pleased
-                      text: How accurate is this statement: "I am very pleased with myself."?
+                      text: How accurate is this statement, "I am very pleased with myself."?
                       answer_type_label: accuracy
                   -
                       label: initial_not_irritated
-                      text: How accurate is this statement: "I rarely get irritated."?
+                      text: How accurate is this statement, "I rarely get irritated."?
                       answer_type_label: accuracy
                   -
                       label: initial_stressed
-                      text: How accurate is this statement: "I am stressed out easily."?
+                      text: How accurate is this statement, "I am stressed out easily."?
                       answer_type_label: accuracy
                   -
                       label: initial_sad
-                      text: How accurate is this statement: "I am often down in the dumps."?
+                      text: How accurate is this statement, "I am often down in the dumps."?
                       answer_type_label: accuracy
                   -
                       label: initial_not_mad
-                      text: How accurate is this statement: "I seldom get mad."?
+                      text: How accurate is this statement, "I seldom get mad."?
                       answer_type_label: accuracy
                   -
                       label: initial_fear_worst
-                      text: How accurate is this statement: "I fear for the worst."?
+                      text: How accurate is this statement, "I fear for the worst."?
                       answer_type_label: accuracy
                   -
                       label: initial_not_frustrated
-                      text: How accurate is this statement: "I am not easily frustrated."?
+                      text: How accurate is this statement, "I am not easily frustrated."?
                       answer_type_label: accuracy
                   -
                       label: initial_not_bothered
-                      text: How accurate is this statement: "I not easily bothered by things."?
+                      text: How accurate is this statement, "I not easily bothered by things."?
                       answer_type_label: accuracy
                   -
                       label: initial_comfortable_self
-                      text: How accurate is this statement: "I feel comfortable with myself."?
+                      text: How accurate is this statement, "I feel comfortable with myself."?
                       answer_type_label: accuracy
                   -
                       label: initial_blue
-                      text: How accurate is this statement: "I often feel blue."?
+                      text: How accurate is this statement, "I often feel blue."?
                       answer_type_label: accuracy
                   -
                       label: initial_mood_swing
-                      text: How accurate is this statement: "I have frequent mood swings."?
+                      text: How accurate is this statement, "I have frequent mood swings."?
                       answer_type_label: accuracy
                   -
                       label: initial_not_blue
-                      text: How accurate is this statement: "I seldom feel blue."?
+                      text: How accurate is this statement, "I seldom feel blue."?
                       answer_type_label: accuracy
                   -
                       label: initial_calm_pressure
-                      text: How accurate is this statement: "I remain calm under pressure."?
+                      text: How accurate is this statement, "I remain calm under pressure."?
                       answer_type_label: accuracy
                   -
                       label: initial_threatened
-                      text: How accurate is this statement: "I feel threatened easily."?
+                      text: How accurate is this statement, "I feel threatened easily."?
                       answer_type_label: accuracy
                   -
                       label: initial_composed
-                      text: How accurate is this statement: "I rarely lose my composure."?
+                      text: How accurate is this statement, "I rarely lose my composure."?
                       answer_type_label: accuracy
                   -
                       label: initial_doubts
-                      text: How accurate is this statement: "I am filled with doubts about things."?
+                      text: How accurate is this statement, "I am filled with doubts about things."?
                       answer_type_label: accuracy
         -
               label: initial_openess
               questions:
                   -
                       label: initial_not_poetry
-                      text: How accurate is this statement: "I do not like poetry."?
+                      text: How accurate is this statement, "I do not like poetry."?
                       answer_type_label: accuracy
                   -
                       label: initial_imagination
-                      text: How accurate is this statement: "I have a vivid imagination."?
+                      text: How accurate is this statement, "I have a vivid imagination."?
                       answer_type_label: accuracy
                   -
                       label: initial_vocab
-                      text: How accurate is this statement: "I have a rich vocabulary."?
+                      text: How accurate is this statement, "I have a rich vocabulary."?
                       answer_type_label: accuracy
                   -
                       label: initial_new_ideas
-                      text: How accurate is this statement: "I enjoy hearing new ideas."?
+                      text: How accurate is this statement, "I enjoy hearing new ideas."?
                       answer_type_label: accuracy
                   -
                       label: initial_conservative
-                      text: How accurate is this statement: "I tend to vote for conservative political candidates."?
+                      text: How accurate is this statement, "I tend to vote for conservative political candidates."?
                       answer_type_label: accuracy  
                   -
                       label: initial_not_philosophical
-                      text: How accurate is this statement: "I avoid philosophical discussions."?
+                      text: How accurate is this statement, "I avoid philosophical discussions."?
                       answer_type_label: accuracy  
                   -
                       label: initial_fantasy
-                      text: How accurate is this statement: "I tend to day dream."?
+                      text: How accurate is this statement, "I tend to day dream."?
                       answer_type_label: accuracy   
                   -
                       label: initial_liberal
-                      text: How accurate is this statement: "I tend to vote for liberal political candidates."?
+                      text: How accurate is this statement, "I tend to vote for liberal political candidates."?
                       answer_type_label: accuracy 
                   -
                       label: initial_not_deep
-                      text: How accurate is this statement: "I rarely look for a deeper meaning in things."?
+                      text: How accurate is this statement, "I rarely look for a deeper meaning in things."?
                       answer_type_label: accuracy           
                   -
                       label: initial_new_ideas2
-                      text: How accurate is this statement: "I get excited by new ideas."?
+                      text: How accurate is this statement, "I get excited by new ideas."?
                       answer_type_label: accuracy
                   -
                       label: initial_not_support_artists
-                      text: How accurate is this statement: "I believe that too much tax money goes to support artists."?
+                      text: How accurate is this statement, "I believe that too much tax money goes to support artists."?
                       answer_type_label: accuracy
                   -
                       label: initial_not_museum
-                      text: How accurate is this statement: "I do not enjoy going to art museums."?
+                      text: How accurate is this statement, "I do not enjoy going to art museums."?
                       answer_type_label: accuracy
                   -
                       label: initial_not_art
-                      text: How accurate is this statement: "I do not like art."?
+                      text: How accurate is this statement, "I do not like art."?
                       answer_type_label: accuracy
                   -
                       label: initial_art
-                      text: How accurate is this statement: "I believe in the importance of art."?
+                      text: How accurate is this statement, "I believe in the importance of art."?
                       answer_type_label: accuracy
                   -
                       label: initial_not_abstract
-                      text: How accurate is this statement: "I am not interested in abstract ideas."?
+                      text: How accurate is this statement, "I am not interested in abstract ideas."?
                       answer_type_label: accuracy
                   -
                       label: initial_higher_conversation
-                      text: How accurate is this statement: "I carry the conversation to a higher level."?
+                      text: How accurate is this statement, "I carry the conversation to a higher level."?
                       answer_type_label: accuracy
                   -
                       label: initial_not_theory
-                      text: How accurate is this statement: "I am not interested in theoretical discussions."?
+                      text: How accurate is this statement, "I am not interested in theoretical discussions."?
                       answer_type_label: accuracy
                   -
                       label: initial_eloquent
-                      text: How accurate is this statement: "I can say things beautifully."?
+                      text: How accurate is this statement, "I can say things beautifully."?
                       answer_type_label: accuracy
                   -
                       label: initial_not_abstract
-                      text: How accurate is this statement: "I have difficulty understanding abstract ideas."?
+                      text: How accurate is this statement, "I have difficulty understanding abstract ideas."?
                       answer_type_label: accuracy
                   -
                       label: initial_thinking
-                      text: How accurate is this statement: "I enjoy thinking about things."?
+                      text: How accurate is this statement, "I enjoy thinking about things."?
                       answer_type_label: accuracy
     questionnaires:
       -
@@ -344,31 +344,32 @@ study: Neuroticism and Coping
               - initial_openess
               - stress
               - coping_strategies
-    schedule:
-        -
-            time_offset_hours: 0
-            questionnaire: initial
-        -
-            time_offset_hours: 2
-            questionnaire: sarcasm_daily
-        -
-            time_offset_hours: 24
-            questionnaire: sarcasm_daily
-        -
-            time_offset_hours: 48
-            questionnaire: sarcasm_daily
-        -
-            time_offset_hours: 72
-            questionnaire: sarcasm_daily
-        -
-            time_offset_hours: 96
-            questionnaire: sarcasm_daily
-        -
-            time_offset_hours: 120
-            questionnaire: sarcasm_daily
-        -
-            time_offset_hours: 144
-            questionnaire: sarcasm_daily
-        -
-            time_offset_hours: 168
-            questionnaire: sarcasm_daily
+    schedule_template:
+        entries:
+            -
+                time_offset_hours: 0
+                questionnaire_label: initial
+            -
+                time_offset_hours: 2
+                questionnaire_label: sarcasm_daily
+            -
+                time_offset_hours: 24
+                questionnaire_label: sarcasm_daily
+            -
+                time_offset_hours: 48
+                questionnaire_label: sarcasm_daily
+            -
+                time_offset_hours: 72
+                questionnaire_label: sarcasm_daily
+            -
+                time_offset_hours: 96
+                questionnaire_label: sarcasm_daily
+            -
+                time_offset_hours: 120
+                questionnaire_label: sarcasm_daily
+            -
+                time_offset_hours: 144
+                questionnaire_label: sarcasm_daily
+            -
+                time_offset_hours: 168
+                questionnaire_label: sarcasm_daily
