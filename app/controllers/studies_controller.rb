@@ -13,6 +13,7 @@ class StudiesController < ApplicationController
 
   def show
     @study = Study.find(params[:id])
+    @current_participant = current_user.participants.where(study_id: params[:id]).take
   end
 
   def update

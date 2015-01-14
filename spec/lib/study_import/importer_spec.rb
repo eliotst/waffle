@@ -22,7 +22,7 @@ describe StudyImport::Importer, type: :request do
     end
     describe "for the questionnaires" do
       it "creates the correct number" do
-        expect(Questionnaire.count).to eq(2)
+        expect(Questionnaire.count).to eq(3)
       end
       it "creates the favorites questionnaire" do
         expect(Questionnaire.find_by_label("movie_favorites")).to_not be_nil

@@ -21,11 +21,17 @@ describe StudyImport::Definitions::AnswerType do
     answer_type.choices.append(1)
     expect(answer_type.choices).to eq([1])
   end
+  it "has an allow multiple attribute" do
+    answer_type = StudyImport::Definitions::AnswerType.new
+    answer_type.allow_multiple = true
+    expect(answer_type.allow_multiple).to eq(true)
+  end
   describe "to_dictionary" do
     before(:each) do
       @answer_type = StudyImport::Definitions::AnswerType.new
       @answer_type.label = 'foo'
       @answer_type.description = 'foo'
+      @answer_type.allow_multiple = true
     end
     context "with choices" do
       it "can capture the definition in a dictionary" do
@@ -37,6 +43,7 @@ describe StudyImport::Definitions::AnswerType do
         expect(@answer_type.to_dictionary).to eq({
           label: 'foo',
           description: 'foo',
+          allow_multiple: true,
           choices_attributes: {
             0 => {
               value: 'bar',

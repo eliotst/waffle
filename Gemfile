@@ -16,8 +16,9 @@ group :test do
   gem 'capybara', '2.1.0'
 end
 
-gem 'bootstrap-sass', '2.3.2.0'
-gem 'sprockets', '2.11.0'
+gem 'bootstrap-sass', '~> 3.3.1'
+gem 'sprockets-rails'
+gem 'autoprefixer-rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'

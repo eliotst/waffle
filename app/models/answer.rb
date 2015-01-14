@@ -25,7 +25,6 @@ class Answer < ActiveRecord::Base
   def squash_values
     if !self.values.nil?
       self.value = self.values.join(",")
-      puts "HERE: " + self.value
     end
   end
 
@@ -40,7 +39,7 @@ class Answer < ActiveRecord::Base
   end
 
   def validate_value
-    if self.value.is_nil? or self.value.is_blank
+    if self.value.nil? or self.value.empty?
       errors.add(:value, "Cannot be blank")
     elsif question and !question.check_answer(self.value)
       errors.add(:value, "Invalid answer: " + self.value)

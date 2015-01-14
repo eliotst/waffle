@@ -1,49 +1,16 @@
-<head>
-  <title>Study</title>
-</head>
-
-<h1>Study Page</h1>
-
-<%= render 'shared/logos' %>
-<br />
-<strong><br />Format:</strong> Study Title with content and actions listed below<br/><br/> 
-<div class="studies">
-  Study: 
-  <strong>
-    <%= @study.title %>
-  </strong><br />
-  <ol>
-  	<% for questionnaire in @study.questionnaires %>
-      <li><i><%=h questionnaire.label %></i></li>
-      <ol>
-        <% for block in questionnaire.blocks %>
-          <li><b><%=h block.label %></b></li>
-            <ol>
-              <% for question in block.questions %>
-                <li><b><%=h question.label %></b></li>
-                Question: <%=h question.text %>
-                <ol>
-                  <% if current_user.is_admin %>
-                    <% for choice in question.choices %>
-                      <li><i><%=h choice.value %></i></li>
-                    <% end %>
-                  <% elsif current_user %>
-                    <% for answer in question.answers %>
-                      <li><i><%=h answer.value %></i></li>
-                    <% end %>
-                  <% end %>
-                </ol>
-              <% end %>
-            </ol>
-        <% end %> 
-      </ol>
-    <% end %>
-  </ol>
-  	<%= link_to 'Edit', edit_study_path(@study) %> |
-  	<%= link_to 'Delete', @study, method: :delete, data: { confirm: 'Are you sure?'} %>
-    <br/> 
+<div class="panel-header waffle-header">
+    <h1>Study Details</h1>
 </div>
 
-<p>
-  <%= link_to "View all Studies", studies_path %>
-</p>
+<div class="panel-body">
+    <p>Study: <strong><%= @study.title %></strong></p>
+    <% if @current_participant.nil? %>
+        <%= link_to "Sign Up", controller: :participant, action: :sign_up,
+            study_id: @study.id %>
+    <% else %>
+        <p>Signed Up: <%= @current_participant.created_at %></p>
+        <% if !@current_participant.next_questionnaire.nil? %>
+            <p>Next Questionnaire</p>
+        <% end %>
+    <% end %>
+</div>

@@ -3,6 +3,7 @@ class CreateAnswerTypes < ActiveRecord::Migration
     create_table :answer_types do |t|
       t.string :label
       t.string :description
+      t.boolean :allow_multiple, default: false
 
       t.timestamps
     end

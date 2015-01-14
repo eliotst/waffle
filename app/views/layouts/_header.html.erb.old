@@ -1,0 +1,48 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div id="container">
+      <%= link_to "Waffle", root_path, id: "logo" %>
+      <ul class="fandmLogo center">
+        <%= link_to image_tag("emolablogo1.jpg", size: "30x28", alt: "EmoLab"), '#' %>
+      </ul>
+      <nav>
+        <ul class="user_nav pull-right">
+          <%= link_to "Help", help_path %> '    '
+          <% if logged_in? %>
+            <%= link_to "Home", current_user %> '    '
+          <% else %>
+            <%= link_to "Home", root_path %> '    '
+          <% end %>
+
+          <% if logged_in? %>
+            <div id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <%= current_user.email %> <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "User Settings", edit_user_path(current_user) %></li>
+                <li><%= link_to "List of Current Studies", studies_path %></li>
+                <li class="divider"></li>
+                <li><%= link_to "Delete Account", current_user, data: {
+                        :confirm => "Are you sure?"
+                    }, :method => :delete %>
+                </li>
+                <% if current_user.is_admin? %>
+                  <li class="divider"></li>
+                  <li><%= link_to "List of Current Users", users_path %></li>
+                  <li><%= link_to "New Questionnaire", new_questionnaire_path %></li>
+                  <li><%= link_to "New Study", new_study_path %></li>
+                <% end %>
+                <li class="divider"></li>
+                <li><%= link_to "Log out", log_out_path, method: "delete" %></li>
+              </ul>
+            </div>
+          <% else %>
+            <%= link_to "Sign up", sign_up_path %> or
+            <%= link_to "Log in", log_in_path %>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

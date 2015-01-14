@@ -1,7 +1,12 @@
 <% if answer_type.answer_validation.nil? %>
+  <% if answer_type.allow_multiple %>
     <%= form.select(:values, options_for_select(
                     answer_type.choices.collect {|choice| [choice.text, choice.text]}),
     { }, { multiple: true }) %>
+  <% else %>
+    <%= form.select(:value, options_for_select(
+      answer_type.choices.collect {|choice| [choice.text, choice.text]})) %>
+  <% end %>
 <% else %>
     <%= form.text_field :value %>
 <% end %>

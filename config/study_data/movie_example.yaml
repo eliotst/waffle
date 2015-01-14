@@ -25,15 +25,15 @@ study:
         -
             label: persons_name
             description: People's Names
-            regular_expression: /\w+\s\w+/
+            regular_expression: \w+\s\w+
         -
             label: movie_title
             description: Movie Titles
-            regular_expression: /.+/
+            regular_expression: .+
         -
             label: year
             description: Year
-            regular_expression: /\d{4}/
+            regular_expression: \d{4}
     blocks:
         -
               label: actors

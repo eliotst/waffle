@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_many :participants
+
+  has_many :studies, through: :participants
   attr_accessor :password
   before_save :encrypt_password
   before_save { self.email = email.downcase }

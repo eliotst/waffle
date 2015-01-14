@@ -2,14 +2,14 @@ Eliot
 0. clean up code
   a. get tests to run (models: DONE, controllers: DONE, importer: DONE)
   b. validate data better in importer
-    a. provide feedback to the user
-    b. add schema validation
-    c. test reading
+    a. provide feedback to the user (2/28)
+    b. add schema validation (2/28)
+    c. test reading (2/28)
   c. cascading deletes (DONE-ISH)
     a. easy ones (DONE)
-    b. delete when all associated are deleted
-    c. delete when study is deleted
-    d. soft deletes
+    b. delete when all associated are deleted (4/1)
+    c. delete when study is deleted (4/1)
+    d. soft deletes (4/1)
   d. clean up migrations (DONE)
   e. add initial admin user on migration (DONE)
   f. clean up dead actions in controllers (DONE)
@@ -31,16 +31,27 @@ Eliot
 3. answers
   a. revisit (DONE)
   b. multiselect (DONE)
+  c. turn on/off multiselect (DONE)
 4. add questionnaire answer form page
-  a. add form page
-  b. add check to make sure not answering twice
+  a. add form page (DONE)
+  b. add check to make sure not answering twice (DONE)
 5. sign up
-  a. add studies list page
-  b. add sign up button
-6. screeners (auto after sign up)
-7. add my studies page
-8. scope everything to study
-  a. cascade study deletion to everything
+  a. add studies list page (initial)
+  b. add sign up button (initial)
+    i. create schedule on sign up
+  c. add show participating studies page (initial)
+  d. add show study participation information page (1/18)
+    a. list past questionnaires
+    b. list current questionnaires
+6. scope everything to study (later)
+  a. cascade study deletion to everything (later)
+7. non-integer based id scheme
+8. styling (1/18)
+9. studies
+  a. start/stop date
+  b. description
+10. admin
+  a. list participants
 
 Steele
 0. clean up layout

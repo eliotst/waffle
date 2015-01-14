@@ -1,14 +1,12 @@
-<head>
-  <title>User Home Page</title>
-</head>
+<div class="panel-header waffle-header">
+    <h1>User Home Page</h1>
+</div>
 
-<h1>User Home Page</h1>
-
-<%= render 'shared/logos' %>
-
-<div class="center">
-    <section>
-        You are currently involved in: <br />
-        The Affective Forecasting of Future Life Events Study
-    </section>
+<div class="panel-body">
+    You are participating in the following studies:
+    <ul class="list-unstyled">
+        <% current_user.studies.each do |study| %>
+            <li><%= link_to study.title, study %></li>
+        <% end %>
+    </ul>
 </div>

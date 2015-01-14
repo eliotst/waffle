@@ -32,10 +32,10 @@ class AnswerType < ActiveRecord::Base
   end
 
   def check_answer(answer)
-    if answer_validation
-      return /#{answer_validation.regular_expression}/.match(answer)
+    if !self.answer_validation.nil?
+      return (/#{self.answer_validation.regular_expression}/ =~ answer) == 0
     else
-      return choices.any? { |choice| choice.text == answer }
+      return self.choices.any? { |choice| choice.text == answer }
     end
   end
 end

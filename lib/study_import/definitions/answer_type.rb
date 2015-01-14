@@ -1,6 +1,7 @@
 class StudyImport::Definitions::AnswerType
   attr_accessor(:label)
   attr_accessor(:description)
+  attr_accessor(:allow_multiple)
   attr_accessor(:regular_expression)
   attr_accessor(:choices)
 
@@ -15,6 +16,7 @@ class StudyImport::Definitions::AnswerType
     }
     if !@choices.empty?
       dictionary[:choices_attributes] = {}
+      dictionary[:allow_multiple] = @allow_multiple
       index = 0
       @choices.each do |choice|
         dictionary[:choices_attributes][index] = choice.to_dictionary
@@ -36,6 +38,10 @@ class StudyImport::Definitions::AnswerType
   def read(config_node)
     @label = config_node["label"]
     @description = config_node["description"]
+    @allow_multiple = false
+    if config_node.has_key?("allow_multiple")
+      @allow_multiple = config_node["allow_multiple"]
+    end
     if config_node.has_key?("choices")
       choices_node = config_node["choices"]
       choices_node.each do |choice_node|

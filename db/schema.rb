@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20141228234442) do
   create_table "answer_types", force: true do |t|
     t.string   "label"
     t.string   "description"
+    t.boolean  "allow_multiple", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,23 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.mainbody {
+  min-height: 400px;
+};
+
+.footer-line {
+    bottom-margin: 1em;
+};
+
+.by-line {
+    font-size: .8em;
+};
+
+.footer-menu ul li {
+    display: inline-block;
+    margin: 0 auto;
+};
+
+.waffle-header {
+  margin-bottom: 40px;
+};

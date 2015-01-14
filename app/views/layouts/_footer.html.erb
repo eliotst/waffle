@@ -1,11 +1,17 @@
-<footer class="footer">
-  <small>
-    by Steele Schauer, Eliot Stone, and Allison Troy
-  </small>
-  <nav>
-    <ul>
-      <%= link_to "About", about_path %> or
-      <%= link_to "Contact", contact_path %>
-    </ul>
-  </nav>
+<footer class="footer text-center">
+    <p class="by-line">
+        by Steele Schauer, Eliot Stone, and Allison Troy
+    </p>
+    <nav class="navbar">
+        <div class="container center footer-menu">
+            <ul class="nav">
+              <li>
+                  <%= link_to "About", about_path %>
+              </li>
+              <li>
+                  <%= link_to "Contact", contact_path %>
+              </li>
+            </ul>
+        </div>
+    </nav>
 </footer>

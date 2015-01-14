@@ -6,50 +6,80 @@
 
 <p><strong>For security reasons, please input your password and password confirmation. You may change your password here or keep it the same.</strong></p>
 
-<div class="row">
-	<div class="span6 offset3">
-		<%= form_for(@user) do |f| %>
-			<%= render 'shared/error_messages' %>
+    <%= form_for(@user, html: { class: "form-horizontal" }) do |f| %>
+        <%= render 'shared/error_messages' %>
 
-			<%= f.label :email %>
-			<%= f.text_field :email %>
+        <div class="form-group">
+            <%= f.label :email, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+                <%= f.text_field :email, class: "form-control" %>
+            </div>
+        </div>
 
-			<%= f.label :password %>
-			<%= f.password_field :password %>
+        <div class="form-group">
+            <%= f.label :password, class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+                <%= f.password_field :password, class: "form-control" %>
+            </div>
+        </div>
 
-			<%= f.label :password_confirmation, "Confirm Password" %>
-			<%= f.password_field :password_confirmation %>
+        <div class="form-group">
+            <%= f.label :password_confirmation, "Confirm Password", class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+                <%= f.password_field :password_confirmation, class: "form-control" %>
+            </div>
+        </div>
 
-			<hr>
+        <hr>
 
-			<%= f.label :name, "Name" %>
-    	<%= f.text_field :name %>
+        <div class="form-group">
+            <%= f.label :name, "Name", class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+                <%= f.text_field :name, class: "form-control" %>
+            </div>
+        </div>
 
-			<%= f.label :address_line_one, "Address Line One" %>
-    	<%= f.text_field :address_line_one %>
+        <div class="form-group">
+            <%= f.label :address_line_one, "Address Line One", class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+                <%= f.text_field :address_line_one, class: "form-control" %>
+            </div>
+        </div>
 
-			<%= f.label :address_line_two, "Address Line Two" %>
-			<%= f.text_field :address_line_two %>
+        <div class="form-group">
+            <%= f.label :address_line_two, "Address Line Two", class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+                <%= f.text_field :address_line_two, class: "form-control" %>
+            </div>
+        </div>
 
-			<%= f.label :city, "City" %>
-			<%= f.text_field :city %>
+        <div class="form-group">
+            <%= f.label :city, "City", class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+                <%= f.text_field :city, class: "form-control" %>
+            </div>
+        </div>
 
-			<%= f.label :state, "State" %>
-			<%= f.select(:state, options_for_select([['AL'], ['AK'],
-			  ['AZ'], ['AR'], ['CA'], ['CO'], ['CT'], ['DE'], ['FL'],
-			  ['GA'], ['HI'], ['ID'], ['IL'], ['IN'], ['IA'], ['KS'],
-			  ['KY'], ['LA'], ['ME'], ['MD'], ['MA'], ['MI'], ['MN'],
-			  ['MS'], ['MO'], ['MT'], ['NE'], ['NV'], ['NH'], ['NJ'],
-			  ['NM'], ['NY'], ['NC'], ['ND'], ['OH'], ['OK'], ['OR'],
-			  ['PA'], ['RI'], ['SC'], ['SD'], ['TN'], ['TX'], ['UT'],
-			  ['VT'], ['VA'], ['WA'], ['WV'], ['WI'], ['WY']])) %>
+        <div class="form-group">
+            <%= f.label :state, "State", class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+                <%= f.select(:state, options_for_select([['AL'], ['AK'],
+                  ['AZ'], ['AR'], ['CA'], ['CO'], ['CT'], ['DE'], ['FL'],
+                  ['GA'], ['HI'], ['ID'], ['IL'], ['IN'], ['IA'], ['KS'],
+                  ['KY'], ['LA'], ['ME'], ['MD'], ['MA'], ['MI'], ['MN'],
+                  ['MS'], ['MO'], ['MT'], ['NE'], ['NV'], ['NH'], ['NJ'],
+                  ['NM'], ['NY'], ['NC'], ['ND'], ['OH'], ['OK'], ['OR'],
+                  ['PA'], ['RI'], ['SC'], ['SD'], ['TN'], ['TX'], ['UT'],
+                  ['VT'], ['VA'], ['WA'], ['WV'], ['WI'], ['WY']]), {}, { class: "form-control" }) %>
+            </div>
+        </div>
 
-			<%= f.label :zip_code, "Zip Code" %>
-			<%= f.text_field :zip_code %>
+        <div class="form-group">
+            <%= f.label :zip_code, "Zip Code", class: "col-sm-2 control-label" %>
+            <div class="col-sm-10">
+                <%= f.text_field :zip_code, class: "form-control" %>
+            </div>
+        </div>
 
-			<%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
-		<% end %>
-	</div>
-</div>
-
-<%= render 'shared/logos' %>
+        <%= f.submit "Save Changes", class: "btn btn-large btn-primary" %>
+    <% end %>
