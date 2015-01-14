@@ -12,5 +12,11 @@
         <% if !@current_participant.next_questionnaire.nil? %>
             <p>Next Questionnaire</p>
         <% end %>
+        <% @study.questionnaires.each do |questionnaire| %>
+            <p><%= link_to "Questionnaire", controller: :answer_sets,
+                action: :new,
+                id: nil,
+                                            questionnaire_id: questionnaire.id %>
+        <% end %>
     <% end %>
 </div>
