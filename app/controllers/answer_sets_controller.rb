@@ -20,7 +20,7 @@ class AnswerSetsController < ApplicationController
     @questionnaire = Questionnaire.find(params[:questionnaire_id])
     participant = get_participant(current_user.id,
                                   @questionnaire.study.id)
-    if AnswerSet.find_by_participant_id(participant.id).nil?
+    if !participant.nil?
       @answer_set = @questionnaire.create_answer_set
     else
       redirect_to root_url
