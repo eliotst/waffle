@@ -9,7 +9,7 @@
             study_id: @study.id %>
     <% else %>
         <p>Signed Up: <%= @current_participant.created_at %></p>
-        <% if !@current_participant.next_questionnaire.nil? %>
+        <% if !@current_participant.next_schedule_entry.nil? %>
             <p>Next Questionnaire</p>
         <% end %>
         <% @study.questionnaires.each do |questionnaire| %>

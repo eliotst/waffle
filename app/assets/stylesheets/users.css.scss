@@ -1,3 +1,44 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.study-panel {
+    border: .1em solid #c7c7c7;
+    background-color: #f7f7f7; 
+    margin: .1em;
+    padding: .1em;
+}
+
+.study-banner-panel {
+    border: .1em solid #d7d7d7;
+    background-color: #e7e7e7; 
+    margin: .1em;
+}
+
+.study-participation-details-container {
+    border: .1em solid #d7d7d7;
+    margin: .3em;
+    padding: .1em;
+    background-color: #e7e7e7;
+}
+
+.study-details-panel {
+    margin: 0em;
+    padding: .2em;
+}
+
+.study-participation-sign-up-date {
+    float: left;
+}
+
+.study-participation-questionnaire-count-panel {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    text-align: center;
+}
+
+.study-participation-questionnaire-time-frame-panel {
+  float: right;
+}

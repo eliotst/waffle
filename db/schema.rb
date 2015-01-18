@@ -16,12 +16,14 @@ ActiveRecord::Schema.define(version: 20141228234442) do
   create_table "answer_sets", force: true do |t|
     t.integer  "questionnaire_id"
     t.integer  "participant_id"
+    t.integer  "schedule_entry_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "answer_sets", ["participant_id"], name: "index_answer_sets_on_participant_id"
   add_index "answer_sets", ["questionnaire_id"], name: "index_answer_sets_on_questionnaire_id"
+  add_index "answer_sets", ["schedule_entry_id"], name: "index_answer_sets_on_schedule_entry_id"
 
   create_table "answer_types", force: true do |t|
     t.string   "label"

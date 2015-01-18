@@ -17,11 +17,17 @@ class AnswerSetsController < ApplicationController
   end
 
   def new
-    @questionnaire = Questionnaire.find(params[:questionnaire_id])
-    participant = get_participant(current_user.id,
-                                  @questionnaire.study.id)
-    if !participant.nil?
-      @answer_set = @questionnaire.create_answer_set
+    @schedule_entry = ScheduleEntry.find(params[:schedule_entry_id])
+    if !@schedule_entry.taken
+      @questionnaire = @schedule_entry.questionnaire
+      participant = get_participant(current_user.id,
+                                    @questionnaire.study.id)
+      if !participant.nil?
+        @answer_set = @questionnaire.create_answer_set
+        @answer_set.schedule_entry = @schedule_entry
+      else
+        redirect_to root_url
+      end
     else
       redirect_to root_url
     end
@@ -55,7 +61,8 @@ class AnswerSetsController < ApplicationController
 
   private
   def answer_set_params
-    params.require(:answer_set).permit(:questionnaire_id, answers_attributes:
+    params.require(:answer_set).permit(:questionnaire_id, :schedule_entry_id,
+                                       answers_attributes:
                                        [ { values: [] }, :value, :question_id ])
   end
 
