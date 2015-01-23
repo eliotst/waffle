@@ -3,10 +3,16 @@
 </div>
 
 <div class="panel-body">
-    You are participating in the following studies:
-    <ul class="list-unstyled">
-        <% current_user.studies.each do |study| %>
-            <li><%= link_to study.title, study %></li>
+    <% if @user.participants.length > 0 %>
+        <%= render partial: 'pending_questionnaires',
+                    locals: { user: @user } %>
+
+        You are participating in the following studies:
+        <% current_user.participants.each do |participant| %>
+            <%= render partial: 'study_participation',
+                    locals: { participant: participant } %>
         <% end %>
-    </ul>
+    <% else %>
+        You are not participating in any studies.
+    <% end %>
 </div>

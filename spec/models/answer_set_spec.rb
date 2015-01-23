@@ -10,6 +10,9 @@ describe AnswerSet do
   it "is invalid without a participant" do
     build(:answer_set, participant: nil).should_not be_valid
   end
+  it "is invalid without a schedule_entry" do
+    build(:answer_set, schedule_entry: nil).should_not be_valid
+  end
 
   describe "destroy" do
     it "destroys the answers" do

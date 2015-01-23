@@ -7,6 +7,7 @@ class ScheduleTemplatesController < ApplicationController
     if @schedule_template.save
       render :json => @schedule_template.to_json
     else
+      puts @schedule_template.errors.full_messages
       render :json => { :errors => @schedule_template.errors.full_messages }
     end
   end

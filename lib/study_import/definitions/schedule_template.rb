@@ -27,7 +27,8 @@ class StudyImport::Definitions::ScheduleTemplate
 
   def create(client)
     url = Rails.application.routes.url_helpers.schedule_templates_path
-    client.post url, schedule_template: to_dictionary
+    result = client.post url, schedule_template: to_dictionary
+    puts result
   end
 
   def read(config_node)

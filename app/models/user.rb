@@ -62,6 +62,17 @@ class User < ActiveRecord::Base
     UserMailer.validation(self).deliver
   end
 
+  def pending_schedule_entries
+    pending = []
+    self.participants.each do |participant|
+      current_pending = participant.next_schedule_entry
+      if !current_pending.nil?
+        pending.append(current_pending)
+      end
+    end
+    pending
+  end
+
   private
     def create_auth_token
       self.auth_token = User.digest(User.new_auth_token)
