@@ -23,32 +23,56 @@ study:
                     text: over 5 times
                     order: 4
         -
-            label: accuracy
+            label: pos_accuracy
             description: Accuracy scale
             choices:
                 -
                     value: 1
-                    text: very inaccurate
+                    text: 1. very inaccurate
                     order: 1
                 -
                     value: 2
-                    text: moderately inaccurate
+                    text: 2. moderately inaccurate
                     order: 2
                 -
                     value: 3
-                    text: neither inaccurate or accurate
+                    text: 3. neither inaccurate or accurate
                     order: 3
                 -
                     value: 4
-                    text: moderately accurate
+                    text: 4. moderately accurate
                     order: 4
                 -
                     value: 5
-                    text: very accurate
+                    text: 5. very accurate
+                    order: 5
+        -
+            label: neg_accuracy
+            description: Accuracy scale
+            choices:
+                -
+                    value: 5
+                    text: 1. very inaccurate
+                    order: 1
+                -
+                    value: 4
+                    text: 2. moderately inaccurate
+                    order: 2
+                -
+                    value: 3
+                    text: 3. neither inaccurate or accurate
+                    order: 3
+                -
+                    value: 2
+                    text: 4. moderately accurate
+                    order: 4
+                -
+                    value: 1
+                    text: 5. very accurate
                     order: 5
         -
             label: scale
-            description: From 1 to 10, 1 being not at all
+            description: From 1 to 5, 1 being not at all
             choices:
                 -
                     value: 1
@@ -68,28 +92,8 @@ study:
                     order: 4
                 -
                     value: 5
-                    text: 5
-                    order: 5
-                -
-                    value: 6
-                    text: 6
-                    order: 6
-                -
-                    value: 7
-                    text: 7
-                    order: 7
-                -
-                    value: 8
-                    text: 8
-                    order: 8
-                -
-                    value: 9
-                    text: 9
-                    order: 9
-                -
-                    value: 10
                     text: extremely
-                    order: 10
+                    order: 5
         -
             label: strategies
             description: used coping strategies
@@ -103,20 +107,100 @@ study:
                     text: humor
                     order: 2
                 -
-                    value: distractions
-                    text: distract
+                    value: distract
+                    text: distractions
                     order: 3
                 -
                     value: reappraisal
                     text: reappraisal
                     order: 4
                 -
-                    value: laughing at yourself
-                    text: self laugh
+                    value: self laugh
+                    text: laughing at yourself
                     order: 5
                 -
-                    value: laughing at others
-                    text: others laugh
+                    value: others laugh
+                    text: laughing at others
+                    order: 6
+        -
+            label: age
+            description: Age scale
+            choices:
+                -
+                    value: 17
+                    text: 17
+                    order: 1
+                -
+                    value: 18
+                    text: 18
+                    order: 2
+                -
+                    value: 19
+                    text: 19
+                    order: 3
+                -
+                    value: 20
+                    text: 20
+                    order: 4
+                -
+                    value: 21
+                    text: 21
+                    order: 5
+                -
+                    value: 22
+                    text: 22
+                    order: 6
+                -
+                    value: 23
+                    text: 23
+                    order: 7
+                -
+                    value: 24
+                    text: 24
+                    order: 8
+        -
+            label: sex
+            description: Sex choice
+            choices:
+                -
+                    value: Male
+                    text: Male
+                    order: 1
+                -
+                    value: Female
+                    text: Female
+                    order: 2
+                -
+                    value: DNA
+                    text: Choose not to answer
+                    order: 3
+        -
+            label: race
+            description: Ethnicity choice
+            choices:
+                -
+                    value: Hispanic or Latino
+                    text: Hispanic or Latino
+                    order: 1
+                -
+                    value: Black or African American
+                    text: Black or African American
+                    order: 2
+                -
+                    value: Native American or American Indian
+                    text: Native American or American Indian
+                    order: 3
+                -
+                    value: White
+                    text: White
+                    order: 4
+                -
+                    value: Asian or Pacific Islander
+                    text: Asian or Pacific Islander
+                    order: 5
+                -
+                    value: Other
+                    text: Other
                     order: 6
     blocks:
         -
@@ -131,7 +215,7 @@ study:
               questions:
                   -
                       label: daily_stress_scale
-                      text: On a scale of 1 to 10, 1 being not at all, 10 being extremely, how stressed did you feel today?
+                      text: On a scale of 1 to 5, 1 being not at all, 5 being extremely, how stressed did you feel today?
                       answer_type_label: scale
         -
               label: coping_strategies
@@ -142,193 +226,228 @@ study:
                       answer_type_label: strategies
                   -
                       label: daily_social_support
-                      text: On a scale of 1 to 10, 1 being not at all, 10 being extremely, how socially supported did you feel today?
-                      answer_type_label: scale
-                  -
-                      label: overall_social_support
-                      text: On a scale of 1 to 10, 1 being not at all, 10 being extremely, how socially supported do you feel overall, not just today?
+                      text: On a scale of 1 to 5, 1 being not at all, 5 being extremely, how socially supported did you feel today?
                       answer_type_label: scale
         -
               label: neurotic_tendencies
               questions:
                   -
-                      label: daily_anger_scale
-                      text: On a scale of 1 to 10, 1 being not at all, 10 being extremely, how angry did you feel today?
+                      label: daily_nervous_scale
+                      text: On a scale of 1 to 5, 1 being not at all, 5 being extremely, indicate to what extent you have felt nervous today.
                       answer_type_label: scale
                   -
-                      label: daily_sad_scale
-                      text: On a scale of 1 to 10, 1 being not at all, 10 being extremely, how sad did you feel today?
+                      label: daily_proud_scale
+                      text: On a scale of 1 to 5, 1 being not at all, 5 being extremely, indicate to what extent you have felt proud today?
                       answer_type_label: scale
                   -
-                      label: daily_jealous_scale
-                      text: On a scale of 1 to 10, 1 being not at all, 10 being extremely, how jealous did you feel today?
+                      label: daily_strong_scale
+                      text: On a scale of 1 to 5, 1 being not at all, 5 being extremely, indicate to what extent you have felt strong today?
+                      answer_type_label: scale
+                  -
+                      label: daily_upset_scale
+                      text: On a scale of 1 to 5, 1 being not at all, 5 being extremely, indicate to what extent you have felt upset today.
+                      answer_type_label: scale
+                  -
+                      label: daily_guilty_scale
+                      text: On a scale of 1 to 5, 1 being not at all, 5 being extremely, indicate to what extent you have felt guilty today?
+                      answer_type_label: scale
+                  -
+                      label: daily_hostile_scale
+                      text: On a scale of 1 to 5, 1 being not at all, 5 being extremely, indicate to what extent you have felt hostile today?
+                      answer_type_label: scale
+                  -
+                      label: daily_excited_scale
+                      text: On a scale of 1 to 5, 1 being not at all, 5 being extremely, indicate to what extent you have felt excited today.
+                      answer_type_label: scale
+                  -
+                      label: daily_inspired_scale
+                      text: On a scale of 1 to 5, 1 being not at all, 5 being extremely, indicate to what extent you have felt inspired today?
+                      answer_type_label: scale
+                  -
+                      label: daily_irritable_scale
+                      text: On a scale of 1 to 5, 1 being not at all, 5 being extremely, indicate to what extent you have felt irritable today?
+                      answer_type_label: scale
+                  -
+                      label: daily_determined_scale
+                      text: On a scale of 1 to 5, 1 being not at all, 5 being extremely, indicate to what extent you have felt determined today?
                       answer_type_label: scale
         -
               label: initial_neurotic
               questions:
                   -
-                      label: initial_relaxed
+                      label: initial_pos_relaxed
                       text: How accurate is this statement, "I am relaxed most of the time."?
-                      answer_type_label: accuracy
+                      answer_type_label: pos_accuracy
                   -
-                      label: initial_self_like
-                      text: How accurate is this statement, "I dislike myself."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_worry
-                      text: How accurate is this statement, "I worry about things."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_panic
-                      text: How accurate is this statement, "I panic easily."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_self_pleased
-                      text: How accurate is this statement, "I am very pleased with myself."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_not_irritated
-                      text: How accurate is this statement, "I rarely get irritated."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_stressed
-                      text: How accurate is this statement, "I am stressed out easily."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_sad
-                      text: How accurate is this statement, "I am often down in the dumps."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_not_mad
-                      text: How accurate is this statement, "I seldom get mad."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_fear_worst
-                      text: How accurate is this statement, "I fear for the worst."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_not_frustrated
-                      text: How accurate is this statement, "I am not easily frustrated."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_not_bothered
-                      text: How accurate is this statement, "I not easily bothered by things."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_comfortable_self
-                      text: How accurate is this statement, "I feel comfortable with myself."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_blue
-                      text: How accurate is this statement, "I often feel blue."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_mood_swing
-                      text: How accurate is this statement, "I have frequent mood swings."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_not_blue
+                      label: initial_pos_blue
                       text: How accurate is this statement, "I seldom feel blue."?
-                      answer_type_label: accuracy
+                      answer_type_label: pos_accuracy
                   -
-                      label: initial_calm_pressure
-                      text: How accurate is this statement, "I remain calm under pressure."?
-                      answer_type_label: accuracy
+                      label: initial_pos_bothered
+                      text: How accurate is this statement, "I am not easily bothered by things."?
+                      answer_type_label: pos_accuracy
                   -
-                      label: initial_threatened
+                      label: initial_pos_irritated
+                      text: How accurate is this statement, "I rarely get irritated."?
+                      answer_type_label: pos_accuracy
+                  -
+                      label: initial_pos_mad
+                      text: How accurate is this statement, "I seldom get mad."?
+                      answer_type_label: pos_accuracy
+                  -
+                      label: initial_neg_stress
+                      text: How accurate is this statement, "I get stressed out easily."?
+                      answer_type_label: neg_accuracy
+                  -
+                      label: initial_neg_worry
+                      text: How accurate is this statement, "I worry about things."?
+                      answer_type_label: neg_accuracy
+                  -
+                      label: initial_neg_disturbed
+                      text: How accurate is this statement, "I am easily disturbed."?
+                      answer_type_label: neg_accuracy
+                  -
+                      label: initial_neg_upset
+                      text: How accurate is this statement, "I get upset easily."?
+                      answer_type_label: neg_accuracy
+                  -
+                      label: initial_neg_change
+                      text: How accurate is this statement, "I change my mood a lot."?
+                      answer_type_label: neg_accuracy
+                  -
+                      label: initial_neg_mood
+                      text: How accurate is this statement, "I have frequent mood swings."?
+                      answer_type_label: neg_accuracy
+                  -
+                      label: initial_neg_irritated
+                      text: How accurate is this statement, "I get irritated easily."?
+                      answer_type_label: neg_accuracy
+                  -
+                      label: initial_neg_blue
+                      text: How accurate is this statement, "I often feel blue."?
+                      answer_type_label: neg_accuracy
+                  -
+                      label: initial_neg_angry
+                      text: How accurate is this statement, "I get angry easily."?
+                      answer_type_label: neg_accuracy
+                  -
+                      label: initial_neg_panic
+                      text: How accurate is this statement, "I panic easily."?
+                      answer_type_label: neg_accuracy
+                  -
+                      label: initial_neg_threatened
                       text: How accurate is this statement, "I feel threatened easily."?
-                      answer_type_label: accuracy
+                      answer_type_label: neg_accuracy
                   -
-                      label: initial_composed
-                      text: How accurate is this statement, "I rarely lose my composure."?
-                      answer_type_label: accuracy
+                      label: initial_neg_overwhelmed
+                      text: How accurate is this statement, "I get overwhelmed by emotions."?
+                      answer_type_label: neg_accuracy
                   -
-                      label: initial_doubts
-                      text: How accurate is this statement, "I am filled with doubts about things."?
-                      answer_type_label: accuracy
+                      label: initial_neg_offense
+                      text: How accurate is this statement, "I take offense easily."?
+                      answer_type_label: neg_accuracy
+                  -
+                      label: initial_neg_caught
+                      text: How accurate is this statement, "I get caught up in my problems."?
+                      answer_type_label: neg_accuracy
+                  -
+                      label: initial_neg_grumble
+                      text: How accurate is this statement, "I grumble about things."?
+                      answer_type_label: neg_accuracy
         -
               label: initial_openess
               questions:
                   -
-                      label: initial_not_poetry
-                      text: How accurate is this statement, "I do not like poetry."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_imagination
-                      text: How accurate is this statement, "I have a vivid imagination."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_vocab
+                      label: initial_pos_vocab
                       text: How accurate is this statement, "I have a rich vocabulary."?
-                      answer_type_label: accuracy
+                      answer_type_label: pos_accuracy
                   -
-                      label: initial_new_ideas
-                      text: How accurate is this statement, "I enjoy hearing new ideas."?
-                      answer_type_label: accuracy
+                      label: initial_pos_excellent
+                      text: How accurate is this statement, "I have excellent ideas."?
+                      answer_type_label: pos_accuracy
                   -
-                      label: initial_conservative
-                      text: How accurate is this statement, "I tend to vote for conservative political candidates."?
-                      answer_type_label: accuracy  
+                      label: initial_pos_understand
+                      text: How accurate is this statement, "I am quick to understand things."?
+                      answer_type_label: pos_accuracy
                   -
-                      label: initial_not_philosophical
-                      text: How accurate is this statement, "I avoid philosophical discussions."?
-                      answer_type_label: accuracy  
+                      label: initial_pos_difficult
+                      text: How accurate is this statement, "I use difficult words."?
+                      answer_type_label: pos_accuracy
                   -
-                      label: initial_fantasy
-                      text: How accurate is this statement, "I tend to day dream."?
-                      answer_type_label: accuracy   
+                      label: initial_pos_reflect
+                      text: How accurate is this statement, "I spend time reflecting on things."?
+                      answer_type_label: pos_accuracy  
                   -
-                      label: initial_liberal
-                      text: How accurate is this statement, "I tend to vote for liberal political candidates."?
-                      answer_type_label: accuracy 
+                      label: initial_pos_full
+                      text: How accurate is this statement, "I am full of ideas."?
+                      answer_type_label: pos_accuracy  
                   -
-                      label: initial_not_deep
-                      text: How accurate is this statement, "I rarely look for a deeper meaning in things."?
-                      answer_type_label: accuracy           
-                  -
-                      label: initial_new_ideas2
-                      text: How accurate is this statement, "I get excited by new ideas."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_not_support_artists
-                      text: How accurate is this statement, "I believe that too much tax money goes to support artists."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_not_museum
-                      text: How accurate is this statement, "I do not enjoy going to art museums."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_not_art
-                      text: How accurate is this statement, "I do not like art."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_art
-                      text: How accurate is this statement, "I believe in the importance of art."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_not_abstract
-                      text: How accurate is this statement, "I am not interested in abstract ideas."?
-                      answer_type_label: accuracy
-                  -
-                      label: initial_higher_conversation
+                      label: initial_pos_higher
                       text: How accurate is this statement, "I carry the conversation to a higher level."?
-                      answer_type_label: accuracy
+                      answer_type_label: pos_accuracy   
                   -
-                      label: initial_not_theory
-                      text: How accurate is this statement, "I am not interested in theoretical discussions."?
-                      answer_type_label: accuracy
+                      label: initial_pos_catch
+                      text: How accurate is this statement, "I catch on to things quickly."?
+                      answer_type_label: pos_accuracy 
                   -
-                      label: initial_eloquent
-                      text: How accurate is this statement, "I can say things beautifully."?
-                      answer_type_label: accuracy
+                      label: initial_pos_handle
+                      text: How accurate is this statement, "I can handle a lot of information."?
+                      answer_type_label: pos_accuracy           
                   -
-                      label: initial_not_abstract
+                      label: initial_pos_new
+                      text: How accurate is this statement, "I love to think up new ways of doing things."?
+                      answer_type_label: pos_accuracy
+                  -
+                      label: initial_pos_read
+                      text: How accurate is this statement, "I love to read challenging material."?
+                      answer_type_label: pos_accuracy
+                  -
+                      label: initial_pos_many
+                      text: How accurate is this statement, "I am good at many things."?
+                      answer_type_label: pos_accuracy
+                  -
+                      label: initial_neg_abstract
                       text: How accurate is this statement, "I have difficulty understanding abstract ideas."?
-                      answer_type_label: accuracy
+                      answer_type_label: neg_accuracy
                   -
-                      label: initial_thinking
-                      text: How accurate is this statement, "I enjoy thinking about things."?
-                      answer_type_label: accuracy
+                      label: initial_neg_interest
+                      text: How accurate is this statement, "I am not interested in abstract ideas."?
+                      answer_type_label: neg_accuracy
+                  -
+                      label: initial_neg_imagination
+                      text: How accurate is this statement, "I do not have a good imagination."?
+                      answer_type_label: neg_accuracy
+                  -
+                      label: initial_neg_complex
+                      text: How accurate is this statement, "I try to avoid complex people."?
+                      answer_type_label: neg_accuracy
+                  -
+                      label: initial_neg_imagine
+                      text: How accurate is this statement, "I have difficulty imagining things."?
+                      answer_type_label: neg_accuracy
+                  -
+                      label: initial_neg_read
+                      text: How accurate is this statement, "I avoid difficult reading material."?
+                      answer_type_label: neg_accuracy
+                  -
+                      label: initial_neg_probe
+                      text: How accurate is this statement, "I will not probe deeply into a subject."?
+                      answer_type_label: neg_accuracy
+        -
+              label: demographics
+              questions:
+                  -
+                      label: sex
+                      text: What is your sex?
+                      answer_type_label: sex
+                  -
+                      label: age
+                      text: What is your age?
+                      answer_type_label: age
+                  -
+                      label: race
+                      text: What is your ethnicity?
+                      answer_type_label: race
     questionnaires:
       -
           label: sarcasm_daily
@@ -342,8 +461,7 @@ study:
         blocks:
               - initial_neurotic
               - initial_openess
-              - stress
-              - coping_strategies
+              - demographics
     schedule_template:
         entries:
             -
@@ -361,15 +479,4 @@ study:
             -
                 time_offset_hours: 72
                 questionnaire_label: sarcasm_daily
-            -
-                time_offset_hours: 96
-                questionnaire_label: sarcasm_daily
-            -
-                time_offset_hours: 120
-                questionnaire_label: sarcasm_daily
-            -
-                time_offset_hours: 144
-                questionnaire_label: sarcasm_daily
-            -
-                time_offset_hours: 168
-                questionnaire_label: sarcasm_daily
+            
