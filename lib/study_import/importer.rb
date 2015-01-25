@@ -55,6 +55,7 @@ class StudyImport::Importer
     answer_types_node.each do |answer_type_node|
       definition = StudyImport::Definitions::AnswerType.new
       definition.read(answer_type_node)
+      definition.study_label = @study_definition.label
       @answer_type_definitions.append(definition)
     end
   end

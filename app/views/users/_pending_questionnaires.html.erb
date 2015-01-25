@@ -1,0 +1,11 @@
+<div>
+  <% if @user.pending_schedule_entries.length > 0 %>
+      You have the following questionnaires to take:
+        <%= render partial: "shared/take_questionnaire_banner",
+            locals: { schedule_entries: 
+                      @user.pending_schedule_entries
+                    } %>
+  <% else %>
+      You have no questionnaires to take.
+  <% end %>
+</div>

@@ -3,6 +3,7 @@
 FactoryGirl.define do
   factory :answer_type do
     sequence(:label) { |n| "answer_type_#{n}" }
+    study
     description "Answer Type Description"
     after(:build) do |answer_type|
       answer_type.answer_validation = build(:answer_validation, answer_type: answer_type)

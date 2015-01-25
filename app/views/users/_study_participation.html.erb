@@ -1,0 +1,17 @@
+<div class="panel-body text-left study-panel">
+    <div class="panel-body study-banner-panel">
+        <%= link_to participant.study.title, participant.study %></li>
+    </div>
+    <div class="study-participation-details-container panel-body">
+        <div class="study-details-panel study-participation-sign-up-date panel-body">
+            Signed Up: <%= participant.created_at %>
+        </div>
+        <div class="study-details-panel study-participation-questionnaire-time-frame-panel panel-body">
+            Study Length: <%= participant.study_length_in_days %> days
+        </div>
+        <div class="study-details-panel study-participation-questionnaire-count-panel panel-body">
+            Questionnaires Taken: <%= participant.questionnaires_taken %> /
+            <%= participant.total_questionnaires %>
+        </div>
+    </div>
+</div>

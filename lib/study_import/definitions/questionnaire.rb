@@ -17,7 +17,10 @@ class StudyImport::Definitions::Questionnaire
 
   def create(client)
     url = Rails.application.routes.url_helpers.questionnaires_path
-    client.post url, questionnaire: to_dictionary
+    result = client.post url, questionnaire: to_dictionary
+    if result != 200
+      puts "ERROR: unable to create questionnaire %s: %s" % [ @label, result.body ]
+    end
     self.add_blocks(client)
   end
 

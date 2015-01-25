@@ -3,7 +3,6 @@
 <%= form_for @answer_set do |form| %>
     <%= form.hidden_field :questionnaire_id, value: @answer_set.questionnaire.id %>
     <%= form.hidden_field :schedule_entry_id, value: @answer_set.schedule_entry.id %>
-    <%= @answer_set.errors.full_messages %>
     <% @answer_set.answers.each.with_index(1) do |answer, number| %>
         <%= render partial: "question", locals: {
             answer: answer,

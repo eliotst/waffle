@@ -1,4 +1,6 @@
 class AnswerType < ActiveRecord::Base
+  belongs_to :study
+
   has_many :choices, dependent: :destroy
   has_one :answer_validation, dependent: :destroy
 
@@ -7,10 +9,9 @@ class AnswerType < ActiveRecord::Base
   accepts_nested_attributes_for :choices, 
   	allow_destroy: true
 
-  validates :label,
-    uniqueness: true,
-    label: true
+  validates :label, uniqueness: true, label: true
   validates :description, presence: true
+  validates :study, presence: true
   validate :check_voices_and_validations
 
   def check_voices_and_validations

@@ -1,6 +1,7 @@
 class Study < ActiveRecord::Base
   has_many :questionnaires, dependent: :destroy
   has_many :schedule_templates, dependent: :destroy
+  has_many :participants, dependent: :destroy
 
   validates :title,
     presence: true,

@@ -62,11 +62,12 @@ class User < ActiveRecord::Base
     UserMailer.validation(self).deliver
   end
 
-  def pending_schedule_entries
+  def pending_schedule_entries(study=nil)
     pending = []
     self.participants.each do |participant|
       current_pending = participant.next_schedule_entry
-      if !current_pending.nil?
+      if !current_pending.nil? and 
+          (study.nil? or current_pending.study == study)
         pending.append(current_pending)
       end
     end

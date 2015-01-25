@@ -2,7 +2,7 @@ class Schedule < ActiveRecord::Base
   belongs_to :schedule_template
   belongs_to :participant
 
-  has_many :schedule_entries
+  has_many :schedule_entries, dependent: :destroy
 
   validates :start_time, presence: true
   validates :participant, presence: true

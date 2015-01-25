@@ -1,4 +1,5 @@
 class StudyImport::Definitions::AnswerType
+  attr_accessor(:study_label)
   attr_accessor(:label)
   attr_accessor(:description)
   attr_accessor(:allow_multiple)
@@ -9,10 +10,15 @@ class StudyImport::Definitions::AnswerType
     @choices = []
   end
 
+  def study_id
+    Study.find_by_label(@study_label).id
+  end
+
   def to_dictionary
     dictionary = {
       label: @label,
-      description: @description
+      description: @description,
+      study_id: self.study_id
     }
     if !@choices.empty?
       dictionary[:choices_attributes] = {}
@@ -32,7 +38,10 @@ class StudyImport::Definitions::AnswerType
 
   def create(client)
     url = Rails.application.routes.url_helpers.answer_types_path
-    client.post url, answer_type: to_dictionary
+    result = client.post url, answer_type: to_dictionary
+    if result.code != 200
+      puts "ERROR: unable to create answer type %s: %s" % [ @label, result.body ]
+    end
   end
 
   def read(config_node)

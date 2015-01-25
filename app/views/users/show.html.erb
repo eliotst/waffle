@@ -4,8 +4,7 @@
 
 <div class="panel-body">
     <% if @user.participants.length > 0 %>
-        <%= render partial: 'pending_questionnaires',
-                    locals: { user: @user } %>
+        <%= render partial: 'pending_questionnaires', locals: { user: @user } %>
 
         You are participating in the following studies:
         <% current_user.participants.each do |participant| %>

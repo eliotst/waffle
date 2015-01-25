@@ -25,7 +25,10 @@ class StudyImport::Definitions::Question
 
   def create(client)
     url = Rails.application.routes.url_helpers.questions_path
-    client.post url, question: to_dictionary
+    result = client.post url, question: to_dictionary
+    if result != 200
+      puts "ERROR: unable to create block " + @label
+    end
   end
 
   def read(config_node)

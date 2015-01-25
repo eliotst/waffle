@@ -25,10 +25,8 @@ Waffle::Application.routes.draw do
   resources :questions
   resources :schedule_templates
   resources :answer_sets, only: [ :create, :destroy, :index, :new, :show ]
-  
-  get "participant/sign_up"
-  get "participant/show"
-  get "participant/index"
+
+  resources :participants, only: [ :create, :show, :index ]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

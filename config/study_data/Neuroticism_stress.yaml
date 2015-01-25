@@ -93,6 +93,7 @@ study:
         -
             label: strategies
             description: used coping strategies
+            allow_multiple: true
             choices:
                 -
                     value: sarcasm

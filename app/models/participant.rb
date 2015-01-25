@@ -19,6 +19,8 @@ class Participant < ActiveRecord::Base
     schedule.schedule_template = relevant_template
     schedule.start_time = self.created_at
 
+    self.schedule = schedule
+    self.save
     relevant_template.schedule_template_entries.each do |template_entry|
       time_to_take = schedule.start_time + template_entry.time_offset_hours.hours
       schedule_entry = ScheduleEntry.new
@@ -29,8 +31,6 @@ class Participant < ActiveRecord::Base
       schedule_entry.schedule = schedule
       schedule_entry.save
     end
-    self.schedule = schedule
-    self.save
   end
 
   def next_schedule_entry

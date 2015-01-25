@@ -11,7 +11,10 @@ class StudyImport::Definitions::Study
 
   def create(client)
     url = Rails.application.routes.url_helpers.studies_path
-    client.post url, study: to_dictionary
+    result = client.post url, study: to_dictionary
+    if result != 200
+      puts "ERROR: unable to create questionnaire " + @label
+    end
   end
 
   def read(config_node)

@@ -28,10 +28,13 @@ ActiveRecord::Schema.define(version: 20141228234442) do
   create_table "answer_types", force: true do |t|
     t.string   "label"
     t.string   "description"
+    t.integer  "study_id"
     t.boolean  "allow_multiple", default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "answer_types", ["study_id"], name: "index_answer_types_on_study_id"
 
   create_table "answer_validations", force: true do |t|
     t.string   "regular_expression", default: "--- !ruby/regexp /.*/\n...\n"
