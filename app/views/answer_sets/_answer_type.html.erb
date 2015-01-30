@@ -1,11 +1,20 @@
 <% if answer_type.answer_validation.nil? %>
   <% if answer_type.allow_multiple %>
-    <%= form.select(:values, options_for_select(
-                    answer_type.choices.collect {|choice| [choice.text, choice.text]}),
-    { }, { multiple: true }) %>
+      <ul class="list-inline">
+      <% answer_type.choices.each do |choice| %>
+          <li>
+          <%= form.check_box(:values, {}, choice.text) %> <%= choice.text %>
+          </li>
+      <% end %>
+      </ul>
   <% else %>
-    <%= form.select(:value, options_for_select(
-      answer_type.choices.collect {|choice| [choice.text, choice.text]})) %>
+      <ul class="list-inline">
+      <% answer_type.choices.each do |choice| %>
+          <li>
+              <%= form.radio_button(:value, choice.text) %> <%= choice.text %>
+          </li>
+      <% end %>
+      </ul>
   <% end %>
 <% else %>
     <%= form.text_field :value %>

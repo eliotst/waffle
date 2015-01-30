@@ -1,11 +1,11 @@
 <ul class="list-group">
-  <% schedule_entries.each do |schedule_entry| %>
+    <% schedule_entries.each do |schedule_entry| %>
         <li class="list-group-item">
-            <%= link_to "%s: Take Next Questionnaire" % [ schedule_entry.questionnaire.study.title ],
-                controller: :answer_sets,
-                action: :new,
-                id: nil,
-                schedule_entry_id: schedule_entry.id %>
+        <%= link_to "%s: Take Next Questionnaire" % [ schedule_entry.questionnaire.study.title ],
+            controller: :answer_sets,
+            action: :new,
+            id: nil,
+            schedule_entry_id: schedule_entry.id %>
         </li>
-  <% end %>
+    <% end %>
 </ul>

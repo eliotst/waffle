@@ -8,9 +8,11 @@
       <%= button_to "Sign Up", participants_path(study_id: study.id) %>
     <% else %>
         <p>Signed Up: <%= @current_participant.created_at %></p>
-        <%= render partial: "shared/take_questionnaire_banner",
-            locals: { schedule_entries: 
-                      [ @current_participant.next_schedule_entry ]
-                    } %>
+        <% if @current_participant.next_schedule_entry %>
+            <%= render partial: "shared/take_questionnaire_banner",
+                locals: { schedule_entries: 
+                          [ @current_participant.next_schedule_entry ]
+            } %>
+        <% end %>
     <% end %>
 </div>

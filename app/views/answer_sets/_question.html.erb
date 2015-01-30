@@ -1,12 +1,14 @@
+<div class="panel question-panel">
 <%= form.fields_for :answers, answer do |answer_form| %>
-  <p><%= number %>. <%= question.text %></p>
+    <p><%= number %>. <strong><%= question.text %></strong></p>
   <%= answer_form.hidden_field :question_id, value: answer.question.id %>
-  <% answer.errors.full_messages.each do |message| %>
-    <p><%= message %></p>
-  <% end %>
   <%= render partial: "answer_type", locals: {
       answer: answer,
       answer_type: question.answer_type,
       form: answer_form
   } %>
+  <% answer.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger"><%= message %></div>
+  <% end %>
 <% end %>
+</div>
