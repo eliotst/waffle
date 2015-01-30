@@ -16,6 +16,10 @@ group :test do
   gem 'capybara', '2.1.0'
 end
 
+group :production do
+  gem 'mysql2'
+end
+
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'sprockets-rails'
 gem 'autoprefixer-rails'
@@ -30,7 +34,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -68,4 +72,3 @@ gem "httpclient"
 gem "mocha", group: :test
 
 gem 'daemons-rails', github: 'mirasrael/daemons-rails'
-
