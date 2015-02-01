@@ -37,13 +37,15 @@ Eliot
   a. add form page (DONE)
   b. add check to make sure not answering twice (DONE)
 5. sign up
-  a. add studies list page (initial)
-  b. add sign up button (initial)
-    i. create schedule on sign up
-  c. add show participating studies page (initial)
-  d. add show study participation information page (1/18)
+  a. add studies list page
+    a. add to user drop down (DONE)
+    b. add to user home page
+  b. add sign up button
+    i. create schedule on sign up (DONE)
+  c. add show participating studies page
+  d. add show study participation information page
     a. list past questionnaires
-    b. list current questionnaires
+    b. list current questionnaires (DONE)
 6. scope everything to study (later)
   a. cascade study deletion to everything (later)
 7. non-integer based id scheme
