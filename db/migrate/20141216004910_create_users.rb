@@ -14,6 +14,7 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :is_valid
       t.string :auth_token
       t.string :valid_token
+      t.datetime :password_reset_sent_at
 
       t.timestamps
     end
