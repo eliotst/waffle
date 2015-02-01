@@ -63,17 +63,19 @@ Waffle::Application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: "waffle.eliothstone.com" }
   config.action_mailer.smtp_settings = {
-    :address              => "eliothstone.com",
+    :address              => "mail.eliothstone.com",
 
-    :port                 => "25",
-    :domain               => "eliothstone.com",
+    :port                 => "26",
+    :domain               => "waffle.eliothstone.com",
 
-    :enable_starttls_auto => true,
-    :authentication       => :login,
-    :user_name            => "test@eliothstone.com",
-    :password             => "T3stuser!@$%"
+    :authentication       => :plain,
+    :enable_starttls_auto => false,
+    :ssl => false,
+    :user_name            => "test@waffle.eliothstone.com",
+    :password             => ENV['EMAIL_PASSWORD']
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
