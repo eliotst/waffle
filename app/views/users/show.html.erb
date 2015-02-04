@@ -12,6 +12,7 @@
                     locals: { participant: participant } %>
         <% end %>
     <% else %>
-        You are not participating in any studies.
+        You are not participating in any studies. <br />
+        <%= link_to "Browse Available Studies", studies_path %>
     <% end %>
 </div>

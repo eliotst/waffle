@@ -2,14 +2,15 @@ Eliot
 0. clean up code
   a. get tests to run (models: DONE, controllers: DONE, importer: DONE)
   b. validate data better in importer
-    a. provide feedback to the user (2/28)
-    b. add schema validation (2/28)
-    c. test reading (2/28)
+*   a. provide feedback to the user
+    b. fail on errors
+    c. add schema validation (2/28)
+    d. test reading (2/28)
   c. cascading deletes (DONE-ISH)
     a. easy ones (DONE)
     b. delete when all associated are deleted (4/1)
     c. delete when study is deleted (4/1)
-    d. soft deletes (4/1)
+*   d. soft deletes (4/1)
   d. clean up migrations (DONE)
   e. add initial admin user on migration (DONE)
   f. clean up dead actions in controllers (DONE)
@@ -28,7 +29,7 @@ Eliot
   d. importers (DONE)
   e. importer specs (DONE)
   f. import reading (DONE)
-  g. expiration
+* g. expiration
 3. answers
   a. revisit (DONE)
   b. multiselect (DONE)
@@ -51,10 +52,12 @@ Eliot
 7. non-integer based id scheme
 8. styling (1/18)
 9. studies
-  a. start/stop date
-  b. description
+* a. start/stop date
+* b. description
 10. admin
-  a. list participants
+* a. list participants
+* b. list answers
+* c. export answers
 
 Steele
 0. clean up layout
