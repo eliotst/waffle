@@ -5,7 +5,7 @@
 <div class="panel-body">
     <p>Study: <strong><%= @study.title %></strong></p>
     <% if @current_participant.nil? %>
-      <%= button_to "Sign Up", participants_path(study_id: study.id) %>
+      <%= button_to "Sign Up", participants_path(study_id: @study.id) %>
     <% else %>
         <p>Signed Up: <%= @current_participant.created_at %></p>
         <% if @current_participant.next_schedule_entry %>
