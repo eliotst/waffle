@@ -113,7 +113,7 @@ study:
                     order: 3
                 -
                     value: reappraisal
-                    text: reappraisal
+                    text: changing the way you think about something to make you feel better
                     order: 4
                 -
                     value: self laugh
@@ -123,6 +123,14 @@ study:
                     value: others laugh
                     text: laughing at others
                     order: 6
+                -
+                    value: venting
+                    text: venting your feelings to someone else
+                    order: 7
+                -
+                    value: suppression
+                    text: putting something out of your mind to feel better and not think of it
+                    order: 8
         -
             label: age
             description: Age scale
@@ -253,8 +261,8 @@ study:
                       text: On a scale of 1 to 5, 1 being not at all, 5 being extremely, indicate to what extent you have felt guilty today?
                       answer_type_label: scale
                   -
-                      label: daily_hostile_scale
-                      text: On a scale of 1 to 5, 1 being not at all, 5 being extremely, indicate to what extent you have felt hostile today?
+                      label: daily_angry_scale
+                      text: On a scale of 1 to 5, 1 being not at all, 5 being extremely, indicate to what extent you have felt angry today?
                       answer_type_label: scale
                   -
                       label: daily_excited_scale
@@ -271,6 +279,10 @@ study:
                   -
                       label: daily_determined_scale
                       text: On a scale of 1 to 5, 1 being not at all, 5 being extremely, indicate to what extent you have felt determined today?
+                      answer_type_label: scale
+                  -
+                      label: daily_sad_scale
+                      text: On a scale of 1 to 5, 1 being not at all, 5 being extremely, indicate to what extent you have felt sad today?
                       answer_type_label: scale
         -
               label: initial_neurotic
