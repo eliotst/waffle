@@ -71,4 +71,4 @@ gem "httpclient"
 
 gem "mocha", group: :test
 
-gem 'daemons-rails', github: 'mirasrael/daemons-rails'
+gem 'daemons-rails', git: 'https://github.com/mirasrael/daemons-rails'

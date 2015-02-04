@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/mirasrael/daemons-rails.git
+  remote: https://github.com/mirasrael/daemons-rails
   revision: a09a74757f1ab3cbfb368eec933d9df04e198f79
   specs:
     daemons-rails (1.2.1)
