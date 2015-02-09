@@ -1,5 +1,5 @@
 class ParticipantsController < ApplicationController
-  before_action :must_be_admin, except: [ :sign_up ]
+  before_action :must_be_admin, except: [ :create ]
 
   def create
     @participant = Participant.new
@@ -9,6 +9,7 @@ class ParticipantsController < ApplicationController
     if @participant.save
       redirect_to current_user
     else
+      puts "Failed to save"
       redirect_to root_url
     end
   end

@@ -4,7 +4,7 @@ Eliot
   b. validate data better in importer
 *   a. provide feedback to the user
     b. fail on errors
-    c. add schema validation (2/28)
+    c. update if data exists
     d. test reading (2/28)
   c. cascading deletes (DONE-ISH)
     a. easy ones (DONE)
@@ -38,6 +38,7 @@ Eliot
   a. add form page (DONE)
   b. add check to make sure not answering twice (DONE)
 5. sign up
+  0. Sign up and create login simultaneously
   a. add studies list page
     a. add to user drop down (DONE)
     b. add to user home page
@@ -58,8 +59,13 @@ Eliot
 * a. list participants
 * b. list answers
 * c. export answers
+  d. edit existing stuff
 
-Steele
-0. clean up layout
-1. add dropdown icon to user e-mail on header so that users know its a dropdown
-1. redirect users to logged in page when logged in
+URGENT:
+  0. user default page
+  1. test email scheduling
+  2. sign up and create login simultaneously
+  3. provide feedback on script execution
+  4. export answers
+  5. expiration
+  6. test site

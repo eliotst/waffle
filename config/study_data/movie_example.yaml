@@ -95,6 +95,9 @@ study:
     schedule_template:
         entries:
             -
+                time_offset_hours: 0
+                questionnaire_label: movie_favorites_2
+            -
                 time_offset_hours: 24
                 questionnaire_label: movie_favorites
             -

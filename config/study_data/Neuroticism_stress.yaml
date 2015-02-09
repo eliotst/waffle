@@ -133,40 +133,8 @@ study:
                     order: 8
         -
             label: age
-            description: Age scale
-            choices:
-                -
-                    value: 17
-                    text: 17
-                    order: 1
-                -
-                    value: 18
-                    text: 18
-                    order: 2
-                -
-                    value: 19
-                    text: 19
-                    order: 3
-                -
-                    value: 20
-                    text: 20
-                    order: 4
-                -
-                    value: 21
-                    text: 21
-                    order: 5
-                -
-                    value: 22
-                    text: 22
-                    order: 6
-                -
-                    value: 23
-                    text: 23
-                    order: 7
-                -
-                    value: 24
-                    text: 24
-                    order: 8
+            description: Age
+            regular_expresssion: \d+
         -
             label: sex
             description: Sex choice
