@@ -11,8 +11,8 @@ class UserMailer < ActionMailer::Base
     mail :to => user.email, :subject => "Validation Email"
   end
 
-  def notify(user, questionnaire)
-    @questionnaire = questionnaire 
+  def notify(schedule_entry)
+    @schedule_entry = schedule_entry
     mail :to => user.email, :subject => "New Questionnaire!"
   end
 end

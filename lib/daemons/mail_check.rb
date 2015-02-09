@@ -11,9 +11,9 @@ require File.join(root, "config", "environment")
 
 def send_all
   @schedule_entries = ScheduleEntry.where(:sent => false)
-  @schedule_entries.each do |t|
-    if t.time_to_send < Time.now.utc
-     UserMailer.send_notify(t.participant.user, t.questionnaire)
+  @schedule_entries.each do |schedule_entry|
+    if schedule_entry.time_to_send < Time.now.utc
+     UserMailer.send_notify(schedule_entry)
     end	
   end		
 end
