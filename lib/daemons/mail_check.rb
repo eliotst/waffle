@@ -13,7 +13,9 @@ def send_all
   @schedule_entries = ScheduleEntry.where(:sent => false)
   @schedule_entries.each do |schedule_entry|
     if schedule_entry.time_to_send < Time.now.utc
-     UserMailer.send_notify(schedule_entry)
+     UserMailer.notify(schedule_entry).deliver
+     schedule_entry.sent = true
+     schedule_entry.save
     end	
   end		
 end

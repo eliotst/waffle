@@ -1,8 +1,6 @@
 Fill out your questionnaire:
 
-<%= link_to "%s: Take Next Questionnaire" % [ @schedule_entry.questionnaire.study.title ],
-    controller: :answer_sets,
+<%= url_for controller: :answer_sets,
     action: :new,
     id: nil,
     schedule_entry_id: @schedule_entry.id %>
-</li>

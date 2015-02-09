@@ -13,8 +13,7 @@ class UserMailer < ActionMailer::Base
 
   def notify(schedule_entry)
     @schedule_entry = schedule_entry
-    mail :to => user.email, :subject => "New Questionnaire!"
-    @schedule_entry.sent = true
-    @schedule_entry.save
+    @user = @schedule_entry.participant.user
+    mail :to => @user.email, :subject => "New Questionnaire"
   end
 end
