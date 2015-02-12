@@ -1,6 +1,9 @@
+You have a new questionnaire available for the <%= @schedule_entry.questionnaire.study.title %> study.
+
 Fill out your questionnaire:
 
 <%= url_for controller: :answer_sets,
     action: :new,
     id: nil,
-    schedule_entry_id: @schedule_entry.id %>
+    schedule_entry_id: @schedule_entry.id,
+    only_path: false %>
