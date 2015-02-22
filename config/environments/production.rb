@@ -64,17 +64,17 @@ Waffle::Application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: "waffle.eliothstone.com" }
+  config.action_mailer.default_url_options = { host: "waffle.emo-lab.org" }
   config.action_mailer.smtp_settings = {
-    :address              => "mail.eliothstone.com",
+    :address              => "mail.emo-lab.org",
 
     :port                 => "26",
-    :domain               => "waffle.eliothstone.com",
+    :domain               => "waffle.emo-lab.org",
 
     :authentication       => :plain,
     :enable_starttls_auto => false,
     :ssl => false,
-    :user_name            => "test@waffle.eliothstone.com",
+    :user_name            => "test@waffle.emo-lab.org",
     :password             => ENV['EMAIL_PASSWORD']
   }
 

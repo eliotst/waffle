@@ -134,7 +134,7 @@ study:
         -
             label: age
             description: Age
-            regular_expresssion: \d+
+            regular_expression: '\d+'
         -
             label: sex
             description: Sex choice

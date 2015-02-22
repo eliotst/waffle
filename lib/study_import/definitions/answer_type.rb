@@ -38,6 +38,7 @@ class StudyImport::Definitions::AnswerType
 
   def create(client)
     url = Rails.application.routes.url_helpers.answer_types_path
+    puts "Creating answer type %s" % [to_dictionary]
     result = client.post url, answer_type: to_dictionary
     if result.code != 200
       puts "ERROR: unable to create answer type %s: %s" % [ @label, result.body ]
