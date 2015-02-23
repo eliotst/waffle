@@ -3,7 +3,7 @@
       <ul class="list-inline">
       <% answer_type.choices.each do |choice| %>
           <li>
-          <%= form.check_box(:values, {}, choice.text) %> <%= choice.text %>
+          <%= form.check_box(:values, {multiple: true}, choice.text, nil) %> <%= choice.text %>
           </li>
       <% end %>
       </ul>

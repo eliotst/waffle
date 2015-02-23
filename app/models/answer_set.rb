@@ -25,4 +25,15 @@ class AnswerSet < ActiveRecord::Base
       errors.add(:questionnaire, "That questionnaire has already been completed.")
     end
   end
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << Answer.column_names
+      all.each do |answer_set|
+        answer_set.answers.each do |answer|
+          csv << answer.attributes.values_at(*Answer.column_names)
+        end
+      end
+    end
+  end
 end

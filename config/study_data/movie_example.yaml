@@ -5,6 +5,7 @@ study:
         -
             label: movie_genres
             description: Movie genres
+            allow_multiple: true
             choices:
                 -
                     value: action_genre

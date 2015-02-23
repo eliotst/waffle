@@ -3,33 +3,5 @@
 </div>
 
 <div class="panel-body">
-    <% if @studies.length == 0 %>
-        There are no studies
-    <% else %>
-    <table class="table text-left">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @studies.each do |study| %>
-                <tr>
-                    <td><%= link_to study.title, study %></td>
-                    <td>
-                        <% if !current_user.studies.include?(study) %>
-                          <%= button_to "Sign Up", participants_path(study_id: study.id) %>
-                        <% else %>
-                            None
-                        <% end %>
-                        <% if current_user.is_admin? %>
-                            <%= button_to "Delete", study, method: :delete %>
-                        <% end %>
-                    </td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
-    <% end %>
+    <%= render partial: "shared/all_studies" %>
 </div>

@@ -2,9 +2,11 @@
 <% @answer_sets.each.with_index(1) do |answer_set, index| %>
     <p>
         <%= index %>.
-        <%=answer_set.participant.user.email %>
+        <%= answer_set.participant.user.email %>
         - <%= answer_set.questionnaire.label %>
         - <%= answer_set.created_at %>
         - <%= link_to "View", answer_set %>
     </p>
 <% end %>
+
+<%= link_to "Export to CSV", answer_sets_path(format: 'csv') %>

@@ -63,9 +63,13 @@ Eliot
 
 URGENT:
   0. user default page
+    a. if no studies, show studies
+  4. export answers
+    a. Add List Answer Sets
+    b. Add Export to CSV
+  7. Mark Schedule Entry Sent on Submitting Answer Set
   1. test email scheduling
   2. sign up and create login simultaneously
   3. provide feedback on script execution
-  4. export answers
   5. expiration
   6. test site

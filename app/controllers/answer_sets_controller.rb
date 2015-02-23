@@ -14,6 +14,10 @@ class AnswerSetsController < ApplicationController
 
   def index
     @answer_sets = AnswerSet.paginate(page: params[:page])
+    respond_to do |format|
+      format.html
+      format.csv { send_data @answer_sets.to_csv }
+    end
   end
 
   def new
@@ -34,6 +38,8 @@ class AnswerSetsController < ApplicationController
   end
 
   def create
+    puts params
+    puts answer_set_params
     @answer_set = AnswerSet.new(answer_set_params)
 
     begin
@@ -46,7 +52,9 @@ class AnswerSetsController < ApplicationController
     @answer_set.set_participant(participant)
 
     if @answer_set.save
-      redirect_to answer_sets_url
+      @answer_set.schedule_entry.sent = true
+      @answer_set.schedule_entry.save
+      redirect_to participant.user
     else
       render "new"
     end
