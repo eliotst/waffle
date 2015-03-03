@@ -1,4 +1,6 @@
 Waffle::Application.routes.draw do
+  get "debrief/new"
+  get "debrief/create"
   root to: 'static_pages#home'
 
   match '/sign_up',   to: 'users#new',             via: 'get'
@@ -24,6 +26,7 @@ Waffle::Application.routes.draw do
   resources :studies
   resources :questions
   resources :schedule_templates
+  resources :debriefs, only: [ :new, :create, :update ]
   resources :answer_sets, only: [ :create, :destroy, :index, :new, :show ]
 
   resources :participants, only: [ :new, :create, :show, :index ]

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141228234442) do
+ActiveRecord::Schema.define(version: 20150303223708) do
 
   create_table "answer_sets", force: true do |t|
     t.integer  "questionnaire_id"
@@ -84,6 +84,17 @@ ActiveRecord::Schema.define(version: 20141228234442) do
   end
 
   add_index "choices", ["answer_type_id"], name: "index_choices_on_answer_type_id"
+
+  create_table "debriefs", force: true do |t|
+    t.integer  "user_id"
+    t.string   "choice"
+    t.string   "instructor"
+    t.string   "student_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "debriefs", ["user_id"], name: "index_debriefs_on_user_id"
 
   create_table "participants", force: true do |t|
     t.integer  "user_id"

@@ -15,7 +15,7 @@
         </div>
         <% if participant.total_questionnaires == participant.questionnaires_taken %>
           <div>
-            You have completed the study. View debrief form.
+            You have completed the study. View <%= link_to "Debrief", new_debrief_path %> form.
           </div>
         <% end %>
     </div>
