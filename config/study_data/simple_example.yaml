@@ -1,0 +1,87 @@
+study:
+    title: Simple
+    label: simple
+    answer_types:
+        -
+            label: multiple_choice
+            description: Multiple choice
+            choices:
+                -
+                    value: one
+                    text: 1
+                    order: 1
+                -
+                    value: two
+                    text: 2
+                    order: 2
+                -
+                    value: three
+                    text: 3
+                    order: 3
+                -
+                    value: Four
+                    text: 4
+                    order: 4
+        -
+            label: many_multiple_choice
+            description: Multiple choice with allow multiple
+            allow_multiple: true
+            choices:
+                -
+                    value: a
+                    text: a
+                    order: 1
+                -
+                    value: b
+                    text: b
+                    order: 2
+                -
+                    value: c
+                    text: c
+                    order: 3
+                -
+                    value: d
+                    text: d
+                    order: 4
+        -
+            label: free_text
+            description: A free text answer
+            regular_expression: .+
+        -
+            label: number
+            description: A number
+            regular_expression: \d+
+    blocks:
+        -
+              label: block_one
+              questions:
+                  -
+                      label: multiple
+                      text: Pick one.
+                      answer_type_label: multiple_choice
+                  -
+                      label: many
+                      text: Pick one or more.
+                      answer_type_label: many_multiple_choice
+        -
+              label: block_two
+              questions:
+                  -
+                      label: free_response
+                      text: Say anything.
+                      answer_type_label: free_text
+                  -
+                      label: pick_a_number
+                      text: Pick a number.
+                      answer_type_label: number
+    questionnaires:
+      -
+          label: one
+          blocks:
+                - block_one
+                - block_two
+    schedule_template:
+        entries:
+            -
+                time_offset_hours: 0
+                questionnaire_label: one

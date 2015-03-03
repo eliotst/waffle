@@ -1,0 +1,35 @@
+<h2>Statement of Informed Consent</h2>
+
+<p><strong>Title:</strong> Identifying the Effects of Coping Strategies on Stress</p>
+
+<p><strong>Principal Investigators:</strong> Steele Schauer, sschauer@fandm.edu</p>
+
+<p>The purpose of an informed consent is to ensure that you understand the purpose of this study, the nature of your involvement, and the conditions of your participation. It provides the information necessary for you to make the decision concerning whether or not you wish to participate in this study. If you have any questions or concerns while reading this form, please ask the Researcher for clarification.</p>
+
+<h3>Research Personnel</h3>
+<p>In addition to the principle investigator listed above, the following individual is also involved in this research may be contacted if you have any questions or concerns or need further information about this study: Dr. Allison Troy (717-291-3833), Faculty Sponsor. If any ethical concerns about this study arise, please contact Dr. Meredith Bashaw (Chair, Psychology Department, Franklin & Marshall College, 717-358-4425).</p>
+
+<h3>Purpose</h3>
+<p>The purpose of this study is to identify coping strategies and their effect on stress. Task Requirements: Participants will fill out a short baseline questionnaire, and then a short daily questionnaire for four days. All questionnaires will be taken electronically using a mobile application on your cell phone.</p>
+
+<h3>Duration and Locale</h3>
+<p>The study lasts 4 days, consisting of a 5-minute questionnaire daily and a 10-minute baseline questionnaire. All questionnaires will be taken electronically using your cell phone.</p>
+
+<h3>Potential Risk/Discomfort</h3>
+<p>This study may provide discomfort when the participant answers questions about stress. If you feel anxious and/or uncomfortable about your performance in this study or questions in the study, please bring your concerns to the Researcher's attention immediately and you will be withdrawn from the study.
+
+<h3>Potential Benefits</h3>
+<p>PSY 100/101 students will be compensated with course credit (0.5 hours). Some participants may enjoy completing the questionnaires about themselves and may even learn more about themselves in the process. Volunteers not in PSY100/101 will be entered into a raffle for a prize.</p>
+
+<h3>Anonymity/Confidentiality</h3>
+<p>The data collected in this study are confidential. All data are coded such that your name is not associated with the data and located in a completely separate data bank. The information provided will be used for research purposes only.  The coded data are made available only to the researchers associated with this project.
+
+<h3>Right to Withdraw</h3>
+<p>You have the right to withdraw from this study at any time without academic penalty. Your participation is completely voluntary.</p>
+
+<%= form_for(@participant) do |participant_form| %>
+    <%= participant_form.check_box(:agree, {}, "true", nil) %> I have read the above description of the study and understand the conditions of my participation.
+
+  <%= participant_form.hidden_field(:study_id, value: @participant.study_id) %>
+  <%= participant_form.submit "Sign Up" %>
+<% end %>
