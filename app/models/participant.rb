@@ -13,6 +13,8 @@ class Participant < ActiveRecord::Base
 
   after_create :create_schedule
 
+  attr_accessor :agree
+
   def create_schedule
     relevant_template = self.study.schedule_templates.first
     schedule = Schedule.new

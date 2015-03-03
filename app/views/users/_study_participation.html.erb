@@ -13,5 +13,10 @@
             Questionnaires Taken: <%= participant.questionnaires_taken %> /
             <%= participant.total_questionnaires %>
         </div>
+        <% if participant.total_questionnaires == participant.questionnaires_taken %>
+          <div>
+            You have completed the study. View debrief form.
+          </div>
+        <% end %>
     </div>
 </div>

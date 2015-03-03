@@ -13,6 +13,7 @@
         <% end %>
     <% else %>
         You are not participating in any studies. <br />
-        <%= link_to "Browse Available Studies", studies_path %>
+        Choose a study to join:
+        <%= render partial: 'shared/all_studies' %>
     <% end %>
 </div>

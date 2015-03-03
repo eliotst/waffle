@@ -14,12 +14,12 @@
                 <td><%= link_to study.title, study %></td>
                 <td>
                     <% if !current_user.studies.include?(study) %>
-                      <%= button_to "Sign Up", participants_path(study_id: study.id) %>
+                      <%= link_to "Sign Up", new_participant_path(study_id: study.id) %>
                     <% else %>
                       None
                     <% end %>
                     <% if current_user.is_admin? %>
-                      <%= button_to "Delete", study, method: :delete %>
+                      <%= link_to "Delete", study, method: :delete %>
                     <% end %>
                 </td>
             </tr>

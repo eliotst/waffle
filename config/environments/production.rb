@@ -74,7 +74,7 @@ Waffle::Application.configure do
     :authentication       => :plain,
     :enable_starttls_auto => false,
     :ssl => false,
-    :user_name            => "test@waffle.emo-lab.org",
+    :user_name            => "admin@waffle.emo-lab.org",
     :password             => ENV['EMAIL_PASSWORD']
   }
 
