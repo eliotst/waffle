@@ -17,7 +17,7 @@ class Answer < ActiveRecord::Base
     if !self.values.nil?
       self.values.delete("")
       validate_multiple_values
-    else
+    elsif !self.question.answer_type.allow_multiple
       validate_value
     end
   end
