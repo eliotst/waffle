@@ -21,9 +21,9 @@ ActiveRecord::Schema.define(version: 20150303223708) do
     t.datetime "updated_at"
   end
 
-  add_index "answer_sets", ["participant_id"], name: "index_answer_sets_on_participant_id"
-  add_index "answer_sets", ["questionnaire_id"], name: "index_answer_sets_on_questionnaire_id"
-  add_index "answer_sets", ["schedule_entry_id"], name: "index_answer_sets_on_schedule_entry_id"
+  add_index "answer_sets", ["participant_id"], name: "index_answer_sets_on_participant_id", using: :btree
+  add_index "answer_sets", ["questionnaire_id"], name: "index_answer_sets_on_questionnaire_id", using: :btree
+  add_index "answer_sets", ["schedule_entry_id"], name: "index_answer_sets_on_schedule_entry_id", using: :btree
 
   create_table "answer_types", force: true do |t|
     t.string   "label"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20150303223708) do
     t.datetime "updated_at"
   end
 
-  add_index "answer_types", ["study_id"], name: "index_answer_types_on_study_id"
+  add_index "answer_types", ["study_id"], name: "index_answer_types_on_study_id", using: :btree
 
   create_table "answer_validations", force: true do |t|
     t.string   "regular_expression", default: "--- !ruby/regexp /.*/\n...\n"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20150303223708) do
     t.datetime "updated_at"
   end
 
-  add_index "answer_validations", ["answer_type_id"], name: "index_answer_validations_on_answer_type_id"
+  add_index "answer_validations", ["answer_type_id"], name: "index_answer_validations_on_answer_type_id", using: :btree
 
   create_table "answers", force: true do |t|
     t.string   "value"
@@ -54,9 +54,9 @@ ActiveRecord::Schema.define(version: 20150303223708) do
     t.datetime "updated_at"
   end
 
-  add_index "answers", ["answer_set_id"], name: "index_answers_on_answer_set_id"
-  add_index "answers", ["participant_id"], name: "index_answers_on_participant_id"
-  add_index "answers", ["question_id"], name: "index_answers_on_question_id"
+  add_index "answers", ["answer_set_id"], name: "index_answers_on_answer_set_id", using: :btree
+  add_index "answers", ["participant_id"], name: "index_answers_on_participant_id", using: :btree
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
 
   create_table "block_questionnaires", force: true do |t|
     t.integer  "block_id"
@@ -65,8 +65,8 @@ ActiveRecord::Schema.define(version: 20150303223708) do
     t.datetime "updated_at"
   end
 
-  add_index "block_questionnaires", ["block_id"], name: "index_block_questionnaires_on_block_id"
-  add_index "block_questionnaires", ["questionnaire_id"], name: "index_block_questionnaires_on_questionnaire_id"
+  add_index "block_questionnaires", ["block_id"], name: "index_block_questionnaires_on_block_id", using: :btree
+  add_index "block_questionnaires", ["questionnaire_id"], name: "index_block_questionnaires_on_questionnaire_id", using: :btree
 
   create_table "blocks", force: true do |t|
     t.string   "label"
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 20150303223708) do
     t.datetime "updated_at"
   end
 
-  add_index "choices", ["answer_type_id"], name: "index_choices_on_answer_type_id"
+  add_index "choices", ["answer_type_id"], name: "index_choices_on_answer_type_id", using: :btree
 
   create_table "debriefs", force: true do |t|
     t.integer  "user_id"
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 20150303223708) do
     t.datetime "updated_at"
   end
 
-  add_index "debriefs", ["user_id"], name: "index_debriefs_on_user_id"
+  add_index "debriefs", ["user_id"], name: "index_debriefs_on_user_id", using: :btree
 
   create_table "participants", force: true do |t|
     t.integer  "user_id"
@@ -103,8 +103,8 @@ ActiveRecord::Schema.define(version: 20150303223708) do
     t.datetime "updated_at"
   end
 
-  add_index "participants", ["study_id"], name: "index_participants_on_study_id"
-  add_index "participants", ["user_id"], name: "index_participants_on_user_id"
+  add_index "participants", ["study_id"], name: "index_participants_on_study_id", using: :btree
+  add_index "participants", ["user_id"], name: "index_participants_on_user_id", using: :btree
 
   create_table "questionnaires", force: true do |t|
     t.string   "label"
@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 20150303223708) do
     t.datetime "updated_at"
   end
 
-  add_index "questionnaires", ["study_id"], name: "index_questionnaires_on_study_id"
+  add_index "questionnaires", ["study_id"], name: "index_questionnaires_on_study_id", using: :btree
 
   create_table "questions", force: true do |t|
     t.string   "text"
@@ -125,8 +125,8 @@ ActiveRecord::Schema.define(version: 20150303223708) do
     t.datetime "updated_at"
   end
 
-  add_index "questions", ["answer_type_id"], name: "index_questions_on_answer_type_id"
-  add_index "questions", ["block_id"], name: "index_questions_on_block_id"
+  add_index "questions", ["answer_type_id"], name: "index_questions_on_answer_type_id", using: :btree
+  add_index "questions", ["block_id"], name: "index_questions_on_block_id", using: :btree
 
   create_table "schedule_entries", force: true do |t|
     t.datetime "time_to_send"
@@ -138,9 +138,9 @@ ActiveRecord::Schema.define(version: 20150303223708) do
     t.datetime "updated_at"
   end
 
-  add_index "schedule_entries", ["participant_id"], name: "index_schedule_entries_on_participant_id"
-  add_index "schedule_entries", ["questionnaire_id"], name: "index_schedule_entries_on_questionnaire_id"
-  add_index "schedule_entries", ["schedule_id"], name: "index_schedule_entries_on_schedule_id"
+  add_index "schedule_entries", ["participant_id"], name: "index_schedule_entries_on_participant_id", using: :btree
+  add_index "schedule_entries", ["questionnaire_id"], name: "index_schedule_entries_on_questionnaire_id", using: :btree
+  add_index "schedule_entries", ["schedule_id"], name: "index_schedule_entries_on_schedule_id", using: :btree
 
   create_table "schedule_template_entries", force: true do |t|
     t.integer  "time_offset_hours"
@@ -150,8 +150,8 @@ ActiveRecord::Schema.define(version: 20150303223708) do
     t.datetime "updated_at"
   end
 
-  add_index "schedule_template_entries", ["questionnaire_id"], name: "index_schedule_template_entries_on_questionnaire_id"
-  add_index "schedule_template_entries", ["schedule_template_id"], name: "index_schedule_template_entries_on_schedule_template_id"
+  add_index "schedule_template_entries", ["questionnaire_id"], name: "index_schedule_template_entries_on_questionnaire_id", using: :btree
+  add_index "schedule_template_entries", ["schedule_template_id"], name: "index_schedule_template_entries_on_schedule_template_id", using: :btree
 
   create_table "schedule_templates", force: true do |t|
     t.integer  "study_id"
@@ -159,7 +159,7 @@ ActiveRecord::Schema.define(version: 20150303223708) do
     t.datetime "updated_at"
   end
 
-  add_index "schedule_templates", ["study_id"], name: "index_schedule_templates_on_study_id"
+  add_index "schedule_templates", ["study_id"], name: "index_schedule_templates_on_study_id", using: :btree
 
   create_table "schedules", force: true do |t|
     t.datetime "start_time"
@@ -169,8 +169,8 @@ ActiveRecord::Schema.define(version: 20150303223708) do
     t.datetime "updated_at"
   end
 
-  add_index "schedules", ["participant_id"], name: "index_schedules_on_participant_id"
-  add_index "schedules", ["schedule_template_id"], name: "index_schedules_on_schedule_template_id"
+  add_index "schedules", ["participant_id"], name: "index_schedules_on_participant_id", using: :btree
+  add_index "schedules", ["schedule_template_id"], name: "index_schedules_on_schedule_template_id", using: :btree
 
   create_table "studies", force: true do |t|
     t.string   "title"

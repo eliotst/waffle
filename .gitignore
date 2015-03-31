@@ -26,3 +26,5 @@ doc/
 .secret
 /public/assets
 /public/.htaccess
+
+*.pid

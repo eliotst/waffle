@@ -29,13 +29,9 @@ Rails.logger.auto_flushing = true if Rails.logger.respond_to?(:auto_flushing)
 
 sleep_count = 0
 while $running do
-  if sleep_count % 360 == 0
-    begin
-      send_all
-    rescue
-    end
-    sleep_count = 0
+  begin
+    send_all
+  rescue
   end
-  sleep_count += 1
-  sleep 10.seconds
+  sleep 1.hours
 end

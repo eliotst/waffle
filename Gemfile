@@ -18,6 +18,7 @@ end
 
 group :production do
   gem 'mysql2', '0.3.11'
+  gem 'pg'
 end
 
 gem 'bootstrap-sass', '~> 3.3.1'
