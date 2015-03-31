@@ -26,7 +26,7 @@ class StudiesController < ApplicationController
   end
 
   def index
-    @studies = Study.paginate(page: params[:page])
+    @studies = Study.all
   end
 
   def destroy

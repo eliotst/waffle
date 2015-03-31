@@ -13,7 +13,7 @@ class AnswerSetsController < ApplicationController
   end
 
   def index
-    @answer_sets = AnswerSet.paginate(page: params[:page])
+    @answer_sets = AnswerSet.all
     respond_to do |format|
       format.html
       format.csv { send_data @answer_sets.to_csv }
