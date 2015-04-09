@@ -1,0 +1,16 @@
+<h1>Debriefs</h1>
+<table>
+    <tr>
+        <th>Student Name</th>
+        <th>Choice</th>
+        <th>Instructor</th>
+    </tr>
+    <% @debriefs.each do |debrief| %>
+        <tr>
+            <td><%= debrief.student_name %></td>
+            <td><%= debrief.choice %></td>
+            <td><%= debrief.instructor %></td>
+        </tr>
+    <% end %>
+</table>
+

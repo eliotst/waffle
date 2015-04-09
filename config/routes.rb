@@ -26,7 +26,7 @@ Waffle::Application.routes.draw do
   resources :studies
   resources :questions
   resources :schedule_templates
-  resources :debriefs, only: [ :new, :create, :update ]
+  resources :debriefs, only: [ :new, :create, :index, :update ]
   resources :answer_sets, only: [ :create, :destroy, :index, :new, :show ]
 
   resources :participants, only: [ :new, :create, :show, :index ]

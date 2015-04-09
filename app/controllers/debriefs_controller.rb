@@ -1,4 +1,7 @@
 class DebriefsController < ApplicationController
+  before_action :must_be_logged_in
+  before_action :must_be_admin, only: [ :index ]
+
   def new
     @debrief = Debrief.where(user_id: current_user.id).first
     if @debrief == nil
@@ -11,6 +14,10 @@ class DebriefsController < ApplicationController
     @debrief.user = current_user
     @debrief.save
     redirect_to current_user
+  end
+
+  def index
+    @debriefs = Debrief.all
   end
 
   def update
